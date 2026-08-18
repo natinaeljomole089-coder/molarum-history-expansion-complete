@@ -11,3 +11,4 @@
 - [x] Run TypeScript, test, and production checks; verify native Android-compatible flows.
 - [x] Create an Android-ready release checkpoint and provide APK build instructions.
 - [x] Create a private GitHub repository and upload the clean Molarum project snapshot.
+- [ ] Create a separate private GitHub repository with the complete reproducible Molarum source snapshot.
