@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "packageStatus": "unresolved_after_retries_or_capacity",
+  "generatedAt": "2026-08-18T00:00:00.000Z",
+  "sourceCatalog": "not_supplied",
+  "bundledFallback": {
+    "status": "empty_governed_fallback",
+    "questionCount": 0,
+    "reason": "No owner-provided Grade 10 source pages were supplied; Molarum does not invent curriculum questions."
+  },
+  "subjects": [
+    { "id": "chemistry", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
+    { "id": "physics", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
+    { "id": "biology", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
+    { "id": "mathematics", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
+    { "id": "geography", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
+    { "id": "citizenship", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
+    { "id": "economics", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
+    { "id": "health_pe", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] }
+  ]
+}

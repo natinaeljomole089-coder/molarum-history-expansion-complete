@@ -28,11 +28,10 @@ const schemeFromBundleId = `manus${timestamp}`;
 
 const env = {
   // App branding - update these values directly (do not use env vars)
-  appName: "Molarum — Grade 10 Offline Study Library",
+  appName: "Molarum",
   appSlug: "molarum",
-  // S3 URL of the app logo - set this to the URL returned by generate_image when creating custom logo
-  // Leave empty to use the default icon from assets/images/icon.png
-  logoUrl: "",
+  // Project storage URL for the generated launcher mark.
+  logoUrl: "/manus-storage/molarum-icon_16f3a20a.png",
   scheme: schemeFromBundleId,
   iosBundleId: bundleId,
   androidPackage: bundleId,
@@ -48,7 +47,7 @@ const config: ExpoConfig = {
   userInterfaceStyle: "automatic",
   newArchEnabled: true,
   ios: {
-    supportsTablet: true,
+    supportsTablet: false,
     bundleIdentifier: env.iosBundleId,
     "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -56,7 +55,7 @@ const config: ExpoConfig = {
   },
   android: {
     adaptiveIcon: {
-      backgroundColor: "#E6F4FE",
+      backgroundColor: "#F7F1E4",
       foregroundImage: "./assets/images/android-icon-foreground.png",
       backgroundImage: "./assets/images/android-icon-background.png",
       monochromeImage: "./assets/images/android-icon-monochrome.png",
@@ -64,7 +63,7 @@ const config: ExpoConfig = {
     edgeToEdgeEnabled: true,
     predictiveBackGestureEnabled: false,
     package: env.androidPackage,
-    permissions: ["POST_NOTIFICATIONS"],
+    permissions: [],
     intentFilters: [
       {
         action: "VIEW",
@@ -87,27 +86,14 @@ const config: ExpoConfig = {
   plugins: [
     "expo-router",
     [
-      "expo-audio",
-      {
-        microphonePermission: "Allow $(PRODUCT_NAME) to access your microphone.",
-      },
-    ],
-    [
-      "expo-video",
-      {
-        supportsBackgroundPlayback: true,
-        supportsPictureInPicture: true,
-      },
-    ],
-    [
       "expo-splash-screen",
       {
         image: "./assets/images/splash-icon.png",
         imageWidth: 200,
         resizeMode: "contain",
-        backgroundColor: "#ffffff",
+        backgroundColor: "#F7F1E4",
         dark: {
-          backgroundColor: "#000000",
+          backgroundColor: "#142238",
         },
       },
     ],
