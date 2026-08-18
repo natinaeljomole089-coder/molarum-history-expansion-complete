@@ -10,4 +10,4 @@
 - [x] Create Molarum branding assets and configure native Android app metadata.
 - [x] Run TypeScript, test, and production checks; verify native Android-compatible flows.
 - [x] Create an Android-ready release checkpoint and provide APK build instructions.
-- [ ] Create a private GitHub repository and upload the clean Molarum project snapshot.
+- [x] Create a private GitHub repository and upload the clean Molarum project snapshot.
