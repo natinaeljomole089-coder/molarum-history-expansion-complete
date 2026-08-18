@@ -9,4 +9,4 @@
 - [x] Document source governance, validation process, privacy model, and release status.
 - [x] Create Molarum branding assets and configure native Android app metadata.
 - [x] Run TypeScript, test, and production checks; verify native Android-compatible flows.
-- [ ] Create an Android-ready release checkpoint and provide APK build instructions.
+- [x] Create an Android-ready release checkpoint and provide APK build instructions.
