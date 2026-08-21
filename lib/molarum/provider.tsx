@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type PropsWithChildren } from "react";
 
+import bundledQuestionBank from "@/assets/question-banks/grade10-source-grounded-bank.json";
 import { subjectIdForQuestion } from "./catalog";
 import { validateQuestionBank } from "./validator";
 import type {
@@ -16,6 +17,8 @@ import type {
 
 const STORAGE_KEY = "molarum.local-study-library.v1";
 const EMPTY_PROFILE: LearnerProfile = { name: "", className: "", school: "" };
+const bundledBankValidation = validateQuestionBank(bundledQuestionBank);
+const BUNDLED_BANK: ValidatedQuestionBank | null = bundledBankValidation.ok ? bundledBankValidation.value : null;
 
 interface StoredState {
   activeBank: ValidatedQuestionBank | null;
@@ -25,7 +28,7 @@ interface StoredState {
 }
 
 const EMPTY_STATE: StoredState = {
-  activeBank: null,
+  activeBank: BUNDLED_BANK,
   reviewStates: {},
   learnerProfile: EMPTY_PROFILE,
   attempts: [],
@@ -53,7 +56,7 @@ function parseStoredState(value: string | null): StoredState {
   try {
     const parsed = JSON.parse(value) as Partial<StoredState>;
     return {
-      activeBank: parsed.activeBank?.bank && parsed.activeBank?.report ? parsed.activeBank : null,
+      activeBank: parsed.activeBank?.bank && parsed.activeBank?.report ? parsed.activeBank : BUNDLED_BANK,
       reviewStates: parsed.reviewStates ?? {},
       learnerProfile: { ...EMPTY_PROFILE, ...(parsed.learnerProfile ?? {}) },
       attempts: Array.isArray(parsed.attempts) ? parsed.attempts : [],
@@ -91,7 +94,7 @@ export function StudyLibraryProvider({ children }: PropsWithChildren) {
   }, []);
 
   const resetToBundledContent = useCallback(() => {
-    setState((previous) => ({ ...previous, activeBank: null, reviewStates: {} }));
+    setState((previous) => ({ ...previous, activeBank: BUNDLED_BANK, reviewStates: {} }));
   }, []);
 
   const setReviewState = useCallback((questionId: string, reviewState: LocalReviewState) => {

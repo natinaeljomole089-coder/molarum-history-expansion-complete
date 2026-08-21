@@ -2,19 +2,19 @@
 
 ## Current package status
 
-No owner-provided Grade 10 textbook, PDF, or excerpt has been supplied to this workspace. Therefore, no source pages have been extracted and no question may be generated or bundled.
+Molarum now bundles a **720-question source-grounded bank** retrieved from the owner-connected Google Drive. The bank contains six units each for Chemistry, Physics, and Biology. Its structure was validated locally on 2026-08-21: every completed unit has 40 questions with the required 20 multiple-choice, 4 true/false, 8 short-answer, and 8 numerical distribution; each also has the required 14 easy, 18 medium, and 8 hard distribution.
 
-Every listed subject remains **`unresolved_after_retries_or_capacity`**. The active fallback bank contains zero questions by design; it is a governed empty state, not a curriculum claim.
+The original Drive bank had two blank answers in Physics Unit 3. Both were repaired using the owner-provided Grade 10 Physics textbook: the first-condition-of-equilibrium answer now uses the book-on-a-table example, and the strain answer now follows the textbook’s definition. The bank then passed the strict local validator without errors.
 
-| Subject | Validated units | Current status |
-|---|---:|---|
-| Chemistry | 0 | `unresolved_after_retries_or_capacity` |
-| Physics | 0 | `unresolved_after_retries_or_capacity` |
-| Biology | 0 | `unresolved_after_retries_or_capacity` |
-| Mathematics | 0 | `unresolved_after_retries_or_capacity` |
-| Geography | 0 | `unresolved_after_retries_or_capacity` |
-| Citizenship | 0 | `unresolved_after_retries_or_capacity` |
-| Economics | 0 | `unresolved_after_retries_or_capacity` |
-| Health & PE | 0 | `unresolved_after_retries_or_capacity` |
+| Subject | Bundled units | Questions | Current status |
+|---|---:|---:|---|
+| Chemistry | 6 | 240 | Structurally validated; teacher review required. |
+| Physics | 6 | 240 | Structurally validated; two source-verified answer repairs; teacher review required. |
+| Biology | 6 | 240 | Structurally validated; teacher review required. |
+| Mathematics | 0 | 0 | `unresolved_after_retries_or_capacity` |
+| Geography | 0 | 0 | `unresolved_after_retries_or_capacity` |
+| Citizenship | 0 | 0 | `unresolved_after_retries_or_capacity` |
+| Economics | 0 | 0 | `unresolved_after_retries_or_capacity` |
+| Health & PE | 0 | 0 | `unresolved_after_retries_or_capacity` |
 
-The next content step is to provide the owner-approved source package outside the web project, extract the pages for a single unit, create a 40-question source-grounded JSON unit, and run `pnpm validate:bank <file>`. Invalid results must be corrected without inventing missing source coverage.
+Every bundled item retains `reviewStatus: "ai_draft"`; the app must continue displaying **Teacher review recommended**. Structural validation verifies the schema, source notes, answer presence, question distributions, and duplicate prevention. It does **not** replace subject-teacher review of every question, especially numerical solutions and local curriculum alignment.

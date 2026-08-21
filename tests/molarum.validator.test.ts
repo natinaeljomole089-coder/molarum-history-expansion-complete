@@ -5,6 +5,7 @@ import { filterQuizQuestions } from "../lib/molarum/filters";
 import { buildScoreHistoryHtml } from "../lib/molarum/report-html";
 import { validateQuestionBank } from "../lib/molarum/validator";
 import type { QuestionType, StudyQuestion } from "../lib/molarum/types";
+import bundledQuestionBank from "../assets/question-banks/grade10-source-grounded-bank.json";
 
 const types: QuestionType[] = [
   ...Array<QuestionType>(20).fill("multiple_choice"),
@@ -39,6 +40,16 @@ describe("Molarum question-bank validator", () => {
   it("accepts a structurally complete 40-question unit fixture", () => {
     const result = validateQuestionBank(makeFixtureBank());
     expect(result.ok).toBe(true);
+  });
+
+  it("accepts the bundled owner-Drive bank with its declared 18-unit coverage", () => {
+    const result = validateQuestionBank(bundledQuestionBank);
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.value.bank.questions).toHaveLength(720);
+      expect(result.value.report.unitSummary).toHaveLength(18);
+      expect(result.value.bank.sourceCatalogVersion).toBe("owner-drive-grade10-textbooks-2026-08-21");
+    }
   });
 
   it("rejects a duplicate question and preserves strict distribution rules", () => {

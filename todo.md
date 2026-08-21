@@ -12,3 +12,4 @@
 - [x] Create an Android-ready release checkpoint and provide APK build instructions.
 - [x] Create a private GitHub repository and upload the clean Molarum project snapshot.
 - [x] Create a separate private GitHub repository with the complete reproducible Molarum source snapshot.
+- [x] Locate owner-approved Grade 10 source material in connected Drive and bundle the structurally validated Chemistry, Physics, and Biology quiz bank into Molarum.

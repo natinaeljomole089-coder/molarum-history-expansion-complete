@@ -11,7 +11,7 @@ Molarum is a local-only, Android-capable Grade 10 revision library. Students can
 | Teacher review | Local Draft, Approved, and Hidden overlays; source item status remains `ai_draft`. |
 | Learner privacy | Name, class, school, attempts, review state, and banks are stored only on the device. |
 | Exports | User-triggered PDF score-history export and JSON/Markdown content-document exports. |
-| Offline behavior | After a bank is imported, the app retains the local data for later use. It makes no claim that source content is offline-ready before a validated bank is present. |
+| Offline behavior | A 720-question source-grounded bank is bundled with the app for Chemistry, Physics, and Biology; local imports can still replace it on a device. |
 
 ## Development
 
@@ -23,7 +23,7 @@ pnpm validate:bank /path/to/complete_question_bank.json
 
 ## Content Status
 
-All eight listed subjects currently have zero validated units because no owner-provided source package was available in this workspace. See [`content/manifest.json`](./content/manifest.json) and [`content/review_issues.md`](./content/review_issues.md).
+Molarum now bundles 720 structurally validated, source-grounded questions across six Chemistry, six Physics, and six Biology units. Every item retains the `ai_draft` status and the in-app **Teacher review recommended** label. Mathematics, Geography, Citizenship, Economics, and Health & PE remain unresolved until their source-grounded banks are added. See [`content/manifest.json`](./content/manifest.json) and [`content/review_issues.md`](./content/review_issues.md).
 
 ## Android Delivery
 

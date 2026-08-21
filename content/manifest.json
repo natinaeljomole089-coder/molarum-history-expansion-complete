@@ -1,17 +1,25 @@
 {
   "schemaVersion": 1,
-  "packageStatus": "unresolved_after_retries_or_capacity",
-  "generatedAt": "2026-08-18T00:00:00.000Z",
-  "sourceCatalog": "not_supplied",
-  "bundledFallback": {
-    "status": "empty_governed_fallback",
-    "questionCount": 0,
-    "reason": "No owner-provided Grade 10 source pages were supplied; Molarum does not invent curriculum questions."
+  "packageStatus": "bundled_source_grounded_bank",
+  "generatedAt": "2026-08-21T18:10:00.000Z",
+  "sourceCatalog": {
+    "origin": "owner-connected Google Drive",
+    "questionBankFileId": "1j5vHbsGHnkkrns9OiVx1jBcPy4jPOW7D",
+    "questionBankName": "molarum_grade10_complete_question_bank.json",
+    "physicsTextbookFileId": "1yQpTMncAtrHldEVfdzzKIbOLl3UVAQYM",
+    "physicsTextbookName": "grade-10-physics-new-curriculum--student-textbook-kehulumcom17599255229e06.pdf"
+  },
+  "bundledBank": {
+    "status": "structurally_validated_teacher_review_required",
+    "questionCount": 720,
+    "unitCount": 18,
+    "validationRule": "Each completed unit contains 40 questions: 20 multiple choice, 4 true/false, 8 short answer, and 8 numerical; difficulty split 14 easy, 18 medium, and 8 hard.",
+    "reviewStatus": "ai_draft"
   },
   "subjects": [
-    { "id": "chemistry", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
-    { "id": "physics", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
-    { "id": "biology", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
+    { "id": "chemistry", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"] },
+    { "id": "physics", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"] },
+    { "id": "biology", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"] },
     { "id": "mathematics", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
     { "id": "geography", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
     { "id": "citizenship", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
