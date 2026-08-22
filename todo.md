@@ -17,3 +17,5 @@
 - [x] Add Supabase-backed teacher question-bank and review-state management with role-based access.
 - [x] Add private Supabase storage for source materials and generated learner reports.
 - [x] Apply Supabase schema, storage policies, and row-level security; validate offline fallback behavior.
+- [x] Find connected-Drive sources for Mathematics, Geography, Citizenship, History, Health & PE, and Economics; bundle source-grounded validated units where sources exist and retain History as unresolved.
+- [x] Review connected-Drive sources for Mathematics, Geography, Citizenship, History, Health & PE, and Economics; bundle only source-grounded validated units.

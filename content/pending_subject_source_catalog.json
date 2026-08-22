@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-08-22T14:09:07.000Z",
+  "origin": "owner-connected Google Drive",
+  "validatedUnits": [
+    {
+      "subject": "Mathematics",
+      "unit": "Unit 1: Relations and Functions",
+      "driveFileId": "1MR1DGORWmpf10Z6KiVkMm04CxfgDQ0C8",
+      "driveFileName": "grade-10-mathematics-new-curriculum--student-textbook-kehulumcom1759925836e39e.pdf",
+      "questionFile": "assets/question-banks/pending-subject-units/mathematics-unit-1.json",
+      "questionCount": 40
+    },
+    {
+      "subject": "Geography",
+      "unit": "Unit 1: Landforms of Africa",
+      "driveFileId": "1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa",
+      "driveFileName": "grade-10-geography-new-curriculum--student-textbook-kehulumcom17599285581298.pdf",
+      "questionFile": "assets/question-banks/pending-subject-units/geography-unit-1.json",
+      "questionCount": 40
+    },
+    {
+      "subject": "Citizenship",
+      "unit": "Unit 1: Democracy and Democratization",
+      "driveFileId": "1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl",
+      "driveFileName": "grade-10-citizenship-education-new-curriculum--student-textbook-kehulumcom1759929229d024.pdf",
+      "questionFile": "assets/question-banks/pending-subject-units/citizenship-unit-1.json",
+      "questionCount": 40
+    },
+    {
+      "subject": "Health & PE",
+      "unit": "Unit 1: Health and Physical Education",
+      "driveFileId": "1iSNgiIExCCgSwrWgGROccSbpnovt-9dP",
+      "driveFileName": "grade-10-health-and-physical-education-hpe-new-curriculum--student-textbook-kehulumcom17599270253739.pdf",
+      "questionFile": "assets/question-banks/pending-subject-units/health_pe-unit-1.json",
+      "questionCount": 40
+    },
+    {
+      "subject": "Economics",
+      "unit": "Unit 1: Theory of Consumer Behaviour",
+      "driveFileId": "1vUn9gPEhATRdeA_xwR0iW5vKnOjhhjiP",
+      "driveFileName": "grade-10-economics-new-curriculum--student-textbook-kehulumcom1759928992f5b9 (2).pdf",
+      "questionFile": "assets/question-banks/pending-subject-units/economics-unit-1.json",
+      "questionCount": 40
+    }
+  ],
+  "unresolved": [
+    {
+      "subject": "History",
+      "status": "unresolved_after_retries_or_capacity",
+      "reason": "No owner-approved Grade 10 History textbook was found in the connected Drive search; no questions were generated."
+    }
+  ]
+}

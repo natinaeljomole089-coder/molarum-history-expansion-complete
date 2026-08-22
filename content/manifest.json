@@ -1,18 +1,19 @@
 {
   "schemaVersion": 1,
   "packageStatus": "bundled_source_grounded_bank",
-  "generatedAt": "2026-08-21T18:10:00.000Z",
+  "generatedAt": "2026-08-22T14:10:26.401Z",
   "sourceCatalog": {
     "origin": "owner-connected Google Drive",
     "questionBankFileId": "1j5vHbsGHnkkrns9OiVx1jBcPy4jPOW7D",
     "questionBankName": "molarum_grade10_complete_question_bank.json",
     "physicsTextbookFileId": "1yQpTMncAtrHldEVfdzzKIbOLl3UVAQYM",
-    "physicsTextbookName": "grade-10-physics-new-curriculum--student-textbook-kehulumcom17599255229e06.pdf"
+    "physicsTextbookName": "grade-10-physics-new-curriculum--student-textbook-kehulumcom17599255229e06.pdf",
+    "pendingSubjectCatalog": "content/pending_subject_source_catalog.json"
   },
   "bundledBank": {
     "status": "structurally_validated_teacher_review_required",
-    "questionCount": 720,
-    "unitCount": 18,
+    "questionCount": 920,
+    "unitCount": 23,
     "validationRule": "Each completed unit contains 40 questions: 20 multiple choice, 4 true/false, 8 short answer, and 8 numerical; difficulty split 14 easy, 18 medium, and 8 hard.",
     "reviewStatus": "ai_draft"
   },
@@ -20,10 +21,11 @@
     { "id": "chemistry", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"] },
     { "id": "physics", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"] },
     { "id": "biology", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"] },
-    { "id": "mathematics", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
-    { "id": "geography", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
-    { "id": "citizenship", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
-    { "id": "economics", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
-    { "id": "health_pe", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] }
+    { "id": "mathematics", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"] },
+    { "id": "geography", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"] },
+    { "id": "history", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
+    { "id": "citizenship", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"] },
+    { "id": "economics", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"] },
+    { "id": "health_pe", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"] }
   ]
 }

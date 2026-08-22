@@ -19,6 +19,7 @@ const STORAGE_KEY = "molarum.local-study-library.v1";
 const EMPTY_PROFILE: LearnerProfile = { name: "", className: "", school: "" };
 const bundledBankValidation = validateQuestionBank(bundledQuestionBank);
 const BUNDLED_BANK: ValidatedQuestionBank | null = bundledBankValidation.ok ? bundledBankValidation.value : null;
+const PRIOR_BUNDLED_SOURCE_CATALOGS = new Set(["owner-drive-grade10-textbooks-2026-08-22"]);
 
 interface StoredState {
   activeBank: ValidatedQuestionBank | null;
@@ -55,8 +56,10 @@ function parseStoredState(value: string | null): StoredState {
   if (!value) return EMPTY_STATE;
   try {
     const parsed = JSON.parse(value) as Partial<StoredState>;
+    const savedBank = parsed.activeBank?.bank && parsed.activeBank?.report ? parsed.activeBank : null;
+    const shouldUpgradePriorBundle = Boolean(savedBank && PRIOR_BUNDLED_SOURCE_CATALOGS.has(savedBank.bank.sourceCatalogVersion));
     return {
-      activeBank: parsed.activeBank?.bank && parsed.activeBank?.report ? parsed.activeBank : BUNDLED_BANK,
+      activeBank: shouldUpgradePriorBundle ? BUNDLED_BANK : savedBank ?? BUNDLED_BANK,
       reviewStates: parsed.reviewStates ?? {},
       learnerProfile: { ...EMPTY_PROFILE, ...(parsed.learnerProfile ?? {}) },
       attempts: Array.isArray(parsed.attempts) ? parsed.attempts : [],

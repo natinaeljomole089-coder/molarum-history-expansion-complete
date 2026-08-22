@@ -6,6 +6,7 @@ export const SUBJECT_CATALOG = [
   { id: "biology", title: "Biology", accent: "#6C7B4D" },
   { id: "mathematics", title: "Mathematics", accent: "#446B8F" },
   { id: "geography", title: "Geography", accent: "#A87916" },
+  { id: "history", title: "History", accent: "#925C45" },
   { id: "citizenship", title: "Citizenship", accent: "#7C5A73" },
   { id: "economics", title: "Economics", accent: "#8B6245" },
   { id: "health_pe", title: "Health & PE", accent: "#4F7B77" },

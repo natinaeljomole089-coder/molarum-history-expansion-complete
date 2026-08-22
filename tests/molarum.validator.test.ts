@@ -42,13 +42,13 @@ describe("Molarum question-bank validator", () => {
     expect(result.ok).toBe(true);
   });
 
-  it("accepts the bundled owner-Drive bank with its declared 18-unit coverage", () => {
+  it("accepts the bundled owner-Drive bank with its declared 23-unit coverage", () => {
     const result = validateQuestionBank(bundledQuestionBank);
     expect(result.ok).toBe(true);
     if (result.ok) {
-      expect(result.value.bank.questions).toHaveLength(720);
-      expect(result.value.report.unitSummary).toHaveLength(18);
-      expect(result.value.bank.sourceCatalogVersion).toBe("owner-drive-grade10-textbooks-2026-08-21");
+      expect(result.value.bank.questions).toHaveLength(920);
+      expect(result.value.report.unitSummary).toHaveLength(23);
+      expect(result.value.bank.sourceCatalogVersion).toBe("owner-drive-grade10-textbooks-2026-08-22-expanded");
     }
   });
 
