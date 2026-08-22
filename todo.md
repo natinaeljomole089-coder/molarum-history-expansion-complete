@@ -28,3 +28,7 @@
 - [x] Add canonical packaged/imported/no-active-bank identifiers, bank-versioned records and drafts, and resilient atomic local bank persistence.
 - [x] Tighten recovery-first UI, draft compatibility messaging, navigation/accessibility evidence, and permission documentation without changing question content.
 - [x] Extend automated coverage and release verification for atomic state recovery, bank changes, exports, deep-link safety, and documented device limitations.
+- [x] Audit the existing Molarum project, build environment, scripts, routes, storage, Git status, and verification baseline without modifying runtime behavior.
+- [x] Document a justified resource plan, dependency and permission baseline, and safe reproducible diagnostic scope before obtaining any new resource.
+- [x] Run only reproducible static and managed-build diagnostics; record confirmed bugs, non-reproduced risks, and device-only checks without publishing or deleting data.
+- [x] Produce the requested resource, diagnosis, file-diff, permission-diff, and verification record, then save a verified checkpoint.
