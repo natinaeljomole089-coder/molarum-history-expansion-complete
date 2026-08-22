@@ -41,13 +41,14 @@ export async function copyText(value: string) {
   await Clipboard.setStringAsync(value);
 }
 
-export async function exportScoreHistoryPdf(profile: LearnerProfile, attempts: QuizAttempt[]) {
+export async function exportScoreHistoryPdf(profile: LearnerProfile, attempts: QuizAttempt[]): Promise<string | null> {
   const html = buildScoreHistoryHtml(profile, attempts);
   if (Platform.OS === "web") {
     await Print.printAsync({});
-    return;
+    return null;
   }
   const { uri } = await Print.printToFileAsync({ html });
   if (!(await Sharing.isAvailableAsync())) throw new Error("PDF sharing is unavailable on this device.");
   await Sharing.shareAsync(uri, { mimeType: "application/pdf", dialogTitle: "Export Molarum score history" });
+  return uri;
 }

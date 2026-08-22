@@ -8,6 +8,7 @@ import "react-native-reanimated";
 import { SafeAreaFrameContext, SafeAreaInsetsContext, SafeAreaProvider, initialWindowMetrics, type EdgeInsets, type Metrics, type Rect } from "react-native-safe-area-context";
 
 import "@/global.css";
+import { CloudProvider } from "@/lib/molarum/cloud-provider";
 import { StudyLibraryProvider } from "@/lib/molarum/provider";
 import { initManusRuntime, subscribeSafeAreaInsets } from "@/lib/_core/manus-runtime";
 import "@/lib/_core/nativewind-pressable";
@@ -39,7 +40,7 @@ export default function RootLayout() {
     return { ...metrics, insets: { ...metrics.insets, top: Math.max(metrics.insets.top, 16), bottom: Math.max(metrics.insets.bottom, 12) } };
   }, [initialInsets, initialFrame]);
 
-  const content = <GestureHandlerRootView style={{ flex: 1 }}><trpc.Provider client={trpcClient} queryClient={queryClient}><QueryClientProvider client={queryClient}><StudyLibraryProvider><Stack screenOptions={{ headerShown: false }}><Stack.Screen name="(tabs)" /><Stack.Screen name="subject/[subjectId]" /><Stack.Screen name="unit/[unitKey]" /><Stack.Screen name="quiz/[unitKey]" /><Stack.Screen name="results/[attemptId]" /><Stack.Screen name="teacher-review" /><Stack.Screen name="question-bank" /><Stack.Screen name="blueprint" /></Stack><StatusBar style="dark" /></StudyLibraryProvider></QueryClientProvider></trpc.Provider></GestureHandlerRootView>;
+  const content = <GestureHandlerRootView style={{ flex: 1 }}><trpc.Provider client={trpcClient} queryClient={queryClient}><QueryClientProvider client={queryClient}><StudyLibraryProvider><CloudProvider><Stack screenOptions={{ headerShown: false }}><Stack.Screen name="(tabs)" /><Stack.Screen name="subject/[subjectId]" /><Stack.Screen name="unit/[unitKey]" /><Stack.Screen name="quiz/[unitKey]" /><Stack.Screen name="results/[attemptId]" /><Stack.Screen name="teacher-review" /><Stack.Screen name="question-bank" /><Stack.Screen name="blueprint" /><Stack.Screen name="cloud" /></Stack><StatusBar style="dark" /></CloudProvider></StudyLibraryProvider></QueryClientProvider></trpc.Provider></GestureHandlerRootView>;
 
   return <ThemeProvider><SafeAreaProvider initialMetrics={providerInitialMetrics}>{Platform.OS === "web" ? <SafeAreaFrameContext.Provider value={frame}><SafeAreaInsetsContext.Provider value={insets}>{content}</SafeAreaInsetsContext.Provider></SafeAreaFrameContext.Provider> : content}</SafeAreaProvider></ThemeProvider>;
 }

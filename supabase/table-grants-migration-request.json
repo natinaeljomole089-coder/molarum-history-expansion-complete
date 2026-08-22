@@ -1,0 +1,5 @@
+{
+  "name": "molarum_authenticated_table_grants",
+  "project_id": "jxdfukggxxlemsoumtal",
+  "query": "grant usage on schema public to authenticated;\ngrant select, update on table public.molarum_profiles to authenticated;\ngrant select on table public.molarum_roles to authenticated;\ngrant select, insert, update, delete on table public.molarum_attempts to authenticated;\ngrant select, insert, update, delete on table public.molarum_question_banks to authenticated;\ngrant select, insert, update, delete on table public.molarum_review_states to authenticated;"
+}

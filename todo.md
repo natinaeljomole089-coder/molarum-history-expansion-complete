@@ -13,3 +13,7 @@
 - [x] Create a private GitHub repository and upload the clean Molarum project snapshot.
 - [x] Create a separate private GitHub repository with the complete reproducible Molarum source snapshot.
 - [x] Locate owner-approved Grade 10 source material in connected Drive and bundle the structurally validated Chemistry, Physics, and Biology quiz bank into Molarum.
+- [x] Add optional Supabase authentication and cross-device learner-record synchronization while retaining local-first use.
+- [x] Add Supabase-backed teacher question-bank and review-state management with role-based access.
+- [x] Add private Supabase storage for source materials and generated learner reports.
+- [x] Apply Supabase schema, storage policies, and row-level security; validate offline fallback behavior.
