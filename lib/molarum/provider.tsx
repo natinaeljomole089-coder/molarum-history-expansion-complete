@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import bundledQuestionBank from "@/assets/question-banks/grade10-source-grounded-bank.json";
-import { createBankDescriptor, readActiveBankRecord, stageAndActivateBank, type KeyValueStore } from "./bank-storage";
+import { createBankDescriptor, PRIOR_BUNDLED_SOURCE_CATALOGS, readActiveBankRecord, shouldUpgradeStagedPackagedBank, stageAndActivateBank, type KeyValueStore } from "./bank-storage";
 import { subjectIdForQuestion } from "./catalog";
 import { validateQuestionBank } from "./validator";
 import type {
@@ -23,7 +23,6 @@ const EMPTY_PROFILE: LearnerProfile = { name: "", className: "", school: "" };
 const bundledBankValidation = validateQuestionBank(bundledQuestionBank);
 const BUNDLED_BANK: ValidatedQuestionBank | null = bundledBankValidation.ok ? bundledBankValidation.value : null;
 const BUNDLED_DESCRIPTOR = BUNDLED_BANK ? createBankDescriptor(BUNDLED_BANK, "packaged_validated") : null;
-const PRIOR_BUNDLED_SOURCE_CATALOGS = new Set(["owner-drive-grade10-textbooks-2026-08-22", "owner-drive-grade10-textbooks-2026-08-22-expanded", "owner-drive-grade10-textbooks-2026-08-22-full-expanded"]);
 const KNOWN_BUNDLED_SOURCE_CATALOGS = new Set([...PRIOR_BUNDLED_SOURCE_CATALOGS, "owner-drive-grade10-textbooks-2026-08-22-full-expanded-continuation-1"]);
 
 interface StoredState {
@@ -118,8 +117,9 @@ export function StudyLibraryProvider({ children }: PropsWithChildren) {
     const hydrate = async () => {
       const legacy = parseStoredState(await AsyncStorage.getItem(STORAGE_KEY));
       const staged = await readActiveBankRecord(libraryStore()).catch(() => null);
-      const next = staged ? { ...legacy, activeBank: staged.activeBank, bankDescriptor: staged.descriptor } : legacy;
-      if (!staged && next.activeBank && next.bankDescriptor) {
+      const upgradeStagedBundle = shouldUpgradeStagedPackagedBank(staged);
+      const next = staged && !upgradeStagedBundle ? { ...legacy, activeBank: staged.activeBank, bankDescriptor: staged.descriptor } : legacy;
+      if ((!staged || upgradeStagedBundle) && next.activeBank && next.bankDescriptor) {
         try { await stageAndActivateBank(libraryStore(), next.activeBank, next.bankDescriptor.origin); } catch { /* last-known-good in-memory bank remains usable */ }
       }
       if (mounted) setState(next);

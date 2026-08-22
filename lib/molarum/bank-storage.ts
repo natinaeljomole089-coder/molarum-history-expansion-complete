@@ -2,6 +2,7 @@ import type { BankDescriptor, ValidatedQuestionBank } from "./types";
 
 export const BANK_POINTER_KEY = "molarum.local-study-library.active-bank-pointer.v1";
 const BANK_RECORD_PREFIX = "molarum.local-study-library.bank-record.v1.";
+export const PRIOR_BUNDLED_SOURCE_CATALOGS = new Set(["owner-drive-grade10-textbooks-2026-08-22", "owner-drive-grade10-textbooks-2026-08-22-expanded", "owner-drive-grade10-textbooks-2026-08-22-full-expanded"]);
 
 export interface KeyValueStore {
   getItem(key: string): Promise<string | null>;
@@ -14,6 +15,10 @@ export interface StoredBankRecord {
   descriptor: BankDescriptor;
   activeBank: ValidatedQuestionBank;
   writtenAt: string;
+}
+
+export function shouldUpgradeStagedPackagedBank(staged: Pick<StoredBankRecord, "activeBank" | "descriptor"> | null) {
+  return Boolean(staged && staged.descriptor.origin === "packaged_validated" && PRIOR_BUNDLED_SOURCE_CATALOGS.has(staged.activeBank.bank.sourceCatalogVersion));
 }
 
 function stableHash(value: string) {

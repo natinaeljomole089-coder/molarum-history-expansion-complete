@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import { filterQuizQuestions } from "../lib/molarum/filters";
 import { summarizeImportReview } from "../lib/molarum/import-review";
 import { isResumableQuiz } from "../lib/molarum/quiz-session";
+import { createBankDescriptor, shouldUpgradeStagedPackagedBank } from "../lib/molarum/bank-storage";
 import { buildScoreHistoryHtml } from "../lib/molarum/report-html";
 import { validateQuestionBank } from "../lib/molarum/validator";
 import type { InProgressQuiz, QuestionType, StudyQuestion } from "../lib/molarum/types";
@@ -69,6 +70,18 @@ describe("Molarum resilience helpers", () => {
     expect(isResumableQuiz({ ...session, queueQuestionIds: ["missing-question"] }, "chemistry::Unit 1", questions, session.bankId)).toBe(false);
     expect(isResumableQuiz({ ...session, index: 9 }, "chemistry::Unit 1", questions, session.bankId)).toBe(false);
     expect(isResumableQuiz(session, "chemistry::Unit 1", questions, "molarum-imported_draft-replaced")).toBe(false);
+  });
+
+  it("upgrades only a staged packaged bank from a prior bundled catalog", () => {
+    const validated = validateQuestionBank(makeBank());
+    expect(validated.ok).toBe(true);
+    if (!validated.ok) return;
+    validated.value.bank.sourceCatalogVersion = "owner-drive-grade10-textbooks-2026-08-22-full-expanded";
+    const priorPackaged = { activeBank: validated.value, descriptor: createBankDescriptor(validated.value, "packaged_validated") };
+    expect(shouldUpgradeStagedPackagedBank(priorPackaged)).toBe(true);
+    expect(shouldUpgradeStagedPackagedBank({ ...priorPackaged, descriptor: createBankDescriptor(validated.value, "imported_draft") })).toBe(false);
+    validated.value.bank.sourceCatalogVersion = "owner-drive-grade10-textbooks-2026-08-22-full-expanded-continuation-1";
+    expect(shouldUpgradeStagedPackagedBank({ ...priorPackaged, descriptor: createBankDescriptor(validated.value, "packaged_validated") })).toBe(false);
   });
 
   it("keeps local-save and source-grounded revision disclaimers in exported history", () => {
