@@ -1,0 +1,719 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-22T15:14:28.478092+00:00",
+  "sourceCatalogVersion": "owner-drive-grade10-expanded-units-2026-08-22",
+  "questions": [
+    {
+      "id": "citizenship-u06-001",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Federalism - examples",
+      "type": "multiple_choice",
+      "question": "Which of the following countries is NOT listed in the excerpt as an example of a state using federalism?",
+      "options": [
+        "Spain",
+        "Ethiopia",
+        "India",
+        "Germany"
+      ],
+      "answer": "Spain",
+      "explanation": "The excerpt lists Ethiopia, Nigeria, India, Brazil, USA, Canada, Australia, Germany, etc., but does not mention Spain.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-002",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Federalism in Ethiopia",
+      "type": "multiple_choice",
+      "question": "Since which year has Ethiopia been implementing federalism according to the excerpt?",
+      "options": [
+        "1995",
+        "1948",
+        "2005",
+        "1990"
+      ],
+      "answer": "1995",
+      "explanation": "The excerpt states that Ethiopia has been implementing federalism since 1995.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-003",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Federalism - distinctive features",
+      "type": "multiple_choice",
+      "question": "Which peculiar feature of Ethiopian federalism is explicitly acknowledged in the excerpt?",
+      "options": [
+        "Recognition and institutionalization of national self-determination",
+        "Preference for historically mobilized nationalities only",
+        "Centralized unitary administration",
+        "Removal of regional constitutions"
+      ],
+      "answer": "Recognition and institutionalization of national self-determination",
+      "explanation": "The excerpt notes that a peculiar feature of Ethiopian federalism is the explicit acknowledgement of national self-determination and its institutionalization in the constitution.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-004",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Federalism - challenges",
+      "type": "multiple_choice",
+      "question": "According to the excerpt, which drawback has arisen from the constitutional approach of granting self-determination to all nationalities?",
+      "options": [
+        "Some constituent units have not evolved as viable regional governments",
+        "All constituent states immediately gained full international recognition",
+        "Complete uniformity of regional laws",
+        "Elimination of historical marginalization everywhere"
+      ],
+      "answer": "Some constituent units have not evolved as viable regional governments",
+      "explanation": "The excerpt explains that one drawback is that some constituent units have not been able to evolve as viable regional governments and lack articulated regional interests.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-005",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Asymmetric federalism",
+      "type": "multiple_choice",
+      "question": "What short-run solution does the excerpt suggest for constituent states that have not been historically mobilized?",
+      "options": [
+        "Adopt some sort of asymmetric federal system with more federal powers",
+        "Dissolve the federal government entirely",
+        "Grant immediate full independence to all such states",
+        "Replace regional governments with a single central authority"
+      ],
+      "answer": "Adopt some sort of asymmetric federal system with more federal powers",
+      "explanation": "The excerpt suggests an asymmetric federal system in the short run so that the federal government's powers are extensive compared to those of such regions.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-006",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Definition of federalism",
+      "type": "multiple_choice",
+      "question": "Which definition best matches the excerpt's description of federalism?",
+      "options": [
+        "A system of government in which the same territory is controlled by two levels of government",
+        "A government in which a central authority holds all power",
+        "A system in which states are clearly dominant over a central authority",
+        "A form of government with no subnational governments"
+      ],
+      "answer": "A system of government in which the same territory is controlled by two levels of government",
+      "explanation": "The unit summary defines federalism as a system where the same territory is controlled by two levels of government, with national and smaller subdivisions sharing governance.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-007",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Differences from other systems",
+      "type": "multiple_choice",
+      "question": "Which system contrasts with federalism by having a central authority hold the power?",
+      "options": [
+        "Unitary government",
+        "Confederation",
+        "Asymmetric federalism",
+        "Bicameralism"
+      ],
+      "answer": "Unitary government",
+      "explanation": "The excerpt contrasts federalism with a unitary government, where a central authority holds the power.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-008",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Advantages of federalism",
+      "type": "multiple_choice",
+      "question": "Which of the following is listed in the excerpt as an advantage of the federalist form of government?",
+      "options": [
+        "Increasing citizen participation",
+        "Eliminating all inequalities between states",
+        "Ensuring identical laws in every region",
+        "Blocking national policies by design"
+      ],
+      "answer": "Increasing citizen participation",
+      "explanation": "The excerpt lists increasing citizen participation as one of the advantages of federalism, while other options are not presented as advantages.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-009",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Disadvantages of federalism",
+      "type": "multiple_choice",
+      "question": "Which of the following is named as a disadvantage of federalism in the excerpt?",
+      "options": [
+        "Increasing inequalities between states",
+        "Total elimination of regional autonomy",
+        "Uniform accountability across all regions",
+        "Guaranteed national harmony"
+      ],
+      "answer": "Increasing inequalities between states",
+      "explanation": "The excerpt lists 'increasing inequalities between states' among the disadvantages of federalism.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-010",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Glossary - Bicameral",
+      "type": "multiple_choice",
+      "question": "According to the glossary in the excerpt, what does 'Bi-cameral legislature' mean?",
+      "options": [
+        "A legislature that comprises two houses",
+        "A legislature controlled by a single house",
+        "A legislature without any houses",
+        "A legislature that only makes executive decisions"
+      ],
+      "answer": "A legislature that comprises two houses",
+      "explanation": "The glossary defines bi-cameral legislature as a system in which the legislature comprises two houses.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-011",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Feature: Universalism",
+      "type": "multiple_choice",
+      "question": "What does 'Universalism' of human rights mean as described in the excerpt?",
+      "options": [
+        "They apply equally to all people everywhere, with no time limit",
+        "They apply only to citizens of a state",
+        "They must be identical across all cultures",
+        "They are valid only during peacetime"
+      ],
+      "answer": "They apply equally to all people everywhere, with no time limit",
+      "explanation": "The excerpt explains that universalism means rights apply equally to all people everywhere and with no time limit, and universality is not the same as uniformity.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-012",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Feature: Eternality",
+      "type": "multiple_choice",
+      "question": "Which statement about the eternality of human rights is supported by the excerpt?",
+      "options": [
+        "Human rights continue in principle until natural death",
+        "Human rights expire after a fixed number of years",
+        "Human rights can be revoked at will by any authority",
+        "Human rights apply only to future generations"
+      ],
+      "answer": "Human rights continue in principle until natural death",
+      "explanation": "The excerpt states that the only time individuals stop enjoying their human rights is at the time of natural death, making them eternal in principle.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-013",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Feature: Inalienability",
+      "type": "multiple_choice",
+      "question": "What does 'Inalienability' of human rights mean as given in the excerpt?",
+      "options": [
+        "You cannot lose them because they are linked to human existence",
+        "They can be freely transferred or sold",
+        "They are granted by governments and can be revoked anytime",
+        "They apply only to property rights"
+      ],
+      "answer": "You cannot lose them because they are linked to human existence",
+      "explanation": "The excerpt defines inalienability as the inability to lose human rights because they are inherent to human existence, though some may be suspended in particular circumstances.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-014",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Feature: Indivisibility and interdependence",
+      "type": "multiple_choice",
+      "question": "Which idea captures the 'indivisible and interdependent' nature of human rights in the excerpt?",
+      "options": [
+        "Different rights are connected and the enjoyment of one depends on others",
+        "Civil and political rights are always more important than economic rights",
+        "Rights can be fully enjoyed in isolation from other rights",
+        "One right should be prioritized above all others"
+      ],
+      "answer": "Different rights are connected and the enjoyment of one depends on others",
+      "explanation": "The excerpt explains that human rights are intrinsically connected and cannot be viewed in isolation, with enjoyment of one right depending on others.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-015",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Feature: Inviolability",
+      "type": "multiple_choice",
+      "question": "What does 'Inviolability' of human rights mean according to the excerpt?",
+      "options": [
+        "Human rights are expected not to be violated or even restricted by anyone",
+        "Human rights may be violated by private citizens without consequence",
+        "Human rights are only applicable during emergencies",
+        "Human rights are primarily moral suggestions, not obligations"
+      ],
+      "answer": "Human rights are expected not to be violated or even restricted by anyone",
+      "explanation": "The excerpt states that inviolability means human rights are expected not to be violated or restricted by anyone, and in some democracies this extends to times of crisis.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-016",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Feature: Irrevocability",
+      "type": "multiple_choice",
+      "question": "How does the excerpt describe human rights being 'irrevocable'?",
+      "options": [
+        "They cannot be taken away because they originate from the social nature of humans",
+        "They can be rescinded by any government at will",
+        "They are granted only for a limited time",
+        "They depend solely on majority decisions"
+      ],
+      "answer": "They cannot be taken away because they originate from the social nature of humans",
+      "explanation": "The excerpt explains that human rights are irrevocable and cannot be taken away because they originate from human social nature and belong to a person by virtue of being human.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-017",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Classification - First generation",
+      "type": "multiple_choice",
+      "question": "Which of the following best describes first generation rights in the excerpt?",
+      "options": [
+        "Civil and political rights derived from 17th and 18th century political theories",
+        "Economic, social and cultural rights from socialist traditions",
+        "Rights to participate in the common heritage of mankind",
+        "Collective development rights promoted in the late twentieth century"
+      ],
+      "answer": "Civil and political rights derived from 17th and 18th century political theories",
+      "explanation": "The excerpt states that first generation rights are civil and political rights associated with 17th and 18th century political theories and revolutions.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-018",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "First generation rights examples",
+      "type": "multiple_choice",
+      "question": "Which of the following rights is listed under Articles 2-21 of the UDHR in the excerpt as a first generation right?",
+      "options": [
+        "Freedom from torture",
+        "Right to social security",
+        "Right to economic development",
+        "Right to benefit from the common heritage of mankind"
+      ],
+      "answer": "Freedom from torture",
+      "explanation": "The excerpt lists 'freedom from torture' among the rights in Articles 2-21 of the UDHR, which are first generation civil and political rights.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-019",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Classification - Second generation",
+      "type": "multiple_choice",
+      "question": "Which of the following is an example of a second generation right given in the excerpt?",
+      "options": [
+        "Right to work",
+        "Freedom of opinion and expression",
+        "Freedom from arbitrary arrest",
+        "Right to participate in government through free elections"
+      ],
+      "answer": "Right to work",
+      "explanation": "The excerpt describes second generation rights as economic, social and cultural rights, and lists the right to work as an example.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-020",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Classification - Third generation",
+      "type": "multiple_choice",
+      "question": "Which right is listed in the excerpt as belonging to the third generation of human rights?",
+      "options": [
+        "Right to economic and social development",
+        "Freedom of thought",
+        "Right to a fair and public trial",
+        "Freedom from slavery"
+      ],
+      "answer": "Right to economic and social development",
+      "explanation": "The excerpt specifies the right to economic and social development as an example of third generation rights.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-021",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "FDRE Constitution - fundamental principle",
+      "type": "multiple_choice",
+      "question": "Which statement about the FDRE Constitution is supported by the excerpt?",
+      "options": [
+        "Article 10 states human rights and freedoms are inviolable and inalienable",
+        "It dismisses internationally recognized human rights norms",
+        "It devotes no provisions to human rights",
+        "It denies human rights to minorities"
+      ],
+      "answer": "Article 10 states human rights and freedoms are inviolable and inalienable",
+      "explanation": "The excerpt cites Article 10 of the FDRE Constitution which articulates that human rights and freedoms are inviolable and inalienable.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-022",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "FDRE Constitution - chapter three",
+      "type": "multiple_choice",
+      "question": "Which of the following correctly describes the structure of rights in chapter three of the FDRE Constitution as given in the excerpt?",
+      "options": [
+        "Articles 14-28 are 'Human Rights' and Articles 29-44 are 'Democratic Rights'",
+        "Articles 14-28 are 'Democratic Rights' and Articles 29-44 are 'Human Rights'",
+        "All rights are listed only from Article 2 to Article 13",
+        "Chapter three contains no named sections for rights"
+      ],
+      "answer": "Articles 14-28 are 'Human Rights' and Articles 29-44 are 'Democratic Rights'",
+      "explanation": "The excerpt states that Article 13-44 are 'Fundamental Rights and Freedoms' with Articles 14-28 named 'Human Rights' and Articles 29-44 'Democratic Rights'.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-023",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Human rights examples under FDRE",
+      "type": "multiple_choice",
+      "question": "Which of the following rights is listed in Table 6.1 of the excerpt as a human right under the 1995 FDRE constitution?",
+      "options": [
+        "Right to life",
+        "Right to establish a monarchy",
+        "Right to tax other states",
+        "Right to abolish constitutions"
+      ],
+      "answer": "Right to life",
+      "explanation": "Table 6.1 in the excerpt lists 'Right to life' among the human rights under the 1995 FDRE constitution.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-024",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Citizens' obligations",
+      "type": "multiple_choice",
+      "question": "Which of the following is listed in the excerpt as a constitutional obligation of citizens for the protection of human rights?",
+      "options": [
+        "Respect for gender equality",
+        "Right to impose curfew on others",
+        "Authority to suspend rights in emergencies",
+        "Power to detain others without cause"
+      ],
+      "answer": "Respect for gender equality",
+      "explanation": "The excerpt lists obligations of citizens including respect for gender equality and respect for the rights of others.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-025",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "State obligations - respect",
+      "type": "multiple_choice",
+      "question": "What does the 'obligation to respect' require states to do according to the excerpt?",
+      "options": [
+        "Refrain from interfering with the enjoyment of rights of persons with disabilities",
+        "Actively provide schools for all forms of education regardless of resources",
+        "Enact laws allowing medical experiments without consent",
+        "Exclude persons with disabilities from public life"
+      ],
+      "answer": "Refrain from interfering with the enjoyment of rights of persons with disabilities",
+      "explanation": "The excerpt explains the obligation to respect means states must refrain from interfering with the enjoyment of rights, for example not performing medical experiments on persons with disabilities without consent.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-026",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "State obligations - protect",
+      "type": "multiple_choice",
+      "question": "Which action exemplifies the state's 'obligation to protect' as given in the excerpt?",
+      "options": [
+        "Enacting legislation protecting human rights and ensuring access to remedies",
+        "Allowing private actors to violate rights without recourse",
+        "Removing impartial legal remedies for human rights violations",
+        "Refusing to legislate on human rights issues"
+      ],
+      "answer": "Enacting legislation protecting human rights and ensuring access to remedies",
+      "explanation": "The excerpt states that the obligation to protect requires states to enact legislation protecting human rights and ensure access to impartial legal remedies.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-027",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "State obligations - fulfill",
+      "type": "multiple_choice",
+      "question": "Which of the following best describes the 'obligation to fulfill' from the excerpt?",
+      "options": [
+        "States must take positive action to create conditions and means for rights to be realized",
+        "States should ignore social and economic conditions when applying rights",
+        "States only have to refrain from interference but need not act",
+        "States must privatize all public education immediately"
+      ],
+      "answer": "States must take positive action to create conditions and means for rights to be realized",
+      "explanation": "The excerpt explains the obligation to fulfill requires states to take positive actions, such as providing free primary education and creating conditions to realize rights.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-028",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Instruments - UDHR",
+      "type": "multiple_choice",
+      "question": "Which statement about the Universal Declaration of Human Rights (UDHR) is given in the excerpt?",
+      "options": [
+        "It was adopted on December 10, 1948 and is not a legally binding instrument",
+        "It was adopted in 1995 and is legally binding on all states",
+        "It requires no respect by UN member states",
+        "It was written to replace all national constitutions"
+      ],
+      "answer": "It was adopted on December 10, 1948 and is not a legally binding instrument",
+      "explanation": "The excerpt states the UDHR was adopted on December 10, 1948 and that although influential, it is not a legally binding instrument.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-029",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Unit review statements",
+      "type": "true_false",
+      "question": "Federalism is a form of state structure in which power is formally (constitutionally) given to the federal/national/central government.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "The excerpt defines federalism as dividing power between levels of government, so power being given only to the central government describes a unitary system, not federalism.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-030",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Unit review statements",
+      "type": "true_false",
+      "question": "The Ethiopian constitution empowers the House of Federation to interpret the constitution.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "The excerpt includes review material indicating responsibility for adjudicating constitutional matters is given to the House of Federation, supporting this statement.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-031",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Unit review statements",
+      "type": "true_false",
+      "question": "Federal systems are usually known for dividing power between the federal government and the states.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "The unit summary defines federalism as a system where power is divided between the national government and other governmental units, such as states.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-032",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Unit review statements",
+      "type": "true_false",
+      "question": "The reason for establishing a federation differs from one federation to another.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "The excerpt notes that federalism's nature varies from one state to another and that reasons for establishing a federation differ among federations.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-033",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Definition - human rights",
+      "type": "short_answer",
+      "question": "Define 'human rights' as presented in the excerpt.",
+      "options": [],
+      "answer": "Basic entitlements that belong to every human being simply because they are human and apply without discrimination.",
+      "explanation": "The excerpt states human rights are basic entitlements belonging to every member of the human race and are claimable simply because someone is human without discrimination.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-034",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Features of human rights",
+      "type": "short_answer",
+      "question": "Name three basic features of human rights mentioned in the excerpt.",
+      "options": [],
+      "answer": "Universalism, Inalienability, Indivisible and interdependent.",
+      "explanation": "The excerpt lists features including universalism, inalienability, indivisible and interdependent (among others such as eternality, inviolability, and irrevocability).",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-035",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Universality explained",
+      "type": "short_answer",
+      "question": "Explain in one sentence what 'universality' of human rights means in the excerpt.",
+      "options": [],
+      "answer": "Universality means human rights apply equally to all people everywhere and with no time limit, without threatening cultural diversity.",
+      "explanation": "The excerpt explains universality as rights applying equally to all people everywhere and clarifies it does not imply uniformity across cultures.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-036",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Examples of rights",
+      "type": "short_answer",
+      "question": "Give one example of a first generation right listed in the excerpt.",
+      "options": [],
+      "answer": "Freedom from torture.",
+      "explanation": "The excerpt lists 'freedom from torture' among the rights in Articles 2-21 of the UDHR, which are classified as first generation rights.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-037",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Citizens' obligations",
+      "type": "short_answer",
+      "question": "State one constitutional obligation of citizens mentioned in the excerpt for protecting human rights.",
+      "options": [],
+      "answer": "Respect for the rights of others.",
+      "explanation": "The excerpt states citizens have obligations such as respecting the rights of others, respect for religious and gender equality, and respect for the national flag.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-038",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "State obligations",
+      "type": "short_answer",
+      "question": "Briefly describe the 'obligation to protect' as given in the excerpt.",
+      "options": [],
+      "answer": "States must protect individuals from abuses by non-state and state actors, enact protective legislation, prevent foreseeable threats, and ensure access to impartial remedies.",
+      "explanation": "The excerpt explains the obligation to protect includes enacting legislation, taking action when aware of threats, and ensuring access to impartial legal remedies.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-039",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "State obligations",
+      "type": "short_answer",
+      "question": "What is one concrete example of actions states must take under the 'obligation to fulfill' from the excerpt?",
+      "options": [],
+      "answer": "Provide free and compulsory primary education for all and set up enough public schools and teachers.",
+      "explanation": "The excerpt gives the right to education as an example, stating states must provide free compulsory primary education and take steps like setting up public schools and hiring teachers.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "citizenship-u06-040",
+      "unitId": "Unit 6",
+      "unitTitle": "Unit 6: Human Rights",
+      "topic": "Numerical facts from the excerpt",
+      "type": "numerical",
+      "question": "According to the excerpt, how many generations of human rights are described in section 6.1.2?",
+      "options": [],
+      "answer": "3",
+      "explanation": "Section 6.1.2 of the excerpt describes three generations of human rights (first, second and third generations).",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Citizenship Student Textbook, Unit 6: Human Rights (owner-connected Google Drive file 1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl).",
+      "reviewStatus": "ai_draft"
+    }
+  ]
+}

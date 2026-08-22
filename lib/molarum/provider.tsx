@@ -19,7 +19,10 @@ const STORAGE_KEY = "molarum.local-study-library.v1";
 const EMPTY_PROFILE: LearnerProfile = { name: "", className: "", school: "" };
 const bundledBankValidation = validateQuestionBank(bundledQuestionBank);
 const BUNDLED_BANK: ValidatedQuestionBank | null = bundledBankValidation.ok ? bundledBankValidation.value : null;
-const PRIOR_BUNDLED_SOURCE_CATALOGS = new Set(["owner-drive-grade10-textbooks-2026-08-22"]);
+const PRIOR_BUNDLED_SOURCE_CATALOGS = new Set([
+  "owner-drive-grade10-textbooks-2026-08-22",
+  "owner-drive-grade10-textbooks-2026-08-22-expanded",
+]);
 
 interface StoredState {
   activeBank: ValidatedQuestionBank | null;

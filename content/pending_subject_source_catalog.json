@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T14:09:07.000Z",
+  "generatedAt": "2026-08-22T15:23:22.775Z",
   "origin": "owner-connected Google Drive",
   "validatedUnits": [
     {
@@ -41,6 +41,30 @@
       "driveFileName": "grade-10-economics-new-curriculum--student-textbook-kehulumcom1759928992f5b9 (2).pdf",
       "questionFile": "assets/question-banks/pending-subject-units/economics-unit-1.json",
       "questionCount": 40
+    },
+    {
+      "subject": "Mathematics",
+      "unit": "Units 2–7: Polynomial Functions; Exponential and Logarithmic Functions; Trigonometric Functions; Circles; Solid Figures; Coordinate Geometry",
+      "driveFileId": "1MR1DGORWmpf10Z6KiVkMm04CxfgDQ0C8",
+      "driveFileName": "grade-10-mathematics-new-curriculum--student-textbook-kehulumcom1759925836e39e.pdf",
+      "questionFiles": ["assets/question-banks/additional-source-units/mathematics-unit-2.json", "assets/question-banks/additional-source-units/mathematics-unit-3.json", "assets/question-banks/additional-source-units/mathematics-unit-4.json", "assets/question-banks/additional-source-units/mathematics-unit-5.json", "assets/question-banks/additional-source-units/mathematics-unit-6.json", "assets/question-banks/additional-source-units/mathematics-unit-7.json"],
+      "questionCount": 240
+    },
+    {
+      "subject": "Geography",
+      "unit": "Units 2, 4–8: Climate of Africa; Population of Africa; Major Economic and Cultural Activities of Africa; Human–Natural Environment Interactions; Geographic Issues and Public Concerns in Africa; Geospatial Information and Data Processing",
+      "driveFileId": "1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa",
+      "driveFileName": "grade-10-geography-new-curriculum--student-textbook-kehulumcom17599285581298.pdf",
+      "questionFiles": ["assets/question-banks/additional-source-units/geography-unit-2.json", "assets/question-banks/additional-source-units/geography-unit-4.json", "assets/question-banks/additional-source-units/geography-unit-5.json", "assets/question-banks/additional-source-units/geography-unit-6.json", "assets/question-banks/additional-source-units/geography-unit-7.json", "assets/question-banks/additional-source-units/geography-unit-8.json"],
+      "questionCount": 240
+    },
+    {
+      "subject": "Citizenship",
+      "unit": "Units 2–5, 7–8: Citizens in the Digital Technology Age; Understanding Good Governance; Peace and Indigenous Conflict Resolution; Federalism in Ethiopia; Patriotism; Globalization and Global Issues",
+      "driveFileId": "1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl",
+      "driveFileName": "grade-10-citizenship-education-new-curriculum--student-textbook-kehulumcom1759929229d024.pdf",
+      "questionFiles": ["assets/question-banks/additional-source-units/citizenship-unit-2.json", "assets/question-banks/additional-source-units/citizenship-unit-3.json", "assets/question-banks/additional-source-units/citizenship-unit-4.json", "assets/question-banks/additional-source-units/citizenship-unit-5.json", "assets/question-banks/additional-source-units/citizenship-unit-7.json", "assets/question-banks/additional-source-units/citizenship-unit-8.json"],
+      "questionCount": 240
     }
   ],
   "unresolved": [
@@ -48,6 +72,30 @@
       "subject": "History",
       "status": "unresolved_after_retries_or_capacity",
       "reason": "No owner-approved Grade 10 History textbook was found in the connected Drive search; no questions were generated."
+    },
+    {
+      "subject": "Geography",
+      "unit": "Unit 3",
+      "status": "unresolved_after_schema_validation",
+      "reason": "The source-only draft did not satisfy Molarum’s fixed type distribution and was not bundled."
+    },
+    {
+      "subject": "Citizenship",
+      "unit": "Unit 6",
+      "status": "unresolved_after_schema_validation",
+      "reason": "The source-only draft did not satisfy Molarum’s fixed type distribution and was not bundled."
+    },
+    {
+      "subject": "Economics",
+      "unit": "Units 2–8",
+      "status": "unresolved_after_retries_or_capacity",
+      "reason": "No structurally usable source-only generation response was available during the documented retry; no questions were bundled."
+    },
+    {
+      "subject": "Health & PE",
+      "unit": "Units 2–8",
+      "status": "unresolved_after_retries_or_capacity",
+      "reason": "No structurally usable source-only generation response was available during the documented retry; no questions were bundled."
     }
   ]
 }

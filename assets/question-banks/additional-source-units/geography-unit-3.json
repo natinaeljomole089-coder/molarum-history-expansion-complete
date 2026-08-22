@@ -1,0 +1,711 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-22T15:10:20.244123+00:00",
+  "sourceCatalogVersion": "owner-drive-grade10-expanded-units-2026-08-22",
+  "questions": [
+    {
+      "id": "geography-u03-001",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Drainage and Water Resources",
+      "type": "true_false",
+      "question": "The Sahel is the area of Africa that is most affected by drought.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "The excerpt states the Sahel is a semiarid strip (dividing Sahara from humid savannas) and implies it is affected by high temperatures and evaporation, making it most affected by drought.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-002",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Climate (from Unit Two excerpt)",
+      "type": "true_false",
+      "question": "Tropical desert climate is characterized by low mean annual temperature and high diurnal range of temperature.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "explanation": "The text describes tropical desert areas as having low rainfall and xerophytic vegetation but does not indicate low mean annual temperatures; deserts are implied to be hot, so the statement is false.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-003",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Climate (from Unit Two excerpt)",
+      "type": "true_false",
+      "question": "The influence of climate on human activities can be both positive and negative.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "explanation": "The excerpt states climate affects food, transport, livelihood and health and that climate change poses threats, showing both positive and negative influences.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-004",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Natural resources overview",
+      "type": "multiple_choice",
+      "question": "Which pair correctly classifies natural resources as given in the text?",
+      "options": [
+        "Renewable and nonrenewable",
+        "Biotic and abiotic",
+        "Primary and secondary",
+        "Local and global"
+      ],
+      "answer": "Renewable and nonrenewable",
+      "explanation": "The excerpt defines natural resources and explicitly categorizes them into renewable and nonrenewable resources.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-005",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Natural resources: water",
+      "type": "multiple_choice",
+      "question": "According to the table in the text, what percent of Earth's total water is held in the world ocean?",
+      "options": [
+        "96.5%",
+        "2.5%",
+        "1.7%",
+        "68.7%"
+      ],
+      "answer": "96.5%",
+      "explanation": "Table 3.1 states the world ocean contains 96.5% of Earth's total water.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-006",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Natural resources: freshwater",
+      "type": "multiple_choice",
+      "question": "What percentage of Earth's total water is freshwater, as given in the excerpt?",
+      "options": [
+        "2.5%",
+        "30.1%",
+        "0.007%",
+        "96.5%"
+      ],
+      "answer": "2.5%",
+      "explanation": "The excerpt's table notes that freshwater makes up about 2.5% of total Earth's water.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-007",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Natural resource management",
+      "type": "multiple_choice",
+      "question": "Which of the following is described in the excerpt as a key strategy for sustainable natural resource management?",
+      "options": [
+        "Maintaining and enhancing water resources",
+        "Expanding fossil fuel extraction",
+        "Privatizing all land",
+        "Eliminating agriculture"
+      ],
+      "answer": "Maintaining and enhancing water resources",
+      "explanation": "The 'Focus' list of key strategies explicitly includes 'Maintaining and enhancing water resources' as a sustainable management strategy.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-008",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Soil functions",
+      "type": "multiple_choice",
+      "question": "Which of the following is NOT listed in the excerpt as a function of soil?",
+      "options": [
+        "Generating atmospheric oxygen",
+        "Supplying water and nutrients to plants",
+        "Protecting water supplies by storing and transforming pollutants",
+        "Providing raw materials and preserving the past history"
+      ],
+      "answer": "Generating atmospheric oxygen",
+      "explanation": "The excerpt lists many soil functions including supplying water and nutrients, protecting water supplies, providing raw materials and preserving history, but does not state soil generates atmospheric oxygen.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-009",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Soils of Africa",
+      "type": "multiple_choice",
+      "question": "Which soil type is described as easily erodible sandy soil dominant in Africa and covering 22% of soils?",
+      "options": [
+        "Arenosols",
+        "Leptosols",
+        "Ferralsols",
+        "Cambisols"
+      ],
+      "answer": "Arenosols",
+      "explanation": "The excerpt explains Arenosols are sandy, easily erodible, dominant in Africa and cover 22% of African soils.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-010",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Soils of Africa",
+      "type": "multiple_choice",
+      "question": "Which soil type is described as shallow soil over hard rock and covers 17% of Africa's soils?",
+      "options": [
+        "Leptosols",
+        "Calcisols",
+        "Arenosols",
+        "Ferralsols"
+      ],
+      "answer": "Leptosols",
+      "explanation": "The text defines Leptosols as shallow soils over hard rock or gravelly material and states they cover 17% of Africa's soils.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-011",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Soils of Africa",
+      "type": "multiple_choice",
+      "question": "Which soil type is strongly weathered, dominated by iron and aluminum oxides, and covers 10% of Africa's soils?",
+      "options": [
+        "Ferralsols",
+        "Cambisols",
+        "Leptosols",
+        "Calcisols"
+      ],
+      "answer": "Ferralsols",
+      "explanation": "The excerpt describes Ferralsols as strongly weathered, rich in iron and aluminum oxides, and covering 10% of African soils.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-012",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Soils of Africa",
+      "type": "multiple_choice",
+      "question": "Which soil type forms by accumulation of calcium carbonate and can create an impenetrable calcrete hard pan, covering 6% of Africa?",
+      "options": [
+        "Calcisols",
+        "Arenosols",
+        "Cambisols",
+        "Leptosols"
+      ],
+      "answer": "Calcisols",
+      "explanation": "Calcisols are defined in the text as soils with significant accumulation of calcium carbonate that can form calcrete, covering 6% of African soils.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-013",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Natural resources: minerals",
+      "type": "multiple_choice",
+      "question": "Which African country is listed as the largest producer of platinum and holds about 91.3% of world reserves according to Table 3.2?",
+      "options": [
+        "South Africa",
+        "D.R. Congo",
+        "Guinea",
+        "Gabon"
+      ],
+      "answer": "South Africa",
+      "explanation": "Table 3.2 shows South Africa produces platinum (130,000 1000 tons) and is ranked 1 with 91.3% of world reserves.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-014",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Mineral resources",
+      "type": "multiple_choice",
+      "question": "Which country is reported as producing 100,000 (1000 tons) of cobalt and holding 51.43% of world reserves?",
+      "options": [
+        "D.R. Congo",
+        "Zambia",
+        "Guinea",
+        "South Africa"
+      ],
+      "answer": "D.R. Congo",
+      "explanation": "Table 3.2 lists D.R. Congo with cobalt mine production of 100,000 (1000 tons) and 51.43% of world reserves.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-015",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Mineral resources and colonial legacy",
+      "type": "multiple_choice",
+      "question": "According to the excerpt, one lasting impact of colonialism on African mining was:",
+      "options": [
+        "Railroads built mainly to carry minerals to ports",
+        "Complete industrial diversification with local processing",
+        "Abolition of all mining activities",
+        "Universal local ownership of mines"
+      ],
+      "answer": "Railroads built mainly to carry minerals to ports",
+      "explanation": "The text explains Europeans invested in mining and built railroads to carry minerals to coastal ports rather than to link cities or industries, a legacy of colonialism.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-016",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Drainage basins of Africa",
+      "type": "multiple_choice",
+      "question": "Which of the following is NOT listed among the major drainage basins of Africa in the excerpt?",
+      "options": [
+        "Amazon Basin",
+        "Nile Basin",
+        "Congo Basin",
+        "Zambezi Basin"
+      ],
+      "answer": "Amazon Basin",
+      "explanation": "The excerpt lists Nile, Congo, Zambezi, Niger, Orange and Chad basins; the Amazon is not an African basin and is therefore not listed.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-017",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Nile Basin",
+      "type": "multiple_choice",
+      "question": "What proportion of the Nile's water is stated to come from Ethiopia?",
+      "options": [
+        "86%",
+        "50%",
+        "14%",
+        "100%"
+      ],
+      "answer": "86%",
+      "explanation": "The excerpt explicitly states that eighty-six percent (86%) of Nile water comes from Ethiopia.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-018",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Nile Basin",
+      "type": "multiple_choice",
+      "question": "Which two tributaries join to form the Nile in Sudan as described in the text?",
+      "options": [
+        "Blue Nile and White Nile",
+        "Zambezi and Congo",
+        "Niger and Benue",
+        "Orange and Vaal"
+      ],
+      "answer": "Blue Nile and White Nile",
+      "explanation": "The excerpt describes the White Nile (from Lake Victoria) and the Blue Nile (from Ethiopia) joining in Sudan to form the Nile.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-019",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Congo Basin",
+      "type": "multiple_choice",
+      "question": "Which statement about the Congo River is supported by the excerpt?",
+      "options": [
+        "It is the world's second-largest river by volume and drains about 3.7 million km²",
+        "It is the longest river in the world at 6,650 km",
+        "It has no hydroelectric potential",
+        "It is navigable only during the rainy season"
+      ],
+      "answer": "It is the world's second-largest river by volume and drains about 3.7 million km²",
+      "explanation": "The text states the Congo is the Earth's second-largest river by volume, drains 3.7 million km² and extends about 4,660 km, supporting the chosen statement.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-020",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Congo hydroelectric potential",
+      "type": "multiple_choice",
+      "question": "What portion of the Congo basin's estimated hydroelectric potential is associated with the Inga site?",
+      "options": [
+        "44,000 MW of 100,000 MW",
+        "10,000 MW of 100,000 MW",
+        "100,000 MW of 44,000 MW",
+        "5,000 MW of 44,000 MW"
+      ],
+      "answer": "44,000 MW of 100,000 MW",
+      "explanation": "The excerpt gives the Congo's hydroelectric potential as 100,000 MW, with 44,000 MW possibly from the Inga site, so the correct phrasing is 44,000 MW of 100,000 MW.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-021",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Niger Basin",
+      "type": "multiple_choice",
+      "question": "Which tributary is the largest contributor to the Niger River as named in the excerpt?",
+      "options": [
+        "Benue",
+        "Ubangi",
+        "Kafue",
+        "Kasai"
+      ],
+      "answer": "Benue",
+      "explanation": "The text identifies the Benue as the Niger's largest tributary flowing from its left bank in Nigeria.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-022",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Zambezi Basin",
+      "type": "multiple_choice",
+      "question": "Which famous waterfall on the Zambezi is mentioned in the excerpt?",
+      "options": [
+        "Victoria Falls",
+        "Boyoma Falls",
+        "Inga Falls",
+        "Kariba Falls"
+      ],
+      "answer": "Victoria Falls",
+      "explanation": "The excerpt names Victoria Falls as the most spectacular waterfall on the Zambezi.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-023",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Orange Basin",
+      "type": "multiple_choice",
+      "question": "Why is navigation generally impossible throughout most of the Orange River's course according to the excerpt?",
+      "options": [
+        "Irregular flow, falls and rapids, and silting",
+        "Excessive width at the mouth",
+        "Year-round flooding",
+        "Frozen sections in winter"
+      ],
+      "answer": "Irregular flow, falls and rapids, and silting",
+      "explanation": "The text explains navigation on the Orange is impossible because of irregular flow, interruptions by falls and rapids, and silting at channels and the mouth.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-024",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Chad Basin",
+      "type": "multiple_choice",
+      "question": "Which of the following is true about Lake Chad in the excerpt?",
+      "options": [
+        "Its size varies seasonally from about 10,360 km² to about 25,900 km²",
+        "It has a mean depth of 50 meters",
+        "It is located on the coast of the Atlantic Ocean",
+        "It is primarily fed by the Nile"
+      ],
+      "answer": "Its size varies seasonally from about 10,360 km² to about 25,900 km²",
+      "explanation": "The excerpt specifies Lake Chad's seasonal area variation between about 10,360 km² and 25,900 km² and states its mean depth is 1.2 meters, not 50.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-025",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Vegetation distribution",
+      "type": "multiple_choice",
+      "question": "Which vegetation type occupies the largest percent of Africa's land area according to Table 3.3?",
+      "options": [
+        "Tropical desert (29.3%)",
+        "Tropical shrubland (20.0%)",
+        "Tropical moist deciduous forest (15.6%)",
+        "Tropical rainforest (13.5%)"
+      ],
+      "answer": "Tropical desert (29.3%)",
+      "explanation": "Table 3.3 lists tropical desert as covering 8,737,674 km² or 29.3% of Africa's land area, the largest percentage shown.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-026",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Vegetation: tropical rainforest",
+      "type": "multiple_choice",
+      "question": "Where are tropical rainforests in Africa chiefly concentrated as described in the excerpt?",
+      "options": [
+        "Guineo-Congolian lowland (Congo Basin)",
+        "Sahara Desert",
+        "Kalahari Sands",
+        "Highveld region"
+      ],
+      "answer": "Guineo-Congolian lowland (Congo Basin)",
+      "explanation": "The text says the most extensive rainforest formation is in the Guineo-Congolian lowland concentrated in the Congo Basin.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-027",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Vegetation factors",
+      "type": "multiple_choice",
+      "question": "Which factor is NOT listed in the excerpt as affecting vegetation distribution?",
+      "options": [
+        "Soil chemistry and water holding capacity",
+        "Landform (elevation and slope)",
+        "Biotic factors (competition and shading)",
+        "Global trade policies"
+      ],
+      "answer": "Global trade policies",
+      "explanation": "The excerpt lists climate, landform, soils and biotic factors as influencing vegetation; global trade policies are not mentioned as a vegetation factor.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-028",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Wildlife of Africa",
+      "type": "multiple_choice",
+      "question": "Which of the following animals is cited in the excerpt as endemic (found nowhere else) to Africa?",
+      "options": [
+        "Walia ibex",
+        "Giant panda",
+        "Komodo dragon",
+        "Polar bear"
+      ],
+      "answer": "Walia ibex",
+      "explanation": "The text lists Walia ibex among mammals endemic to Africa, while the other animals are not mentioned and are not African endemics.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-029",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Wildlife: primates",
+      "type": "multiple_choice",
+      "question": "Which two great apes are named in the excerpt as living in Africa?",
+      "options": [
+        "Chimpanzee and gorilla",
+        "Orangutan and gibbon",
+        "Bonobo and siamang",
+        "Gibbon and orangutan"
+      ],
+      "answer": "Chimpanzee and gorilla",
+      "explanation": "The excerpt explicitly names the chimpanzee and the gorilla as the two species of great apes living in Africa.",
+      "difficulty": "easy",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-030",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Natural resources: oil",
+      "type": "multiple_choice",
+      "question": "Which statement about oil in the excerpt is correct?",
+      "options": [
+        "Oil is a scarce nonrenewable resource that powers transport and manufacturing",
+        "Oil is described as a renewable energy source alongside wind",
+        "Oil is the only resource not linked to pollution or conflict",
+        "The excerpt states oil reserves will never be depleted"
+      ],
+      "answer": "Oil is a scarce nonrenewable resource that powers transport and manufacturing",
+      "explanation": "The excerpt describes oil as a scarce nonrenewable resource that fuels most transportation and manufacturing and is linked to pollution and conflict.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-031",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Definitions: natural resources",
+      "type": "short_answer",
+      "question": "Define 'natural resources' as given in the excerpt.",
+      "options": [],
+      "answer": "Parts of the environment that people can extract and exploit (use or manipulate to one's advantage); people do not make natural resources.",
+      "explanation": "The excerpt defines natural resources as parts of the environment that people can extract and exploit and stresses people gather rather than make them.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-032",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Renewable vs nonrenewable resources",
+      "type": "short_answer",
+      "question": "Explain the difference between renewable and nonrenewable resources according to the text.",
+      "options": [],
+      "answer": "Renewable resources can be replenished by natural processes as quickly as humans use them (e.g., sunlight, wind), while nonrenewable resources exist in fixed amounts and can be used up in the future (e.g., petroleum, coal).",
+      "explanation": "The excerpt contrasts renewable resources that replenish quickly with nonrenewable resources that exist in fixed amounts and gives examples for each.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-033",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Sustainable use",
+      "type": "short_answer",
+      "question": "What does 'sustainable use' of resources mean in the excerpt?",
+      "options": [],
+      "answer": "Use of resources in a way and at a rate that does not lead to long-term environmental degradation, preserving potential to meet present and future needs.",
+      "explanation": "The text defines sustainable use as using resources so they do not cause long-term degradation and continue to meet present and future generations' needs.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-034",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Drainage basin definition",
+      "type": "short_answer",
+      "question": "Give the definition of a drainage basin as described in the excerpt.",
+      "options": [],
+      "answer": "An area of land where surface water from rain converges to a single point at a lower elevation, usually appearing at the basin's exit where the main river joins another water body.",
+      "explanation": "The excerpt defines a drainage basin as an area where rainwater converges to a single lower point often at an outlet to another water body.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-035",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Soil parent material",
+      "type": "short_answer",
+      "question": "What is 'soil parent material' according to the excerpt?",
+      "options": [],
+      "answer": "The material below about 1–2 meters depth that influences soil formation; material from which soil develops.",
+      "explanation": "The text explains soil-forming processes are significant up to 1–2 meters and that the material below this depth is called the soil parent material, from which soil forms.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-036",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Vegetation factors",
+      "type": "short_answer",
+      "question": "List four factors the excerpt cites as influencing vegetation distribution.",
+      "options": [],
+      "answer": "Climate (temperature, precipitation, humidity, light, wind), landform (elevation, slope orientation), soils (chemical constituents and water holding capacity), and biotic factors (competition, shading).",
+      "explanation": "The excerpt lists climate, landform, soils and biotic factors as the main influences on vegetation distribution and composition.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-037",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Wildlife endemism",
+      "type": "short_answer",
+      "question": "Give two examples of mammals the excerpt lists as endemic to Africa.",
+      "options": [],
+      "answer": "Walia ibex and nyala (other valid answers include giraffes, hippopotamuses, jumping hares, and tenrecs of Madagascar).",
+      "explanation": "The excerpt names Walia ibex and Nyala among mammals endemic to Africa and lists other endemic examples for context.",
+      "difficulty": "medium",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-038",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Water resources numerical",
+      "type": "numerical",
+      "question": "What is the percent of Earth's total water classified in the table as 'Freshwater' (percent of total)?",
+      "options": [],
+      "answer": "2.5",
+      "explanation": "Table 3.1 lists Freshwater as 35,029,210 km³ which is 2.5% of total water, so the percent is 2.5%.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-039",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "River lengths numerical",
+      "type": "numerical",
+      "question": "According to the excerpt, what is the stated length of the Nile River in kilometers?",
+      "options": [],
+      "answer": "6650",
+      "explanation": "The excerpt states the Nile is about 6,650 kilometers long, so the length is 6650 km.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    },
+    {
+      "id": "geography-u03-040",
+      "unitId": "Unit 3",
+      "unitTitle": "Unit 3: Natural Resource Base of Africa",
+      "topic": "Congo hydroelectric potential numerical",
+      "type": "numerical",
+      "question": "Using the excerpt's values, what percentage of the Congo basin's estimated hydroelectric potential (100,000 MW) is represented by the Inga site's potential (44,000 MW)? (Give your answer to the nearest whole percent.)",
+      "options": [],
+      "answer": "44",
+      "explanation": "The excerpt gives 44,000 MW for Inga out of 100,000 MW total, so (44,000/100,000)*100 = 44%.",
+      "difficulty": "hard",
+      "sourceNote": "Grade 10 Geography Student Textbook, Unit 3: Natural Resource Base of Africa (owner-connected Google Drive file 1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa).",
+      "reviewStatus": "ai_draft"
+    }
+  ]
+}

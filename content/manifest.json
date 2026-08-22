@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "packageStatus": "bundled_source_grounded_bank",
-  "generatedAt": "2026-08-22T14:10:26.401Z",
+  "generatedAt": "2026-08-22T15:23:22.775Z",
   "sourceCatalog": {
     "origin": "owner-connected Google Drive",
     "questionBankFileId": "1j5vHbsGHnkkrns9OiVx1jBcPy4jPOW7D",
@@ -12,8 +12,9 @@
   },
   "bundledBank": {
     "status": "structurally_validated_teacher_review_required",
-    "questionCount": 920,
-    "unitCount": 23,
+    "questionCount": 1640,
+    "unitCount": 41,
+    "sourceCatalogVersion": "owner-drive-grade10-textbooks-2026-08-22-full-expanded",
     "validationRule": "Each completed unit contains 40 questions: 20 multiple choice, 4 true/false, 8 short answer, and 8 numerical; difficulty split 14 easy, 18 medium, and 8 hard.",
     "reviewStatus": "ai_draft"
   },
@@ -21,11 +22,11 @@
     { "id": "chemistry", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"] },
     { "id": "physics", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"] },
     { "id": "biology", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"] },
-    { "id": "mathematics", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"] },
-    { "id": "geography", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"] },
+    { "id": "mathematics", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6", "Unit 7"] },
+    { "id": "geography", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 4", "Unit 5", "Unit 6", "Unit 7", "Unit 8"], "unresolvedUnits": [{ "unit": "Unit 3", "reason": "Excluded after source-only generation because the draft did not satisfy the fixed question-type distribution." }] },
     { "id": "history", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
-    { "id": "citizenship", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"] },
-    { "id": "economics", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"] },
-    { "id": "health_pe", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"] }
+    { "id": "citizenship", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 7", "Unit 8"], "unresolvedUnits": [{ "unit": "Unit 6", "reason": "Excluded after source-only generation because the draft did not satisfy the fixed question-type distribution." }] },
+    { "id": "economics", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"], "unresolvedUnits": [{ "unit": "Units 2–8", "reason": "No structurally usable source-only generation response was available during the documented retry; no questions were bundled." }] },
+    { "id": "health_pe", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"], "unresolvedUnits": [{ "unit": "Units 2–8", "reason": "No structurally usable source-only generation response was available during the documented retry; no questions were bundled." }] }
   ]
 }

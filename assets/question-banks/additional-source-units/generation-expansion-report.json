@@ -1,0 +1,213 @@
+{
+  "generatedAt": "2026-08-22T15:06:41.198930+00:00",
+  "requestedUnits": 34,
+  "completed": [
+    {
+      "file": "mathematics-unit-3.json",
+      "subject": "Mathematics",
+      "unit": "Unit 3: Exponential and Logarithmic Functions",
+      "questions": 40
+    },
+    {
+      "file": "mathematics-unit-6.json",
+      "subject": "Mathematics",
+      "unit": "Unit 6: Solid Figures",
+      "questions": 40
+    },
+    {
+      "file": "mathematics-unit-2.json",
+      "subject": "Mathematics",
+      "unit": "Unit 2: Polynomial Functions",
+      "questions": 40
+    },
+    {
+      "file": "mathematics-unit-4.json",
+      "subject": "Mathematics",
+      "unit": "Unit 4: Trigonometric Functions",
+      "questions": 40
+    },
+    {
+      "file": "mathematics-unit-5.json",
+      "subject": "Mathematics",
+      "unit": "Unit 5: Circles",
+      "questions": 40
+    },
+    {
+      "file": "geography-unit-3.json",
+      "subject": "Geography",
+      "unit": "Unit 3: Natural Resource Base of Africa",
+      "questions": 40
+    },
+    {
+      "file": "mathematics-unit-7.json",
+      "subject": "Mathematics",
+      "unit": "Unit 7: Coordinate Geometry",
+      "questions": 40
+    },
+    {
+      "file": "geography-unit-2.json",
+      "subject": "Geography",
+      "unit": "Unit 2: Climate of Africa",
+      "questions": 40
+    },
+    {
+      "file": "geography-unit-4.json",
+      "subject": "Geography",
+      "unit": "Unit 4: Population of Africa",
+      "questions": 40
+    },
+    {
+      "file": "geography-unit-5.json",
+      "subject": "Geography",
+      "unit": "Unit 5: Major Economic and Cultural Activities of Africa",
+      "questions": 40
+    },
+    {
+      "file": "geography-unit-6.json",
+      "subject": "Geography",
+      "unit": "Unit 6: Human–Natural Environment Interactions",
+      "questions": 40
+    },
+    {
+      "file": "geography-unit-8.json",
+      "subject": "Geography",
+      "unit": "Unit 8: Geospatial Information and Data Processing",
+      "questions": 40
+    },
+    {
+      "file": "geography-unit-7.json",
+      "subject": "Geography",
+      "unit": "Unit 7: Geographic Issues and Public Concerns in Africa",
+      "questions": 40
+    },
+    {
+      "file": "citizenship-unit-2.json",
+      "subject": "Citizenship",
+      "unit": "Unit 2: Citizens in the Digital Technology Age",
+      "questions": 40
+    },
+    {
+      "file": "citizenship-unit-3.json",
+      "subject": "Citizenship",
+      "unit": "Unit 3: Understanding Good Governance",
+      "questions": 40
+    },
+    {
+      "file": "citizenship-unit-4.json",
+      "subject": "Citizenship",
+      "unit": "Unit 4: Peace and Indigenous Conflict Resolution",
+      "questions": 40
+    },
+    {
+      "file": "citizenship-unit-5.json",
+      "subject": "Citizenship",
+      "unit": "Unit 5: Federalism in Ethiopia",
+      "questions": 40
+    },
+    {
+      "file": "citizenship-unit-8.json",
+      "subject": "Citizenship",
+      "unit": "Unit 8: Globalization and Global Issues",
+      "questions": 40
+    },
+    {
+      "file": "citizenship-unit-7.json",
+      "subject": "Citizenship",
+      "unit": "Unit 7: Patriotism",
+      "questions": 40
+    },
+    {
+      "file": "citizenship-unit-6.json",
+      "subject": "Citizenship",
+      "unit": "Unit 6: Human Rights",
+      "questions": 40
+    }
+  ],
+  "failed": [
+    {
+      "file": "economics-unit-6.json",
+      "subject": "Economics",
+      "unit": "Unit 6: Economic Growth",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "economics-unit-7.json",
+      "subject": "Economics",
+      "unit": "Unit 7: An Overview of the Ethiopian Economy",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "economics-unit-8.json",
+      "subject": "Economics",
+      "unit": "Unit 8: Business Startups and Innovation",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "health_pe-unit-2.json",
+      "subject": "Health & PE",
+      "unit": "Unit 2: Health and Physical Fitness",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "health_pe-unit-3.json",
+      "subject": "Health & PE",
+      "unit": "Unit 3: Athletics",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "health_pe-unit-4.json",
+      "subject": "Health & PE",
+      "unit": "Unit 4: Football",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "health_pe-unit-5.json",
+      "subject": "Health & PE",
+      "unit": "Unit 5: Volleyball",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "health_pe-unit-6.json",
+      "subject": "Health & PE",
+      "unit": "Unit 6: Basketball",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "health_pe-unit-7.json",
+      "subject": "Health & PE",
+      "unit": "Unit 7: Handball",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "health_pe-unit-8.json",
+      "subject": "Health & PE",
+      "unit": "Unit 8: Self-Defence and Sport Ethics",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "economics-unit-2.json",
+      "subject": "Economics",
+      "unit": "Unit 2: Theories of Demand and Supply",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "economics-unit-3.json",
+      "subject": "Economics",
+      "unit": "Unit 3: Theory of Production and Cost",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "economics-unit-5.json",
+      "subject": "Economics",
+      "unit": "Unit 5: Banking and Finance",
+      "error": "'NoneType' object is not subscriptable"
+    },
+    {
+      "file": "economics-unit-4.json",
+      "subject": "Economics",
+      "unit": "Unit 4: Market Structures",
+      "error": "'NoneType' object is not subscriptable"
+    }
+  ],
+  "retriedAt": "2026-08-22T15:17:27.568180+00:00"
+}

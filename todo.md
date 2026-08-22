@@ -19,3 +19,4 @@
 - [x] Apply Supabase schema, storage policies, and row-level security; validate offline fallback behavior.
 - [x] Find connected-Drive sources for Mathematics, Geography, Citizenship, History, Health & PE, and Economics; bundle source-grounded validated units where sources exist and retain History as unresolved.
 - [x] Review connected-Drive sources for Mathematics, Geography, Citizenship, History, Health & PE, and Economics; bundle only source-grounded validated units.
+- [x] Expand all owner-approved Grade 10 textbook coverage into additional validated Molarum quiz units, keeping unsupported source areas pending.
