@@ -40,9 +40,9 @@ export function ActiveBankStatus({ origin, questionCount, sourceCatalogVersion }
   const label = origin === "packaged_validated" ? "Packaged validated bank" : origin === "imported_draft" ? "Imported bank · AI draft" : "No active bank";
   const tone = origin === "none" ? "warning" : origin === "imported_draft" ? "neutral" : "success";
   const detail = origin === "packaged_validated"
-    ? `${questionCount} source-grounded questions available offline. Teacher review recommended.`
+    ? `${questionCount} source-grounded questions available offline.`
     : origin === "imported_draft"
-      ? `${questionCount} imported questions active. AI draft · teacher review recommended.`
+      ? `${questionCount} imported questions active. Validate external content before sharing it.`
       : "No valid local content is active. Restore the packaged bank or import a validated bank.";
   return <View accessibilityRole="summary" style={[styles.bankStatus, { backgroundColor: colors.surface, borderColor: colors.border }]}><StatusPill tone={tone} label={label} /><Text style={[styles.bankStatusText, { color: colors.muted }]}>{detail}</Text>{sourceCatalogVersion ? <Text style={[styles.bankVersion, { color: colors.muted }]}>Bank version: {sourceCatalogVersion}</Text> : null}</View>;
 }

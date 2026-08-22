@@ -44,7 +44,7 @@ export async function copyText(value: string) {
 export function buildScoreHistorySummary(profile: LearnerProfile, attempts: QuizAttempt[]) {
   const learner = profile.name.trim() || "Learner not recorded";
   const rows = attempts.map((attempt) => `${new Date(attempt.completedAt).toLocaleDateString()} · ${attempt.unitTitle} · ${attempt.correct}/${attempt.total} · ${attempt.timed ? "Timed" : "Untimed"} · ${attempt.bankSourceCatalogVersion} · ${attempt.bankOrigin === "packaged_validated" ? "Packaged validated" : attempt.bankOrigin === "imported_draft" ? "Imported AI draft" : "Legacy record"}`).join("\n");
-  return ["Molarum local revision history", `Learner: ${learner}`, `Completed attempts: ${attempts.length}`, "", rows || "No completed revision quizzes recorded.", "", "Saved locally. This is a revision record, not a formal assessment. Question content is Teacher review recommended."].join("\n");
+  return ["Molarum local revision history", `Learner: ${learner}`, `Completed attempts: ${attempts.length}`, "", rows || "No completed revision quizzes recorded.", "", "Saved locally. This is a source-grounded revision record, not a formal assessment."].join("\n");
 }
 
 export interface PreparedScoreHistoryExport {

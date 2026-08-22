@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T15:23:22.775Z",
+  "generatedAt": "2026-08-22T21:39:41.169Z",
   "origin": "owner-connected Google Drive",
   "validatedUnits": [
     {
@@ -65,6 +65,26 @@
       "driveFileName": "grade-10-citizenship-education-new-curriculum--student-textbook-kehulumcom1759929229d024.pdf",
       "questionFiles": ["assets/question-banks/additional-source-units/citizenship-unit-2.json", "assets/question-banks/additional-source-units/citizenship-unit-3.json", "assets/question-banks/additional-source-units/citizenship-unit-4.json", "assets/question-banks/additional-source-units/citizenship-unit-5.json", "assets/question-banks/additional-source-units/citizenship-unit-7.json", "assets/question-banks/additional-source-units/citizenship-unit-8.json"],
       "questionCount": 240
+    },
+    {
+      "subject": "Geography",
+      "unit": "Unit 3: Natural Resource Base of Africa",
+      "driveFileId": "1fzhjSsBXzQ_RfmAUm8TfViZfPKLCpWWa",
+      "driveFileName": "grade-10-geography-new-curriculum--student-textbook-kehulumcom17599285581298.pdf",
+      "questionFile": "assets/question-banks/grade10-source-grounded-bank.json",
+      "externalDeliveryUnit": "/home/ubuntu/grade10_question_bank_delivery/units/geography_unit_3_questions.json",
+      "questionCount": 40,
+      "sourceBoundary": "Printed pp. 51–86; local extraction lines 1946–3325; table-dependent draft items were replaced with narrative-text items before acceptance."
+    },
+    {
+      "subject": "Citizenship",
+      "unit": "Unit 6: Human Rights",
+      "driveFileId": "1iMqcGXQnPCcXrAJ_ToYM30HiQL3KY-yl",
+      "driveFileName": "grade-10-citizenship-education-new-curriculum--student-textbook-kehulumcom1759929229d024.pdf",
+      "questionFile": "assets/question-banks/grade10-source-grounded-bank.json",
+      "externalDeliveryUnit": "/home/ubuntu/grade10_question_bank_delivery/units/citizenship_unit_6_questions.json",
+      "questionCount": 40,
+      "sourceBoundary": "Printed pp. 125–139; local extraction lines 4261–4734; table-dependent draft item was replaced with a narrative Article 10 item before acceptance."
     }
   ],
   "unresolved": [
@@ -74,22 +94,16 @@
       "reason": "No owner-approved Grade 10 History textbook was found in the connected Drive search; no questions were generated."
     },
     {
-      "subject": "Geography",
-      "unit": "Unit 3",
-      "status": "unresolved_after_schema_validation",
-      "reason": "The source-only draft did not satisfy Molarum’s fixed type distribution and was not bundled."
-    },
-    {
-      "subject": "Citizenship",
-      "unit": "Unit 6",
-      "status": "unresolved_after_schema_validation",
-      "reason": "The source-only draft did not satisfy Molarum’s fixed type distribution and was not bundled."
+      "subject": "Economics",
+      "unit": "Unit 2: Theories of Demand and Supply",
+      "status": "pending_next_source_bounded_batch",
+      "reason": "An owner-approved source is available. Continue from the external delivery package using lines 1396–3186 and the hardened typed-batch structured-output workflow."
     },
     {
       "subject": "Economics",
-      "unit": "Units 2–8",
+      "unit": "Units 3–8",
       "status": "unresolved_after_retries_or_capacity",
-      "reason": "No structurally usable source-only generation response was available during the documented retry; no questions were bundled."
+      "reason": "Approved source exists, but these units remain queued behind the documented Unit 2 continuation batch."
     },
     {
       "subject": "Health & PE",

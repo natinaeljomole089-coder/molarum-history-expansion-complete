@@ -71,10 +71,10 @@ describe("Molarum resilience helpers", () => {
     expect(isResumableQuiz(session, "chemistry::Unit 1", questions, "molarum-imported_draft-replaced")).toBe(false);
   });
 
-  it("keeps local-save and teacher-review disclaimers in exported history", () => {
+  it("keeps local-save and source-grounded revision disclaimers in exported history", () => {
     const html = buildScoreHistoryHtml({ name: "Learner", className: "10-A", school: "School" }, [{ id: "attempt-1", bankId: "molarum-packaged_validated-test", bankOrigin: "packaged_validated", bankSourceCatalogVersion: "test-import", unitKey: "chemistry::Unit 1", unitTitle: "Unit 1", completedAt: "2026-08-22T00:00:00.000Z", correct: 8, total: 10, timed: false, elapsedSeconds: 0 }]);
     expect(html).toContain("Saved locally");
-    expect(html).toContain("Teacher review recommended");
+    expect(html).toContain("source-grounded revision record");
     expect(html).toContain("not a formal assessment");
     expect(html).toContain("test-import");
     expect(html).toContain("Packaged validated");

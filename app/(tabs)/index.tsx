@@ -37,7 +37,7 @@ export default function LibraryScreen() {
         <View style={styles.headerStack}>
           <NotebookHeader eyebrow="Offline study library" title="Molarum" subtitle="Grade 10 revision tools stored on this device." />
           <ActiveBankStatus origin={activeBank ? activeBankOrigin : "none"} questionCount={questions.length} sourceCatalogVersion={bankDescriptor?.sourceCatalogVersion} />
-          <Notice>Revision tool only. Source-grounded content remains labelled <Text style={{ fontWeight: "800" }}>Teacher review recommended</Text> and is not a formal assessment.</Notice>
+          <Notice>Revision tool only. Content is source-grounded and saved locally; it is not a formal assessment.</Notice>
           {hasStaleDraft ? <Notice tone="warning">A saved quiz belongs to a different bank version. Open its unit to safely discard it or begin a fresh attempt.</Notice> : null}
           <View style={styles.primaryAction}><ActionButton label={primaryLabel} icon={resumeQuiz ? "play-arrow" : "local-library"} onPress={primaryAction} /></View>
           <View style={styles.secondaryActions}>

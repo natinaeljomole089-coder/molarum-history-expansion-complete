@@ -22,7 +22,6 @@ interface CloudContextValue {
   syncMyRecords: () => Promise<CloudResult>;
   pullActiveTeacherContent: () => Promise<CloudResult>;
   publishActiveQuestionBank: () => Promise<CloudResult>;
-  publishReviewStates: () => Promise<CloudResult>;
   pickAndUploadSourceMaterial: () => Promise<CloudResult>;
   uploadLearnerReport: (uri: string) => Promise<CloudResult>;
 }
@@ -39,7 +38,7 @@ function requireClient() {
 }
 
 export function CloudProvider({ children }: PropsWithChildren) {
-  const { activeBank, attempts, learnerProfile, importQuestionBank, reviewStates, setReviewState } = useStudyLibrary();
+  const { activeBank, attempts, learnerProfile, importQuestionBank } = useStudyLibrary();
   const [session, setSession] = useState<Session | null>(null);
   const [role, setRole] = useState<CloudRole>(null);
   const [ready, setReady] = useState(!isSupabaseConfigured);
@@ -130,12 +129,9 @@ export function CloudProvider({ children }: PropsWithChildren) {
       if (!bankRow) return { ok: true, message: "No teacher-published cloud bank is active. Your local or bundled bank was not changed." };
       const accepted = await importQuestionBank(bankRow.bank);
       if (!accepted.accepted) throw new Error("The cloud bank failed local structural validation and was not activated.");
-      const { data: reviews, error: reviewError } = await client.from("molarum_review_states").select("question_id,state").eq("bank_id", bankRow.id);
-      if (reviewError) throw reviewError;
-      reviews?.forEach((item) => setReviewState(item.question_id, item.state));
-      return { ok: true, message: "Teacher-managed question bank and review states downloaded to this device." };
+      return { ok: true, message: "The validated cloud question bank was downloaded to this device." };
     } catch (error) { return failure(error); }
-  }, [importQuestionBank, session, setReviewState]);
+  }, [importQuestionBank, session]);
 
   const publishActiveQuestionBank = useCallback(async (): Promise<CloudResult> => {
     try {
@@ -154,20 +150,6 @@ export function CloudProvider({ children }: PropsWithChildren) {
       return { ok: true, message: "The validated local bank is now the active teacher-managed cloud bank." };
     } catch (error) { return failure(error); }
   }, [activeBank, role, session]);
-
-  const publishReviewStates = useCallback(async (): Promise<CloudResult> => {
-    try {
-      const client = requireClient();
-      if (!session || role !== "teacher") throw new Error("A teacher account is required to publish review states.");
-      const { data: active, error } = await client.from("molarum_question_banks").select("id").eq("is_active", true).single();
-      if (error) throw error;
-      const rows = Object.entries(reviewStates).map(([question_id, state]) => ({ bank_id: active.id, question_id, state, updated_by: session.user.id }));
-      if (!rows.length) return { ok: true, message: "There are no local review states to publish." };
-      const { error: upsertError } = await client.from("molarum_review_states").upsert(rows, { onConflict: "bank_id,question_id" });
-      if (upsertError) throw upsertError;
-      return { ok: true, message: `${rows.length} teacher review state${rows.length === 1 ? "" : "s"} published.` };
-    } catch (error) { return failure(error); }
-  }, [reviewStates, role, session]);
 
   const pickAndUploadSourceMaterial = useCallback(async (): Promise<CloudResult> => {
     try {
@@ -197,7 +179,7 @@ export function CloudProvider({ children }: PropsWithChildren) {
     } catch (error) { return failure(error); }
   }, [session]);
 
-  const value = useMemo<CloudContextValue>(() => ({ configured: isSupabaseConfigured, ready, session, role, isTeacher: role === "teacher", signIn, signUp, signOut, syncMyRecords, pullActiveTeacherContent, publishActiveQuestionBank, publishReviewStates, pickAndUploadSourceMaterial, uploadLearnerReport }), [ready, session, role, signIn, signUp, signOut, syncMyRecords, pullActiveTeacherContent, publishActiveQuestionBank, publishReviewStates, pickAndUploadSourceMaterial, uploadLearnerReport]);
+  const value = useMemo<CloudContextValue>(() => ({ configured: isSupabaseConfigured, ready, session, role, isTeacher: role === "teacher", signIn, signUp, signOut, syncMyRecords, pullActiveTeacherContent, publishActiveQuestionBank, pickAndUploadSourceMaterial, uploadLearnerReport }), [ready, session, role, signIn, signUp, signOut, syncMyRecords, pullActiveTeacherContent, publishActiveQuestionBank, pickAndUploadSourceMaterial, uploadLearnerReport]);
   return <CloudContext.Provider value={value}>{children}</CloudContext.Provider>;
 }
 

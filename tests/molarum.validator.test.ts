@@ -42,15 +42,15 @@ describe("Molarum question-bank validator", () => {
     expect(result.ok).toBe(true);
   });
 
-  it("accepts the bundled owner-Drive bank with its declared 41-unit expanded coverage", () => {
+  it("accepts the bundled owner-Drive bank with its declared 43-unit continuation coverage", () => {
     const result = validateQuestionBank(bundledQuestionBank);
     expect(result.ok).toBe(true);
     if (result.ok) {
-      expect(result.value.bank.questions).toHaveLength(1640);
-      expect(result.value.report.unitSummary).toHaveLength(41);
-      expect(result.value.bank.sourceCatalogVersion).toBe("owner-drive-grade10-textbooks-2026-08-22-full-expanded");
+      expect(result.value.bank.questions).toHaveLength(1720);
+      expect(result.value.report.unitSummary).toHaveLength(43);
+      expect(result.value.bank.sourceCatalogVersion).toBe("owner-drive-grade10-textbooks-2026-08-22-full-expanded-continuation-1");
       const unitKeys = result.value.report.unitSummary.map((unit) => unit.unitKey);
-      expect(unitKeys).toEqual(expect.arrayContaining(["mathematics::Unit 7", "geography::Unit 8", "citizenship::Unit 8"]));
+      expect(unitKeys).toEqual(expect.arrayContaining(["mathematics::Unit 7", "geography::Unit 3", "geography::Unit 8", "citizenship::Unit 6", "citizenship::Unit 8"]));
     }
   });
 
@@ -79,6 +79,6 @@ describe("Molarum question-bank validator", () => {
     const html = buildScoreHistoryHtml({ name: "A < B", className: "10-A", school: "Study & Learn" }, [{ id: "attempt-1", bankId: "molarum-packaged_validated-test", bankOrigin: "packaged_validated", bankSourceCatalogVersion: "test-fixture", unitKey: "chemistry::Unit 1", unitTitle: "Unit < One", completedAt: "2026-08-18T00:00:00.000Z", correct: 8, total: 10, timed: true, elapsedSeconds: 125 }]);
     expect(html).toContain("A &lt; B");
     expect(html).toContain("Unit &lt; One");
-    expect(html).toContain("Teacher review recommended");
+    expect(html).toContain("source-grounded revision record");
   });
 });

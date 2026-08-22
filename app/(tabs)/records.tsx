@@ -43,7 +43,7 @@ export default function RecordsScreen() {
   const copySummary = async () => {
     try {
       await copyText(buildScoreHistorySummary(profile, attempts));
-      Alert.alert("Summary copied", "A local revision-history summary with the Teacher review recommended disclaimer was copied.");
+      Alert.alert("Summary copied", "A local source-grounded revision-history summary was copied.");
     } catch {
       Alert.alert("Copy unavailable", "The summary could not be copied on this device.");
     }
@@ -84,7 +84,7 @@ export default function RecordsScreen() {
     ListHeaderComponent={<View style={styles.header}>
       <NotebookHeader eyebrow={cloud.session ? "Local records with optional cloud sync" : "Device-only records"} title="Learner records" subtitle="Local revision history is not a formal assessment." />
       <ActiveBankStatus origin={activeBank ? activeBankOrigin : "none"} questionCount={questions.length} sourceCatalogVersion={bankDescriptor?.sourceCatalogVersion} />
-      <Notice>{cloud.session ? "You are signed in, but this screen does not sync automatically. Use Sync my records when you want a private cloud copy." : "Scores and optional learner details stay on this device unless you choose a cloud action. Question content remains Teacher review recommended."}</Notice>
+      <Notice>{cloud.session ? "You are signed in, but this screen does not sync automatically. Use Sync my records when you want a private cloud copy." : "Scores and optional learner details stay on this device unless you choose a cloud action. Question content is source-grounded and revision-only."}</Notice>
       <SectionLabel>Optional learner profile</SectionLabel>
       <View style={styles.form}>
         {([ ["name", "Learner name"], ["className", "Class"], ["school", "School"] ] as const).map(([key, label]) => <TextInput key={key} value={profile[key]} onChangeText={(value) => setProfile((current) => ({ ...current, [key]: value }))} placeholder={label} placeholderTextColor={colors.muted} style={[styles.input, { borderColor: colors.border, backgroundColor: colors.surface, color: colors.foreground }]} returnKeyType="done" accessibilityLabel={label} />)}
@@ -106,7 +106,7 @@ export default function RecordsScreen() {
         <Text style={[styles.attemptTitle, { color: colors.foreground }]}>{item.unitTitle}</Text>
         <Text style={[styles.attemptDetail, { color: colors.muted }]}>{new Date(item.completedAt).toLocaleDateString()} · {item.timed ? "Timed" : "Untimed"} · Saved locally</Text>
         <Text style={[styles.attemptDetail, { color: colors.muted }]}>Bank: {item.bankSourceCatalogVersion} · {bankLabel(item.bankOrigin)}</Text>
-        <Text style={[styles.attemptDetail, { color: colors.muted }]}>Teacher review recommended · Revision record only</Text>
+        <Text style={[styles.attemptDetail, { color: colors.muted }]}>Source-grounded · Revision record only</Text>
       </View>
       <Text style={[styles.attemptScore, { color: colors.primary }]}>{item.correct}/{item.total}</Text>
     </View>}

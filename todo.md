@@ -32,3 +32,8 @@
 - [x] Document a justified resource plan, dependency and permission baseline, and safe reproducible diagnostic scope before obtaining any new resource.
 - [x] Run only reproducible static and managed-build diagnostics; record confirmed bugs, non-reproduced risks, and device-only checks without publishing or deleting data.
 - [x] Produce the requested resource, diagnosis, file-diff, permission-diff, and verification record, then save a verified checkpoint.
+- [x] Audit the current source catalog, approved local materials, unit coverage, schema, continuation records, and remaining teacher-review user surfaces.
+- [x] Create the external delivery-package manifest and resource/provenance plan without overwriting the current valid bundled bank.
+- [x] Generate and strictly validate one next approved unit at a time, recording source coverage, skips, retries, and the continuation point.
+- [x] Merge only accepted units, remove user-facing teacher-review routes and entry points, and update local bank delivery records.
+- [x] Revalidate the complete bank, run application checks and managed exports, then save a continuation-safe checkpoint.
