@@ -20,7 +20,7 @@ interface PendingImport {
 export default function QuestionBankScreen() {
   const colors = useColors();
   const router = useRouter();
-  const { activeBank, activeBankOrigin, bundledQuestionCount, questions, previewQuestionBank, activateQuestionBank, resetToBundledContent } = useStudyLibrary();
+  const { activeBank, activeBankOrigin, bankDescriptor, bundledQuestionCount, questions, reviewStates, previewQuestionBank, activateQuestionBank, resetToBundledContent } = useStudyLibrary();
   const [report, setReport] = useState<ValidationReport | null>(activeBank?.report ?? null);
   const [pendingImport, setPendingImport] = useState<PendingImport | null>(null);
   const [busy, setBusy] = useState(false);
@@ -43,10 +43,19 @@ export default function QuestionBankScreen() {
     }
   };
 
-  const reset = () => Alert.alert("Restore packaged validated bank?", `This will remove the ${activeBankOrigin === "imported" ? "currently imported override" : "current local bank state"} and all local review states. It will replace it with the packaged validated bank (${bundledQuestionCount} questions). Local revision records are kept.`, [{ text: "Cancel", style: "cancel" }, { text: "Restore packaged bank", style: "destructive", onPress: () => { resetToBundledContent(); setPendingImport(null); } }], { cancelable: false });
-  const activatePending = () => {
+  const reset = () => {
+    const currentBank = bankDescriptor ? `${bankDescriptor.origin === "imported_draft" ? "Imported AI draft" : "Packaged validated"} (${bankDescriptor.sourceCatalogVersion}, ${bankDescriptor.questionCount} questions)` : "No active bank";
+    const reviewCount = Object.keys(reviewStates).length;
+    Alert.alert("Restore packaged validated bank?", `Current: ${currentBank}. Replacement: packaged validated bank (${bundledQuestionCount} questions). This removes the imported override when present and ${reviewCount} local review state${reviewCount === 1 ? "" : "s"}. Local revision records are kept. Use Teacher review or Records first if you need an export.`, [{ text: "Cancel", style: "cancel" }, { text: "Restore packaged bank", style: "destructive", onPress: () => { void resetToBundledContent().then(() => setPendingImport(null)).catch(() => Alert.alert("Restore unavailable", "The current local bank was kept because the packaged bank could not be prepared.")); } }], { cancelable: false });
+  };
+  const activatePending = async () => {
     if (!pendingImport?.validated) return;
-    activateQuestionBank(pendingImport.validated);
+    try {
+      await activateQuestionBank(pendingImport.validated);
+    } catch {
+      Alert.alert("Import not activated", "The validated candidate could not be safely stored. The previous active bank is still available.");
+      return;
+    }
     setReport(pendingImport.report);
     Alert.alert("Validated import activated", `${pendingImport.name} is now the active local bank. Imported questions remain AI draft and teacher review recommended.`);
     setPendingImport(null);

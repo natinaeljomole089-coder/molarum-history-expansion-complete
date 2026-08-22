@@ -6,7 +6,7 @@ export type QuestionType = (typeof QUESTION_TYPES)[number];
 export type Difficulty = (typeof DIFFICULTIES)[number];
 export type ReviewStatus = (typeof REVIEW_STATUSES)[number];
 export type LocalReviewState = "draft" | "approved" | "hidden";
-export type ActiveBankOrigin = "packaged" | "imported" | "none";
+export type ActiveBankOrigin = "packaged_validated" | "imported_draft" | "none";
 
 export interface StudyQuestion {
   id: string;
@@ -54,6 +54,13 @@ export interface ValidatedQuestionBank {
   report: ValidationReport;
 }
 
+export interface BankDescriptor {
+  bankId: string;
+  origin: Exclude<ActiveBankOrigin, "none">;
+  sourceCatalogVersion: string;
+  questionCount: number;
+}
+
 export interface LearnerProfile {
   name: string;
   className: string;
@@ -69,9 +76,16 @@ export interface QuizAttempt {
   total: number;
   timed: boolean;
   elapsedSeconds: number;
+  bankId: string;
+  bankOrigin: ActiveBankOrigin;
+  bankSourceCatalogVersion: string;
 }
 
 export interface InProgressQuiz {
+  schemaVersion: 1;
+  bankId: string;
+  bankOrigin: ActiveBankOrigin;
+  bankSourceCatalogVersion: string;
   unitKey: string;
   unitTitle: string;
   difficulty: Difficulty | "mixed";

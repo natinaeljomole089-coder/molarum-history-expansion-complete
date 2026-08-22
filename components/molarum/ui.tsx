@@ -35,16 +35,16 @@ export function StatusPill({ label, tone = "neutral" }: { label: string; tone?: 
   return <View style={[styles.pill, { backgroundColor: palette.background, borderColor: colors.border }]}><Text style={[styles.pillText, { color: palette.color }]}>{label}</Text></View>;
 }
 
-export function ActiveBankStatus({ origin, questionCount }: { origin: ActiveBankOrigin; questionCount: number }) {
+export function ActiveBankStatus({ origin, questionCount, sourceCatalogVersion }: { origin: ActiveBankOrigin; questionCount: number; sourceCatalogVersion?: string | null }) {
   const colors = useColors();
-  const label = origin === "packaged" ? "Packaged validated bank" : origin === "imported" ? "Imported bank · AI draft" : "No active bank";
-  const tone = origin === "none" ? "warning" : origin === "imported" ? "neutral" : "success";
-  const detail = origin === "packaged"
+  const label = origin === "packaged_validated" ? "Packaged validated bank" : origin === "imported_draft" ? "Imported bank · AI draft" : "No active bank";
+  const tone = origin === "none" ? "warning" : origin === "imported_draft" ? "neutral" : "success";
+  const detail = origin === "packaged_validated"
     ? `${questionCount} source-grounded questions available offline. Teacher review recommended.`
-    : origin === "imported"
+    : origin === "imported_draft"
       ? `${questionCount} imported questions active. AI draft · teacher review recommended.`
       : "No valid local content is active. Restore the packaged bank or import a validated bank.";
-  return <View accessibilityRole="summary" style={[styles.bankStatus, { backgroundColor: colors.surface, borderColor: colors.border }]}><StatusPill tone={tone} label={label} /><Text style={[styles.bankStatusText, { color: colors.muted }]}>{detail}</Text></View>;
+  return <View accessibilityRole="summary" style={[styles.bankStatus, { backgroundColor: colors.surface, borderColor: colors.border }]}><StatusPill tone={tone} label={label} /><Text style={[styles.bankStatusText, { color: colors.muted }]}>{detail}</Text>{sourceCatalogVersion ? <Text style={[styles.bankVersion, { color: colors.muted }]}>Bank version: {sourceCatalogVersion}</Text> : null}</View>;
 }
 
 export function ActionButton({ label, onPress, disabled, secondary = false, icon }: { label: string; onPress: () => void; disabled?: boolean; secondary?: boolean; icon?: keyof typeof MaterialIcons.glyphMap }) {
@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
   pillText: { fontSize: 11, fontWeight: "800", letterSpacing: 0.2 },
   bankStatus: { borderRadius: 14, borderWidth: 1, gap: 7, padding: 12 },
   bankStatusText: { fontSize: 12, lineHeight: 18 },
+  bankVersion: { fontSize: 11, fontWeight: "700", lineHeight: 16 },
   button: { borderWidth: 1, borderRadius: 14, minHeight: 48, justifyContent: "center", paddingHorizontal: 16 },
   buttonContent: { alignItems: "center", flexDirection: "row", gap: 8, justifyContent: "center" },
   buttonText: { fontSize: 15, fontWeight: "800" },

@@ -1,6 +1,7 @@
 import { ThemedView } from "@/components/themed-view";
 import * as Api from "@/lib/_core/api";
 import * as Auth from "@/lib/_core/auth";
+import { ActionButton } from "@/components/molarum/ui";
 import * as Linking from "expo-linking";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
@@ -263,6 +264,7 @@ export default function OAuthCallback() {
             <Text className="text-base leading-6 text-center text-foreground">
               {errorMessage}
             </Text>
+            <ActionButton label="Continue offline" secondary icon="local-library" onPress={() => router.replace("/")} />
           </>
         )}
       </ThemedView>

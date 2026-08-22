@@ -1,7 +1,7 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { AccessibilityInfo, Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 import { ActionButton, ActiveBankStatus, NotebookHeader, Notice, StatusPill } from "@/components/molarum/ui";
 import { useColors } from "@/hooks/use-colors";
@@ -19,12 +19,13 @@ export default function QuizScreen() {
   const timed = params.timed === "1";
   const router = useRouter();
   const colors = useColors();
-  const { activeBank, activeBankOrigin, questions, reviewStates, inProgressQuiz, saveAttempt, saveInProgressQuiz, discardInProgressQuiz } = useStudyLibrary();
+  const { activeBank, activeBankOrigin, bankDescriptor, questions, reviewStates, inProgressQuiz, saveAttempt, saveInProgressQuiz, discardInProgressQuiz } = useStudyLibrary();
   const unit = unitByKey(questions, unitKey);
   const eligibleQueue = useMemo(() => filterQuizQuestions(unit?.questions ?? [], reviewStates, selectedDifficulty), [unit, reviewStates, selectedDifficulty]);
-  const savedQuiz = isResumableQuiz(inProgressQuiz, unitKey, questions)
+  const savedQuiz = isResumableQuiz(inProgressQuiz, unitKey, questions, bankDescriptor?.bankId ?? null)
     ? inProgressQuiz
     : null;
+  const staleDraft = inProgressQuiz?.unitKey === unitKey && Boolean(inProgressQuiz) && !savedQuiz;
   const queue = useMemo(
     () => savedQuiz ? savedQuiz.queueQuestionIds.map((id) => questions.find((question) => question.id === id)).filter((question): question is NonNullable<typeof question> => Boolean(question)) : eligibleQueue,
     [eligibleQueue, questions, savedQuiz],
@@ -36,6 +37,7 @@ export default function QuizScreen() {
   const [elapsedSeconds, setElapsedSeconds] = useState(savedQuiz?.elapsedSeconds ?? 0);
   const startedAt = useRef(savedQuiz?.startedAt ?? new Date().toISOString());
   const elapsedRef = useRef(savedQuiz?.elapsedSeconds ?? 0);
+  const announcedAnswer = useRef("");
   const question = queue[index];
   const correct = question ? isAnswerCorrect(question, response) : false;
 
@@ -68,6 +70,14 @@ export default function QuizScreen() {
   }, [elapsedSeconds]);
 
   useEffect(() => {
+    if (!submitted || !question) return;
+    const key = `${question.id}:${response}`;
+    if (announcedAnswer.current === key) return;
+    announcedAnswer.current = key;
+    void AccessibilityInfo.announceForAccessibility(correct ? "Answer recorded. Correct." : `Answer recorded. Not correct. The answer is ${question.answer}.`);
+  }, [correct, question, response, submitted]);
+
+  useEffect(() => {
     persistProgress(elapsedRef.current);
   }, [correctCount, index, persistProgress, response, submitted]);
 
@@ -92,6 +102,7 @@ export default function QuizScreen() {
     setIndex((value) => value + 1);
     setResponse("");
     setSubmitted(false);
+    announcedAnswer.current = "";
   };
 
   const exit = () => {
@@ -118,8 +129,8 @@ export default function QuizScreen() {
           </Pressable>
           {effectiveTimed ? <StatusPill tone="neutral" label={secondsToClock(elapsedSeconds)} /> : null}
         </View>
-        <ActiveBankStatus origin={activeBank ? activeBankOrigin : "none"} questionCount={questions.length} />
-        <Notice tone="success">{savedQuiz ? "Resumed local revision attempt. Progress continues to save on this device." : "Progress saves locally while you work. This is a revision tool, not a formal assessment."}</Notice>
+        <ActiveBankStatus origin={activeBank ? activeBankOrigin : "none"} questionCount={questions.length} sourceCatalogVersion={bankDescriptor?.sourceCatalogVersion} />
+        {staleDraft ? <Notice tone="warning">A saved draft belongs to a different or unavailable bank version and cannot be resumed safely. Start a fresh quiz or discard the old draft.</Notice> : <Notice tone="success">{savedQuiz ? "Resumed local revision attempt. Progress continues to save on this device." : "Progress saves locally while you work. This is a revision tool, not a formal assessment."}</Notice>}
         <View style={styles.progressMeta}>
           <Text style={[styles.progressText, { color: colors.muted }]}>Question {index + 1} of {queue.length}</Text>
           <Text style={[styles.progressText, { color: colors.primary }]}>{question.difficulty}</Text>
@@ -166,6 +177,7 @@ export default function QuizScreen() {
             <ActionButton label={index === queue.length - 1 ? "Save result locally" : "Next question"} onPress={next} icon="arrow-forward" />
           </View>
         ) : null}
+        {staleDraft ? <ActionButton label="Discard incompatible draft" secondary icon="delete-outline" onPress={discardInProgressQuiz} /> : null}
       </ScrollView>
     </View>
   );

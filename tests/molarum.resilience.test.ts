@@ -64,16 +64,19 @@ describe("Molarum resilience helpers", () => {
 
   it("resumes only a coherent local quiz session whose queued IDs remain available", () => {
     const questions = makeBank().questions;
-    const session: InProgressQuiz = { unitKey: "chemistry::Unit 1", unitTitle: "Unit 1: Resilience Fixture", difficulty: "mixed", timed: false, queueQuestionIds: questions.slice(0, 3).map((question) => question.id), index: 1, response: "A", submitted: true, correctCount: 1, elapsedSeconds: 0, startedAt: "2026-08-22T00:00:00.000Z", updatedAt: "2026-08-22T00:01:00.000Z" };
-    expect(isResumableQuiz(session, "chemistry::Unit 1", questions)).toBe(true);
-    expect(isResumableQuiz({ ...session, queueQuestionIds: ["missing-question"] }, "chemistry::Unit 1", questions)).toBe(false);
-    expect(isResumableQuiz({ ...session, index: 9 }, "chemistry::Unit 1", questions)).toBe(false);
+    const session: InProgressQuiz = { schemaVersion: 1, bankId: "molarum-packaged_validated-test", bankOrigin: "packaged_validated", bankSourceCatalogVersion: "test-import", unitKey: "chemistry::Unit 1", unitTitle: "Unit 1: Resilience Fixture", difficulty: "mixed", timed: false, queueQuestionIds: questions.slice(0, 3).map((question) => question.id), index: 1, response: "A", submitted: true, correctCount: 1, elapsedSeconds: 0, startedAt: "2026-08-22T00:00:00.000Z", updatedAt: "2026-08-22T00:01:00.000Z" };
+    expect(isResumableQuiz(session, "chemistry::Unit 1", questions, session.bankId)).toBe(true);
+    expect(isResumableQuiz({ ...session, queueQuestionIds: ["missing-question"] }, "chemistry::Unit 1", questions, session.bankId)).toBe(false);
+    expect(isResumableQuiz({ ...session, index: 9 }, "chemistry::Unit 1", questions, session.bankId)).toBe(false);
+    expect(isResumableQuiz(session, "chemistry::Unit 1", questions, "molarum-imported_draft-replaced")).toBe(false);
   });
 
   it("keeps local-save and teacher-review disclaimers in exported history", () => {
-    const html = buildScoreHistoryHtml({ name: "Learner", className: "10-A", school: "School" }, [{ id: "attempt-1", unitKey: "chemistry::Unit 1", unitTitle: "Unit 1", completedAt: "2026-08-22T00:00:00.000Z", correct: 8, total: 10, timed: false, elapsedSeconds: 0 }]);
+    const html = buildScoreHistoryHtml({ name: "Learner", className: "10-A", school: "School" }, [{ id: "attempt-1", bankId: "molarum-packaged_validated-test", bankOrigin: "packaged_validated", bankSourceCatalogVersion: "test-import", unitKey: "chemistry::Unit 1", unitTitle: "Unit 1", completedAt: "2026-08-22T00:00:00.000Z", correct: 8, total: 10, timed: false, elapsedSeconds: 0 }]);
     expect(html).toContain("Saved locally");
     expect(html).toContain("Teacher review recommended");
     expect(html).toContain("not a formal assessment");
+    expect(html).toContain("test-import");
+    expect(html).toContain("Packaged validated");
   });
 });

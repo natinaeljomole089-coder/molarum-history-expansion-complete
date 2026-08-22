@@ -76,7 +76,7 @@ describe("Molarum question-bank validator", () => {
   });
 
   it("creates escaped local score-history PDF markup with the revision disclaimer", () => {
-    const html = buildScoreHistoryHtml({ name: "A < B", className: "10-A", school: "Study & Learn" }, [{ id: "attempt-1", unitKey: "chemistry::Unit 1", unitTitle: "Unit < One", completedAt: "2026-08-18T00:00:00.000Z", correct: 8, total: 10, timed: true, elapsedSeconds: 125 }]);
+    const html = buildScoreHistoryHtml({ name: "A < B", className: "10-A", school: "Study & Learn" }, [{ id: "attempt-1", bankId: "molarum-packaged_validated-test", bankOrigin: "packaged_validated", bankSourceCatalogVersion: "test-fixture", unitKey: "chemistry::Unit 1", unitTitle: "Unit < One", completedAt: "2026-08-18T00:00:00.000Z", correct: 8, total: 10, timed: true, elapsedSeconds: 125 }]);
     expect(html).toContain("A &lt; B");
     expect(html).toContain("Unit &lt; One");
     expect(html).toContain("Teacher review recommended");

@@ -1,6 +1,6 @@
+import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, FlatList, StyleSheet, Text, TextInput, View } from "react-native";
-import { useRouter } from "expo-router";
 
 import { ActionButton, ActiveBankStatus, NotebookHeader, Notice, SectionLabel, StatusPill } from "@/components/molarum/ui";
 import { useColors } from "@/hooks/use-colors";
@@ -9,23 +9,124 @@ import { buildScoreHistorySummary, copyText, prepareScoreHistoryExport, sharePre
 import { useStudyLibrary } from "@/lib/molarum/provider";
 import type { LearnerProfile } from "@/lib/molarum/types";
 
+function bankLabel(origin: "packaged_validated" | "imported_draft" | "none") {
+  return origin === "packaged_validated" ? "Packaged validated" : origin === "imported_draft" ? "Imported AI draft" : "Legacy record";
+}
+
 export default function RecordsScreen() {
   const colors = useColors();
   const router = useRouter();
   const cloud = useCloud();
-  const { activeBank, activeBankOrigin, learnerProfile, updateLearnerProfile, attempts, clearAttempts, questions } = useStudyLibrary();
+  const { activeBank, activeBankOrigin, bankDescriptor, learnerProfile, updateLearnerProfile, attempts, clearAttempts, questions } = useStudyLibrary();
   const [profile, setProfile] = useState<LearnerProfile>(learnerProfile);
-  useEffect(() => setProfile(learnerProfile), [learnerProfile]);
-  const save = () => { updateLearnerProfile(profile); Alert.alert("Saved locally", "Learner details are stored only on this device."); };
   const [preparedExport, setPreparedExport] = useState<PreparedScoreHistoryExport | null>(null);
   const [exportStatus, setExportStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
-  const saveFile = async () => { try { setExportStatus("saving"); const prepared = await prepareScoreHistoryExport(profile, attempts); setPreparedExport(prepared); setExportStatus("saved"); Alert.alert("Revision record prepared", prepared.format === "pdf" ? "A PDF was generated and retained inside Molarum. Use Share to send it to a file provider or another app." : "A printable HTML revision record was downloaded by this browser."); } catch { setExportStatus("error"); Alert.alert("Export unavailable", "The revision record could not be prepared. Your local records were not changed."); } };
-  const copySummary = async () => { try { await copyText(buildScoreHistorySummary(profile, attempts)); Alert.alert("Summary copied", "A local revision-history summary with the Teacher review recommended disclaimer was copied."); } catch { Alert.alert("Copy unavailable", "The summary could not be copied on this device."); } };
-  const shareFile = async () => { if (!preparedExport?.uri) { Alert.alert("Prepare a file first", "Use Save revision record before sharing. The current browser export downloads a printable HTML file instead of a local PDF."); return; } try { const result = await sharePreparedScoreHistory(preparedExport.uri); Alert.alert(result.ok ? "Share revision record" : "Sharing unavailable", result.message); } catch { Alert.alert("Sharing unavailable", "The generated PDF remains retained inside Molarum. Try again when a compatible sharing app is available."); } };
-  const sync = async () => { const result = await cloud.syncMyRecords(); Alert.alert(result.ok ? "Cloud sync" : "Cloud sync unavailable", result.message); };
-  const uploadPdf = async () => { if (!preparedExport?.uri) return; const result = await cloud.uploadLearnerReport(preparedExport.uri); Alert.alert(result.ok ? "Private report upload" : "Report upload unavailable", result.message); };
-  const confirmClear = () => Alert.alert("Clear local revision history?", `This permanently removes ${attempts.length} local revision record${attempts.length === 1 ? "" : "s"}. It does not change the active question bank, source content, or optional cloud copies.`, [{ text: "Cancel", style: "cancel" }, { text: "Clear local history", style: "destructive", onPress: clearAttempts }], { cancelable: false });
-  return <FlatList style={{ backgroundColor: colors.background }} contentContainerStyle={styles.content} data={attempts} keyExtractor={(item) => item.id} ListHeaderComponent={<View style={{ gap: 12 }}><NotebookHeader eyebrow={cloud.session ? "Local records with optional cloud sync" : "Device-only records"} title="Learner records" subtitle="Local revision history is not a formal assessment." /><ActiveBankStatus origin={activeBank ? activeBankOrigin : "none"} questionCount={questions.length} /><Notice>{cloud.session ? "You are signed in, but this screen does not sync automatically. Use Sync my records when you want a private cloud copy." : "Scores and optional learner details stay on this device unless you choose a cloud action. Question content remains Teacher review recommended."}</Notice><SectionLabel>Optional learner profile</SectionLabel><View style={styles.form}>{([ ["name", "Learner name"], ["className", "Class"], ["school", "School"] ] as const).map(([key, label]) => <TextInput key={key} value={profile[key]} onChangeText={(value) => setProfile((current) => ({ ...current, [key]: value }))} placeholder={label} placeholderTextColor={colors.muted} style={[styles.input, { borderColor: colors.border, backgroundColor: colors.surface, color: colors.foreground }]} returnKeyType="done" accessibilityLabel={label} />)}<ActionButton label="Save local profile" secondary icon="save" onPress={save} /></View>{cloud.session ? <ActionButton label="Sync my local records" secondary icon="sync" onPress={sync} /> : null}<View style={styles.recordHeading}><SectionLabel>Local revision history</SectionLabel><StatusPill label={`${attempts.length} attempt${attempts.length === 1 ? "" : "s"}`} /></View><View style={styles.exportActions}><ActionButton label={exportStatus === "saving" ? "Preparing record…" : "Save revision record"} icon="save-alt" onPress={saveFile} disabled={exportStatus === "saving"} /><ActionButton label="Copy summary" secondary icon="content-copy" onPress={copySummary} /><ActionButton label="Share prepared file" secondary icon="share" onPress={shareFile} disabled={!preparedExport?.uri} />{cloud.session && preparedExport?.uri ? <ActionButton label="Upload prepared PDF privately" secondary icon="cloud-upload" onPress={uploadPdf} /> : null}</View>{preparedExport?.retainedOnDevice ? <Notice tone="success">Prepared file: {preparedExport.fileName}. It is retained within Molarum until you share it; no storage permission was requested.</Notice> : null}{attempts.length ? <ActionButton label="Clear local history" secondary icon="delete-outline" onPress={confirmClear} /> : null}</View>} renderItem={({ item }) => <View style={[styles.attempt, { borderBottomColor: colors.border }]}><View style={{ flex: 1, gap: 3 }}><Text style={[styles.attemptTitle, { color: colors.foreground }]}>{item.unitTitle}</Text><Text style={[styles.attemptDetail, { color: colors.muted }]}>{new Date(item.completedAt).toLocaleDateString()} · {item.timed ? "Timed" : "Untimed"} · Saved locally</Text><Text style={[styles.attemptDetail, { color: colors.muted }]}>Teacher review recommended · Revision record only</Text></View><Text style={[styles.attemptScore, { color: colors.primary }]}>{item.correct}/{item.total}</Text></View>} ListEmptyComponent={<View style={[styles.emptyState, { borderColor: colors.border, backgroundColor: colors.surface }]}><Text style={[styles.empty, { color: colors.foreground }]}>No completed revision quizzes are stored yet.</Text><Text style={[styles.emptyDetail, { color: colors.muted }]}>Finish a local quiz to save a revision record here. This history is not a formal assessment.</Text><ActionButton label="Browse validated units" onPress={() => router.push("/")} icon="local-library" /></View>} />;
+
+  useEffect(() => setProfile(learnerProfile), [learnerProfile]);
+
+  const saveProfile = () => {
+    updateLearnerProfile(profile);
+    Alert.alert("Saved locally", "Learner details are stored only on this device.");
+  };
+  const saveFile = async () => {
+    try {
+      setExportStatus("saving");
+      const prepared = await prepareScoreHistoryExport(profile, attempts);
+      setPreparedExport(prepared);
+      setExportStatus("saved");
+      Alert.alert("Revision record prepared", prepared.format === "pdf" ? "A PDF was generated and retained inside Molarum. Use Share to send it to a file provider or another app." : "A printable HTML revision record was downloaded by this browser.");
+    } catch {
+      setExportStatus("error");
+      Alert.alert("Export unavailable", "The revision record could not be prepared. Your local records were not changed.");
+    }
+  };
+  const copySummary = async () => {
+    try {
+      await copyText(buildScoreHistorySummary(profile, attempts));
+      Alert.alert("Summary copied", "A local revision-history summary with the Teacher review recommended disclaimer was copied.");
+    } catch {
+      Alert.alert("Copy unavailable", "The summary could not be copied on this device.");
+    }
+  };
+  const shareFile = async () => {
+    if (!preparedExport?.uri) {
+      Alert.alert("Prepare a file first", "Use Save revision record before sharing. The current browser export downloads a printable HTML file instead of a local PDF.");
+      return;
+    }
+    try {
+      const result = await sharePreparedScoreHistory(preparedExport.uri);
+      Alert.alert(result.ok ? "Share revision record" : "Sharing unavailable", result.message);
+    } catch {
+      Alert.alert("Sharing unavailable", "The generated PDF remains retained inside Molarum. Try again when a compatible sharing app is available.");
+    }
+  };
+  const sync = async () => {
+    const result = await cloud.syncMyRecords();
+    Alert.alert(result.ok ? "Cloud sync" : "Cloud sync unavailable", result.message);
+  };
+  const uploadPdf = async () => {
+    if (!preparedExport?.uri) return;
+    const result = await cloud.uploadLearnerReport(preparedExport.uri);
+    Alert.alert(result.ok ? "Private report upload" : "Report upload unavailable", result.message);
+  };
+  const confirmClear = () => Alert.alert(
+    "Clear local revision history?",
+    `This permanently removes ${attempts.length} local revision record${attempts.length === 1 ? "" : "s"}. It does not change the active question bank, source content, or optional cloud copies.`,
+    [{ text: "Cancel", style: "cancel" }, { text: "Clear local history", style: "destructive", onPress: clearAttempts }],
+    { cancelable: false },
+  );
+
+  return <FlatList
+    style={{ backgroundColor: colors.background }}
+    contentContainerStyle={styles.content}
+    data={attempts}
+    keyExtractor={(item) => item.id}
+    ListHeaderComponent={<View style={styles.header}>
+      <NotebookHeader eyebrow={cloud.session ? "Local records with optional cloud sync" : "Device-only records"} title="Learner records" subtitle="Local revision history is not a formal assessment." />
+      <ActiveBankStatus origin={activeBank ? activeBankOrigin : "none"} questionCount={questions.length} sourceCatalogVersion={bankDescriptor?.sourceCatalogVersion} />
+      <Notice>{cloud.session ? "You are signed in, but this screen does not sync automatically. Use Sync my records when you want a private cloud copy." : "Scores and optional learner details stay on this device unless you choose a cloud action. Question content remains Teacher review recommended."}</Notice>
+      <SectionLabel>Optional learner profile</SectionLabel>
+      <View style={styles.form}>
+        {([ ["name", "Learner name"], ["className", "Class"], ["school", "School"] ] as const).map(([key, label]) => <TextInput key={key} value={profile[key]} onChangeText={(value) => setProfile((current) => ({ ...current, [key]: value }))} placeholder={label} placeholderTextColor={colors.muted} style={[styles.input, { borderColor: colors.border, backgroundColor: colors.surface, color: colors.foreground }]} returnKeyType="done" accessibilityLabel={label} />)}
+        <ActionButton label="Save local profile" secondary icon="save" onPress={saveProfile} />
+      </View>
+      {cloud.session ? <ActionButton label="Sync my local records" secondary icon="sync" onPress={sync} /> : null}
+      <View style={styles.recordHeading}><SectionLabel>Local revision history</SectionLabel><StatusPill label={`${attempts.length} attempt${attempts.length === 1 ? "" : "s"}`} /></View>
+      <View style={styles.exportActions}>
+        <ActionButton label={exportStatus === "saving" ? "Preparing record…" : "Save revision record"} icon="save-alt" onPress={saveFile} disabled={exportStatus === "saving"} />
+        <ActionButton label="Copy summary" secondary icon="content-copy" onPress={copySummary} />
+        <ActionButton label="Share prepared file" secondary icon="share" onPress={shareFile} disabled={!preparedExport?.uri} />
+        {cloud.session && preparedExport?.uri ? <ActionButton label="Upload prepared PDF privately" secondary icon="cloud-upload" onPress={uploadPdf} /> : null}
+      </View>
+      {preparedExport?.retainedOnDevice ? <Notice tone="success">Prepared file: {preparedExport.fileName}. It is retained within Molarum until you share it; no storage permission was requested.</Notice> : null}
+      {attempts.length ? <ActionButton label="Clear local history" secondary icon="delete-outline" onPress={confirmClear} /> : null}
+    </View>}
+    renderItem={({ item }) => <View style={[styles.attempt, { borderBottomColor: colors.border }]}>
+      <View style={styles.attemptBody}>
+        <Text style={[styles.attemptTitle, { color: colors.foreground }]}>{item.unitTitle}</Text>
+        <Text style={[styles.attemptDetail, { color: colors.muted }]}>{new Date(item.completedAt).toLocaleDateString()} · {item.timed ? "Timed" : "Untimed"} · Saved locally</Text>
+        <Text style={[styles.attemptDetail, { color: colors.muted }]}>Bank: {item.bankSourceCatalogVersion} · {bankLabel(item.bankOrigin)}</Text>
+        <Text style={[styles.attemptDetail, { color: colors.muted }]}>Teacher review recommended · Revision record only</Text>
+      </View>
+      <Text style={[styles.attemptScore, { color: colors.primary }]}>{item.correct}/{item.total}</Text>
+    </View>}
+    ListEmptyComponent={<View style={[styles.emptyState, { borderColor: colors.border, backgroundColor: colors.surface }]}><Text style={[styles.empty, { color: colors.foreground }]}>No completed revision quizzes are stored yet.</Text><Text style={[styles.emptyDetail, { color: colors.muted }]}>Finish a local quiz to save a revision record here. This history is not a formal assessment.</Text><ActionButton label="Browse validated units" onPress={() => router.push("/")} icon="local-library" /></View>}
+  />;
 }
 
-const styles = StyleSheet.create({ content: { paddingHorizontal: 20, paddingTop: 14, paddingBottom: 28 }, form: { gap: 9 }, input: { borderRadius: 13, borderWidth: 1, fontSize: 15, minHeight: 47, paddingHorizontal: 13 }, recordHeading: { alignItems: "center", flexDirection: "row", justifyContent: "space-between", marginTop: 3 }, exportActions: { gap: 9 }, attempt: { alignItems: "center", borderBottomWidth: StyleSheet.hairlineWidth, flexDirection: "row", gap: 12, minHeight: 69, paddingVertical: 10 }, attemptTitle: { fontSize: 15, fontWeight: "800" }, attemptDetail: { fontSize: 12, lineHeight: 17 }, attemptScore: { fontFamily: "Georgia", fontSize: 21, fontWeight: "700" }, emptyState: { borderRadius: 15, borderWidth: 1, gap: 9, marginTop: 18, padding: 15 }, empty: { fontSize: 15, fontWeight: "800", lineHeight: 21 }, emptyDetail: { fontSize: 13, lineHeight: 20 } });
+const styles = StyleSheet.create({
+  content: { paddingBottom: 28, paddingHorizontal: 20, paddingTop: 14 },
+  header: { gap: 12 },
+  form: { gap: 9 },
+  input: { borderRadius: 13, borderWidth: 1, fontSize: 15, minHeight: 47, paddingHorizontal: 13 },
+  recordHeading: { alignItems: "center", flexDirection: "row", justifyContent: "space-between", marginTop: 3 },
+  exportActions: { gap: 9 },
+  attempt: { alignItems: "center", borderBottomWidth: StyleSheet.hairlineWidth, flexDirection: "row", gap: 12, minHeight: 69, paddingVertical: 10 },
+  attemptBody: { flex: 1, gap: 3 },
+  attemptTitle: { fontSize: 15, fontWeight: "800" },
+  attemptDetail: { fontSize: 12, lineHeight: 17 },
+  attemptScore: { fontFamily: "Georgia", fontSize: 21, fontWeight: "700" },
+  emptyState: { borderRadius: 15, borderWidth: 1, gap: 9, marginTop: 18, padding: 15 },
+  empty: { fontSize: 15, fontWeight: "800", lineHeight: 21 },
+  emptyDetail: { fontSize: 13, lineHeight: 20 },
+});

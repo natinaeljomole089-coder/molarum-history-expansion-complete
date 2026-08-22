@@ -24,3 +24,7 @@
 - [x] Add guarded packaged-bank restore and local-history clear confirmations with usable recovery options.
 - [x] Improve quiz persistence feedback, records/export fallbacks, accessibility, and Android permission minimization.
 - [x] Add focused resilience and regression tests, verify managed exports, and document runtime checks.
+- [x] Record an auditable baseline of routes, storage, import/restore behavior, permissions, and currently verifiable limitations.
+- [x] Add canonical packaged/imported/no-active-bank identifiers, bank-versioned records and drafts, and resilient atomic local bank persistence.
+- [x] Tighten recovery-first UI, draft compatibility messaging, navigation/accessibility evidence, and permission documentation without changing question content.
+- [x] Extend automated coverage and release verification for atomic state recovery, bank changes, exports, deep-link safety, and documented device limitations.

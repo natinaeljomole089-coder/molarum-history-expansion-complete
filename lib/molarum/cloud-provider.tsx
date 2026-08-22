@@ -128,7 +128,7 @@ export function CloudProvider({ children }: PropsWithChildren) {
       const { data: bankRow, error: bankError } = await client.from("molarum_question_banks").select("id,bank").eq("is_active", true).maybeSingle();
       if (bankError) throw bankError;
       if (!bankRow) return { ok: true, message: "No teacher-published cloud bank is active. Your local or bundled bank was not changed." };
-      const accepted = importQuestionBank(bankRow.bank);
+      const accepted = await importQuestionBank(bankRow.bank);
       if (!accepted.accepted) throw new Error("The cloud bank failed local structural validation and was not activated.");
       const { data: reviews, error: reviewError } = await client.from("molarum_review_states").select("question_id,state").eq("bank_id", bankRow.id);
       if (reviewError) throw reviewError;
