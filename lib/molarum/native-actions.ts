@@ -41,14 +41,46 @@ export async function copyText(value: string) {
   await Clipboard.setStringAsync(value);
 }
 
-export async function exportScoreHistoryPdf(profile: LearnerProfile, attempts: QuizAttempt[]): Promise<string | null> {
+export function buildScoreHistorySummary(profile: LearnerProfile, attempts: QuizAttempt[]) {
+  const learner = profile.name.trim() || "Learner not recorded";
+  const rows = attempts.map((attempt) => `${new Date(attempt.completedAt).toLocaleDateString()} · ${attempt.unitTitle} · ${attempt.correct}/${attempt.total} · ${attempt.timed ? "Timed" : "Untimed"}`).join("\n");
+  return ["Molarum local revision history", `Learner: ${learner}`, `Completed attempts: ${attempts.length}`, "", rows || "No completed revision quizzes recorded.", "", "Saved locally. This is a revision record, not a formal assessment. Question content is Teacher review recommended."].join("\n");
+}
+
+export interface PreparedScoreHistoryExport {
+  uri: string | null;
+  fileName: string;
+  format: "pdf" | "html";
+  retainedOnDevice: boolean;
+}
+
+export async function prepareScoreHistoryExport(profile: LearnerProfile, attempts: QuizAttempt[]): Promise<PreparedScoreHistoryExport> {
   const html = buildScoreHistoryHtml(profile, attempts);
   if (Platform.OS === "web") {
-    await Print.printAsync({});
-    return null;
+    const fileName = "molarum-score-history.html";
+    downloadOnWeb(fileName, html, "text/html");
+    return { uri: null, fileName, format: "html", retainedOnDevice: false };
   }
-  const { uri } = await Print.printToFileAsync({ html });
-  if (!(await Sharing.isAvailableAsync())) throw new Error("PDF sharing is unavailable on this device.");
-  await Sharing.shareAsync(uri, { mimeType: "application/pdf", dialogTitle: "Export Molarum score history" });
-  return uri;
+  const fileName = `molarum-score-history-${new Date().toISOString().slice(0, 10)}.pdf`;
+  const rendered = await Print.printToFileAsync({ html });
+  const source = new File(rendered.uri);
+  const retained = new File(Paths.document, fileName);
+  if (retained.exists) retained.delete();
+  source.copy(retained);
+  return { uri: retained.uri, fileName, format: "pdf", retainedOnDevice: true };
+}
+
+export async function sharePreparedScoreHistory(uri: string) {
+  if (!(await Sharing.isAvailableAsync())) return { ok: false, message: "Sharing is unavailable on this device. The generated PDF remains retained inside Molarum; retry Share when a compatible file provider or sharing app is available." };
+  await Sharing.shareAsync(uri, { mimeType: "application/pdf", dialogTitle: "Share Molarum revision history" });
+  return { ok: true, message: "The system share sheet opened for the retained local PDF." };
+}
+
+export async function exportScoreHistoryPdf(profile: LearnerProfile, attempts: QuizAttempt[]): Promise<string | null> {
+  const prepared = await prepareScoreHistoryExport(profile, attempts);
+  if (prepared.uri) {
+    const shared = await sharePreparedScoreHistory(prepared.uri);
+    if (!shared.ok) throw new Error(shared.message);
+  }
+  return prepared.uri;
 }

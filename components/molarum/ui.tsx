@@ -3,6 +3,7 @@ import { type ReactNode } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { useColors } from "@/hooks/use-colors";
+import type { ActiveBankOrigin } from "@/lib/molarum/types";
 
 export function NotebookHeader({ eyebrow, title, subtitle, backLabel, onBack }: { eyebrow?: string; title: string; subtitle?: string; backLabel?: string; onBack?: () => void }) {
   const colors = useColors();
@@ -34,6 +35,18 @@ export function StatusPill({ label, tone = "neutral" }: { label: string; tone?: 
   return <View style={[styles.pill, { backgroundColor: palette.background, borderColor: colors.border }]}><Text style={[styles.pillText, { color: palette.color }]}>{label}</Text></View>;
 }
 
+export function ActiveBankStatus({ origin, questionCount }: { origin: ActiveBankOrigin; questionCount: number }) {
+  const colors = useColors();
+  const label = origin === "packaged" ? "Packaged validated bank" : origin === "imported" ? "Imported bank · AI draft" : "No active bank";
+  const tone = origin === "none" ? "warning" : origin === "imported" ? "neutral" : "success";
+  const detail = origin === "packaged"
+    ? `${questionCount} source-grounded questions available offline. Teacher review recommended.`
+    : origin === "imported"
+      ? `${questionCount} imported questions active. AI draft · teacher review recommended.`
+      : "No valid local content is active. Restore the packaged bank or import a validated bank.";
+  return <View accessibilityRole="summary" style={[styles.bankStatus, { backgroundColor: colors.surface, borderColor: colors.border }]}><StatusPill tone={tone} label={label} /><Text style={[styles.bankStatusText, { color: colors.muted }]}>{detail}</Text></View>;
+}
+
 export function ActionButton({ label, onPress, disabled, secondary = false, icon }: { label: string; onPress: () => void; disabled?: boolean; secondary?: boolean; icon?: keyof typeof MaterialIcons.glyphMap }) {
   const colors = useColors();
   const backgroundColor = secondary ? colors.surface : colors.primary;
@@ -58,6 +71,8 @@ const styles = StyleSheet.create({
   noticeText: { flex: 1, fontSize: 13, lineHeight: 19 },
   pill: { alignSelf: "flex-start", borderWidth: 1, borderRadius: 999, paddingHorizontal: 9, paddingVertical: 4 },
   pillText: { fontSize: 11, fontWeight: "800", letterSpacing: 0.2 },
+  bankStatus: { borderRadius: 14, borderWidth: 1, gap: 7, padding: 12 },
+  bankStatusText: { fontSize: 12, lineHeight: 18 },
   button: { borderWidth: 1, borderRadius: 14, minHeight: 48, justifyContent: "center", paddingHorizontal: 16 },
   buttonContent: { alignItems: "center", flexDirection: "row", gap: 8, justifyContent: "center" },
   buttonText: { fontSize: 15, fontWeight: "800" },

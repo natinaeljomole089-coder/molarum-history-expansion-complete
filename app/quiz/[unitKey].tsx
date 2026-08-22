@@ -1,13 +1,14 @@
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useEffect, useMemo, useState } from "react";
-import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
-import { ActionButton, NotebookHeader, Notice, StatusPill } from "@/components/molarum/ui";
+import { ActionButton, ActiveBankStatus, NotebookHeader, Notice, StatusPill } from "@/components/molarum/ui";
 import { useColors } from "@/hooks/use-colors";
 import { unitByKey } from "@/lib/molarum/catalog";
 import { filterQuizQuestions } from "@/lib/molarum/filters";
 import { isAnswerCorrect, secondsToClock } from "@/lib/molarum/quiz";
+import { isResumableQuiz } from "@/lib/molarum/quiz-session";
 import { useStudyLibrary } from "@/lib/molarum/provider";
 import type { Difficulty } from "@/lib/molarum/types";
 
@@ -18,25 +19,61 @@ export default function QuizScreen() {
   const timed = params.timed === "1";
   const router = useRouter();
   const colors = useColors();
-  const { questions, reviewStates, saveAttempt } = useStudyLibrary();
+  const { activeBank, activeBankOrigin, questions, reviewStates, inProgressQuiz, saveAttempt, saveInProgressQuiz, discardInProgressQuiz } = useStudyLibrary();
   const unit = unitByKey(questions, unitKey);
+  const eligibleQueue = useMemo(() => filterQuizQuestions(unit?.questions ?? [], reviewStates, selectedDifficulty), [unit, reviewStates, selectedDifficulty]);
+  const savedQuiz = isResumableQuiz(inProgressQuiz, unitKey, questions)
+    ? inProgressQuiz
+    : null;
   const queue = useMemo(
-    () => filterQuizQuestions(unit?.questions ?? [], reviewStates, selectedDifficulty),
-    [unit, reviewStates, selectedDifficulty],
+    () => savedQuiz ? savedQuiz.queueQuestionIds.map((id) => questions.find((question) => question.id === id)).filter((question): question is NonNullable<typeof question> => Boolean(question)) : eligibleQueue,
+    [eligibleQueue, questions, savedQuiz],
   );
-  const [index, setIndex] = useState(0);
-  const [response, setResponse] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [correctCount, setCorrectCount] = useState(0);
-  const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [index, setIndex] = useState(savedQuiz?.index ?? 0);
+  const [response, setResponse] = useState(savedQuiz?.response ?? "");
+  const [submitted, setSubmitted] = useState(savedQuiz?.submitted ?? false);
+  const [correctCount, setCorrectCount] = useState(savedQuiz?.correctCount ?? 0);
+  const [elapsedSeconds, setElapsedSeconds] = useState(savedQuiz?.elapsedSeconds ?? 0);
+  const startedAt = useRef(savedQuiz?.startedAt ?? new Date().toISOString());
+  const elapsedRef = useRef(savedQuiz?.elapsedSeconds ?? 0);
   const question = queue[index];
   const correct = question ? isAnswerCorrect(question, response) : false;
+
+  const persistProgress = useCallback((elapsed: number) => {
+    if (!unit || !queue.length || !question) return;
+    saveInProgressQuiz({
+      unitKey,
+      unitTitle: unit.unitTitle,
+      difficulty: savedQuiz?.difficulty ?? selectedDifficulty,
+      timed: savedQuiz?.timed ?? timed,
+      queueQuestionIds: queue.map((item) => item.id),
+      index,
+      response,
+      submitted,
+      correctCount,
+      elapsedSeconds: elapsed,
+      startedAt: startedAt.current,
+      updatedAt: new Date().toISOString(),
+    });
+  }, [correctCount, index, question, queue, response, saveInProgressQuiz, savedQuiz?.difficulty, savedQuiz?.timed, selectedDifficulty, submitted, timed, unit, unitKey]);
 
   useEffect(() => {
     if (!timed || (submitted && index === queue.length - 1)) return;
     const interval = setInterval(() => setElapsedSeconds((value) => value + 1), 1000);
     return () => clearInterval(interval);
   }, [timed, submitted, index, queue.length]);
+
+  useEffect(() => {
+    elapsedRef.current = elapsedSeconds;
+  }, [elapsedSeconds]);
+
+  useEffect(() => {
+    persistProgress(elapsedRef.current);
+  }, [correctCount, index, persistProgress, response, submitted]);
+
+  useEffect(() => {
+    if (timed && elapsedSeconds > 0 && elapsedSeconds % 15 === 0) persistProgress(elapsedSeconds);
+  }, [elapsedSeconds, persistProgress, timed]);
 
   const submit = (value = response) => {
     if (!question || !value.trim()) return;
@@ -48,7 +85,7 @@ export default function QuizScreen() {
   const next = () => {
     if (!question) return;
     if (index === queue.length - 1) {
-      const attemptId = saveAttempt({ unitKey, unitTitle: unit?.unitTitle ?? "Unit", correct: correctCount, total: queue.length, timed, elapsedSeconds });
+      const attemptId = saveAttempt({ unitKey, unitTitle: unit?.unitTitle ?? "Unit", correct: correctCount, total: queue.length, timed: savedQuiz?.timed ?? timed, elapsedSeconds });
       router.replace({ pathname: "/results/[attemptId]" as never, params: { attemptId } });
       return;
     }
@@ -58,27 +95,31 @@ export default function QuizScreen() {
   };
 
   const exit = () => {
-    Alert.alert("Exit this unit?", "This attempt will not be saved to your local score history.", [
+    Alert.alert("Leave this revision quiz?", "Your in-progress answers are saved locally and can be resumed. A completed score is saved only when you finish the unit.", [
       { text: "Continue quiz", style: "cancel" },
-      { text: "Exit unit", style: "destructive", onPress: () => router.replace({ pathname: "/unit/[unitKey]" as never, params: { unitKey } }) },
+      { text: "Exit and keep progress", onPress: () => router.replace({ pathname: "/unit/[unitKey]" as never, params: { unitKey } }) },
+      { text: "Discard progress", style: "destructive", onPress: () => { discardInProgressQuiz(); router.replace({ pathname: "/unit/[unitKey]" as never, params: { unitKey } }); } },
     ]);
   };
 
   if (!unit || !question) {
-    return <View style={[styles.center, { backgroundColor: colors.background }]}><NotebookHeader title="Quiz unavailable" subtitle="There are no eligible local questions for this unit." onBack={() => router.back()} /></View>;
+    return <View style={[styles.center, { backgroundColor: colors.background }]}><NotebookHeader title="Quiz unavailable" subtitle="There are no eligible local questions for this unit." onBack={() => router.back()} /><ActionButton label="Choose another unit" onPress={() => router.replace("/")} icon="local-library" /></View>;
   }
 
   const progress = `${((index + 1) / queue.length) * 100}%` as `${number}%`;
+  const effectiveTimed = savedQuiz?.timed ?? timed;
   return (
-    <View style={[styles.screen, { backgroundColor: colors.background }]}>
-      <View style={styles.content}>
+    <View style={[styles.screen, { backgroundColor: colors.background }]}> 
+      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         <View style={styles.topLine}>
-          <Pressable onPress={exit} accessibilityRole="button" style={({ pressed }) => [styles.exit, { borderColor: colors.border }, pressed && styles.pressed]}>
+          <Pressable onPress={exit} accessibilityRole="button" accessibilityLabel="Exit quiz" style={({ pressed }) => [styles.exit, { borderColor: colors.border }, pressed && styles.pressed]}>
             <MaterialIcons name="close" size={18} color={colors.foreground} />
             <Text style={[styles.exitText, { color: colors.foreground }]}>Exit unit</Text>
           </Pressable>
-          {timed ? <StatusPill tone="neutral" label={secondsToClock(elapsedSeconds)} /> : null}
+          {effectiveTimed ? <StatusPill tone="neutral" label={secondsToClock(elapsedSeconds)} /> : null}
         </View>
+        <ActiveBankStatus origin={activeBank ? activeBankOrigin : "none"} questionCount={questions.length} />
+        <Notice tone="success">{savedQuiz ? "Resumed local revision attempt. Progress continues to save on this device." : "Progress saves locally while you work. This is a revision tool, not a formal assessment."}</Notice>
         <View style={styles.progressMeta}>
           <Text style={[styles.progressText, { color: colors.muted }]}>Question {index + 1} of {queue.length}</Text>
           <Text style={[styles.progressText, { color: colors.primary }]}>{question.difficulty}</Text>
@@ -99,7 +140,7 @@ export default function QuizScreen() {
               const revealWrong = submitted && selected && !correct;
               const border = revealCorrect ? colors.success : revealWrong ? colors.error : selected ? colors.primary : colors.border;
               const background = revealCorrect ? "#E9F3EB" : revealWrong ? "#FBE8E4" : selected ? "#F4E3D7" : colors.surface;
-              return <Pressable key={option} disabled={submitted} accessibilityRole="button" onPress={() => submit(option)} style={({ pressed }) => [styles.option, { borderColor: border, backgroundColor: background }, pressed && !submitted && styles.pressed]}>
+              return <Pressable key={option} disabled={submitted} accessibilityRole="button" accessibilityState={{ selected, disabled: submitted }} accessibilityLabel={`Answer option: ${option}`} onPress={() => submit(option)} style={({ pressed }) => [styles.option, { borderColor: border, backgroundColor: background }, pressed && !submitted && styles.pressed]}>
                 <View style={[styles.optionDot, { borderColor: border, backgroundColor: selected ? border : "transparent" }]}>{selected ? <MaterialIcons name="check" size={13} color="#FFFFFF" /> : null}</View>
                 <Text style={[styles.optionText, { color: colors.foreground }]}>{option}</Text>
               </Pressable>;
@@ -122,18 +163,18 @@ export default function QuizScreen() {
               </View>
             </View>
             <Notice tone="neutral">{question.explanation}</Notice>
-            <ActionButton label={index === queue.length - 1 ? "View results" : "Next question"} onPress={next} icon="arrow-forward" />
+            <ActionButton label={index === queue.length - 1 ? "Save result locally" : "Next question"} onPress={next} icon="arrow-forward" />
           </View>
         ) : null}
-      </View>
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   screen: { flex: 1 },
-  content: { flex: 1, gap: 16, paddingHorizontal: 20, paddingTop: 18 },
-  center: { flex: 1, padding: 20 },
+  content: { flexGrow: 1, gap: 16, paddingBottom: 32, paddingHorizontal: 20, paddingTop: 18 },
+  center: { flex: 1, gap: 12, padding: 20 },
   topLine: { alignItems: "center", flexDirection: "row", justifyContent: "space-between" },
   exit: { alignItems: "center", borderRadius: 18, borderWidth: 1, flexDirection: "row", gap: 4, paddingHorizontal: 9, paddingVertical: 6 },
   exitText: { fontSize: 13, fontWeight: "800" },

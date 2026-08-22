@@ -20,3 +20,7 @@
 - [x] Find connected-Drive sources for Mathematics, Geography, Citizenship, History, Health & PE, and Economics; bundle source-grounded validated units where sources exist and retain History as unresolved.
 - [x] Review connected-Drive sources for Mathematics, Geography, Citizenship, History, Health & PE, and Economics; bundle only source-grounded validated units.
 - [x] Expand all owner-approved Grade 10 textbook coverage into additional validated Molarum quiz units, keeping unsupported source areas pending.
+- [x] Audit and improve the real Molarum navigation, content-status clarity, empty states, and source-safe bank handling without altering validated questions.
+- [x] Add guarded packaged-bank restore and local-history clear confirmations with usable recovery options.
+- [x] Improve quiz persistence feedback, records/export fallbacks, accessibility, and Android permission minimization.
+- [x] Add focused resilience and regression tests, verify managed exports, and document runtime checks.

@@ -6,6 +6,7 @@ export type QuestionType = (typeof QUESTION_TYPES)[number];
 export type Difficulty = (typeof DIFFICULTIES)[number];
 export type ReviewStatus = (typeof REVIEW_STATUSES)[number];
 export type LocalReviewState = "draft" | "approved" | "hidden";
+export type ActiveBankOrigin = "packaged" | "imported" | "none";
 
 export interface StudyQuestion {
   id: string;
@@ -68,6 +69,21 @@ export interface QuizAttempt {
   total: number;
   timed: boolean;
   elapsedSeconds: number;
+}
+
+export interface InProgressQuiz {
+  unitKey: string;
+  unitTitle: string;
+  difficulty: Difficulty | "mixed";
+  timed: boolean;
+  queueQuestionIds: string[];
+  index: number;
+  response: string;
+  submitted: boolean;
+  correctCount: number;
+  elapsedSeconds: number;
+  startedAt: string;
+  updatedAt: string;
 }
 
 export interface UnitGroup {
