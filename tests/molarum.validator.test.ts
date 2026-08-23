@@ -41,15 +41,15 @@ describe("Molarum question-bank validator", () => {
     expect(result.ok).toBe(true);
   });
 
-  it("accepts the bundled owner-Drive bank with its declared 43-unit continuation coverage", () => {
+  it("accepts the bundled owner-Drive bank with its declared 45-unit continuation coverage", () => {
     const result = validateQuestionBank(bundledQuestionBank);
     expect(result.ok).toBe(true);
     if (result.ok) {
-      expect(result.value.bank.questions).toHaveLength(1720);
-      expect(result.value.report.unitSummary).toHaveLength(43);
-      expect(result.value.bank.sourceCatalogVersion).toBe("owner-drive-grade10-textbooks-2026-08-22-full-expanded-continuation-1");
+      expect(result.value.bank.questions).toHaveLength(1800);
+      expect(result.value.report.unitSummary).toHaveLength(45);
+      expect(result.value.bank.sourceCatalogVersion).toBe("owner-drive-grade10-textbooks-2026-08-23-full-expanded-continuation-3");
       const unitKeys = result.value.report.unitSummary.map((unit) => unit.unitKey);
-      expect(unitKeys).toEqual(expect.arrayContaining(["mathematics::Unit 7", "geography::Unit 3", "geography::Unit 8", "citizenship::Unit 6", "citizenship::Unit 8"]));
+      expect(unitKeys).toEqual(expect.arrayContaining(["mathematics::Unit 7", "geography::Unit 3", "geography::Unit 8", "citizenship::Unit 6", "citizenship::Unit 8", "economics::Unit 2", "economics::Unit 3"]));
     }
   });
 

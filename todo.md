@@ -42,3 +42,6 @@
 - [x] Redesign Library, subject, unit, quiz, result, tools, and new Profile screens while preserving offline question, answer, and progress behavior.
 - [x] Remove student-facing Records, Project Blueprint, Teacher Review, and technical-content-management routes, buttons, labels, and dead links.
 - [x] Add regression checks and verify the redesigned app’s content integrity, responsive managed exports, and remaining student flows.
+- [x] Assess approved Grade 10 History source availability and identify the next eligible source-backed subject units for offline question-bank expansion.
+- [x] Generate only source-grounded continuation batches, validate and deduplicate them, and preserve the existing 1,720-question bank as the baseline.
+- [x] Verify the expanded bank and app integration, then document the accepted continuation package and results.

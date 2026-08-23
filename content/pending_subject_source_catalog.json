@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T21:39:41.169Z",
+  "generatedAt": "2026-08-23T11:31:41.557Z",
   "origin": "owner-connected Google Drive",
   "validatedUnits": [
     {
@@ -85,6 +85,26 @@
       "externalDeliveryUnit": "/home/ubuntu/grade10_question_bank_delivery/units/citizenship_unit_6_questions.json",
       "questionCount": 40,
       "sourceBoundary": "Printed pp. 125–139; local extraction lines 4261–4734; table-dependent draft item was replaced with a narrative Article 10 item before acceptance."
+    },
+    {
+      "subject": "Economics",
+      "unit": "Unit 2: Theories of Demand and Supply",
+      "driveFileId": "1vUn9gPEhATRdeA_xwR0iW5vKnOjhhjiP",
+      "driveFileName": "grade-10-economics-new-curriculum--student-textbook-kehulumcom1759928992f5b9 (2).pdf",
+      "questionFile": "assets/question-banks/grade10-source-grounded-bank.json",
+      "externalDeliveryUnit": "/home/ubuntu/grade10_question_bank_delivery/units/economics_unit_2_questions.json",
+      "questionCount": 40,
+      "sourceBoundary": "Printed Unit 2 text; local extraction lines 1396–3186; questions use only explicit definitions, relationships, schedules, equations, and worked values from the approved excerpt."
+    },
+    {
+      "subject": "Economics",
+      "unit": "Unit 3: Theory of Production and Cost",
+      "driveFileId": "1vUn9gPEhATRdeA_xwR0iW5vKnOjhhjiP",
+      "driveFileName": "grade-10-economics-new-curriculum--student-textbook-kehulumcom1759928992f5b9 (2).pdf",
+      "questionFile": "assets/question-banks/grade10-source-grounded-bank.json",
+      "externalDeliveryUnit": "/home/ubuntu/grade10_question_bank_delivery/units/economics_unit_3_questions.json",
+      "questionCount": 40,
+      "sourceBoundary": "Printed Unit 3 text; local extraction lines 3187–4320; questions use only explicit narrative definitions, properties, schedules, equations, and worked values from the approved excerpt."
     }
   ],
   "unresolved": [
@@ -95,15 +115,9 @@
     },
     {
       "subject": "Economics",
-      "unit": "Unit 2: Theories of Demand and Supply",
-      "status": "pending_next_source_bounded_batch",
-      "reason": "An owner-approved source is available. Continue from the external delivery package using lines 1396–3186 and the hardened typed-batch structured-output workflow."
-    },
-    {
-      "subject": "Economics",
-      "unit": "Units 3–8",
+      "unit": "Units 4–8",
       "status": "unresolved_after_retries_or_capacity",
-      "reason": "Approved source exists, but these units remain queued behind the documented Unit 2 continuation batch."
+      "reason": "Approved source exists, but these units remain queued behind the accepted Economics Unit 3 continuation batch."
     },
     {
       "subject": "Health & PE",
