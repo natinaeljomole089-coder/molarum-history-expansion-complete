@@ -1,10 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import { filterQuizQuestions } from "../lib/molarum/filters";
-import { summarizeImportReview } from "../lib/molarum/import-review";
 import { isResumableQuiz } from "../lib/molarum/quiz-session";
 import { createBankDescriptor, shouldUpgradeStagedPackagedBank } from "../lib/molarum/bank-storage";
-import { buildScoreHistoryHtml } from "../lib/molarum/report-html";
 import { validateQuestionBank } from "../lib/molarum/validator";
 import type { InProgressQuiz, QuestionType, StudyQuestion } from "../lib/molarum/types";
 
@@ -28,39 +26,10 @@ function makeBank() {
 }
 
 describe("Molarum resilience helpers", () => {
-  it("summarizes a valid import without changing its source object", () => {
-    const bank = makeBank();
-    const before = JSON.stringify(bank);
-    const result = validateQuestionBank(bank);
-    expect(result.ok).toBe(true);
-    if (!result.ok) return;
-    const summary = summarizeImportReview(bank, result.value.report);
-    expect(summary).toMatchObject({ totalRecords: 40, preliminarilyValidRecords: 40, rejectedRecords: 0, duplicateIds: 0, missingSourceNotes: 0, missingExplanations: 0, missingReviewStatuses: 0 });
-    expect(JSON.stringify(bank)).toBe(before);
-  });
-
-  it("reports invalid import remediation without any partial activation behavior", () => {
-    const bank = makeBank();
-    bank.questions[1].id = bank.questions[0].id;
-    bank.questions[2].id = "unsupported-u01-003";
-    bank.questions[3].sourceNote = "";
-    bank.questions[4].explanation = "";
-    bank.questions[5].reviewStatus = "" as "ai_draft";
-    const result = validateQuestionBank(bank);
-    expect(result.ok).toBe(false);
-    if (result.ok) return;
-    const summary = summarizeImportReview(bank, result.report);
-    expect(summary.duplicateIds).toBeGreaterThan(0);
-    expect(summary.invalidSubjectPrefixes).toBeGreaterThan(0);
-    expect(summary.missingSourceNotes).toBeGreaterThan(0);
-    expect(summary.missingExplanations).toBeGreaterThan(0);
-    expect(summary.missingReviewStatuses).toBeGreaterThan(0);
-  });
-
-  it("keeps a hidden-only unit out of a new quiz queue", () => {
+  it("keeps a complete local unit ready for a new quiz queue", () => {
     const questions = makeBank().questions;
-    const hidden = Object.fromEntries(questions.map((question) => [question.id, "hidden" as const]));
-    expect(filterQuizQuestions(questions, hidden, "mixed")).toEqual([]);
+    expect(filterQuizQuestions(questions, "mixed")).toHaveLength(40);
+    expect(filterQuizQuestions(questions, "hard")).toHaveLength(8);
   });
 
   it("resumes only a coherent local quiz session whose queued IDs remain available", () => {
@@ -84,12 +53,4 @@ describe("Molarum resilience helpers", () => {
     expect(shouldUpgradeStagedPackagedBank({ ...priorPackaged, descriptor: createBankDescriptor(validated.value, "packaged_validated") })).toBe(false);
   });
 
-  it("keeps local-save and source-grounded revision disclaimers in exported history", () => {
-    const html = buildScoreHistoryHtml({ name: "Learner", className: "10-A", school: "School" }, [{ id: "attempt-1", bankId: "molarum-packaged_validated-test", bankOrigin: "packaged_validated", bankSourceCatalogVersion: "test-import", unitKey: "chemistry::Unit 1", unitTitle: "Unit 1", completedAt: "2026-08-22T00:00:00.000Z", correct: 8, total: 10, timed: false, elapsedSeconds: 0 }]);
-    expect(html).toContain("Saved locally");
-    expect(html).toContain("source-grounded revision record");
-    expect(html).toContain("not a formal assessment");
-    expect(html).toContain("test-import");
-    expect(html).toContain("Packaged validated");
-  });
 });

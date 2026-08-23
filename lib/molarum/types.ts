@@ -5,7 +5,6 @@ export const REVIEW_STATUSES = ["ai_draft"] as const;
 export type QuestionType = (typeof QUESTION_TYPES)[number];
 export type Difficulty = (typeof DIFFICULTIES)[number];
 export type ReviewStatus = (typeof REVIEW_STATUSES)[number];
-export type LocalReviewState = "draft" | "approved" | "hidden";
 export type ActiveBankOrigin = "packaged_validated" | "imported_draft" | "none";
 
 export interface StudyQuestion {
@@ -106,13 +105,4 @@ export interface UnitGroup {
   unitId: string;
   unitTitle: string;
   questions: StudyQuestion[];
-}
-
-export interface ReviewImportItem {
-  questionId: string;
-  state: LocalReviewState;
-}
-
-export interface ReviewImportPayload {
-  reviews: ReviewImportItem[];
 }

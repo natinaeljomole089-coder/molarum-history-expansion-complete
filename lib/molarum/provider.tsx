@@ -10,9 +10,7 @@ import type {
   BankDescriptor,
   InProgressQuiz,
   LearnerProfile,
-  LocalReviewState,
   QuizAttempt,
-  ReviewImportPayload,
   StudyQuestion,
   ValidatedQuestionBank,
   ValidationReport,
@@ -28,7 +26,6 @@ const KNOWN_BUNDLED_SOURCE_CATALOGS = new Set([...PRIOR_BUNDLED_SOURCE_CATALOGS,
 interface StoredState {
   activeBank: ValidatedQuestionBank | null;
   bankDescriptor: BankDescriptor | null;
-  reviewStates: Record<string, LocalReviewState>;
   learnerProfile: LearnerProfile;
   attempts: QuizAttempt[];
   inProgressQuiz: InProgressQuiz | null;
@@ -37,7 +34,6 @@ interface StoredState {
 const EMPTY_STATE: StoredState = {
   activeBank: BUNDLED_BANK,
   bankDescriptor: BUNDLED_DESCRIPTOR,
-  reviewStates: {},
   learnerProfile: EMPTY_PROFILE,
   attempts: [],
   inProgressQuiz: null,
@@ -50,7 +46,6 @@ interface StudyLibraryContextValue {
   bankDescriptor: BankDescriptor | null;
   bundledQuestionCount: number;
   questions: StudyQuestion[];
-  reviewStates: Record<string, LocalReviewState>;
   learnerProfile: LearnerProfile;
   attempts: QuizAttempt[];
   inProgressQuiz: InProgressQuiz | null;
@@ -58,8 +53,6 @@ interface StudyLibraryContextValue {
   activateQuestionBank: (validated: ValidatedQuestionBank) => Promise<void>;
   importQuestionBank: (value: unknown) => Promise<{ accepted: boolean; report: ValidationReport }>;
   resetToBundledContent: () => Promise<void>;
-  setReviewState: (questionId: string, state: LocalReviewState) => void;
-  importReviewStates: (value: unknown) => { accepted: boolean; message: string };
   updateLearnerProfile: (profile: LearnerProfile) => void;
   saveAttempt: (attempt: Omit<QuizAttempt, "id" | "completedAt" | "bankId" | "bankOrigin" | "bankSourceCatalogVersion">) => string;
   clearAttempts: () => void;
@@ -94,7 +87,6 @@ function parseStoredState(value: string | null): StoredState {
     return {
       activeBank,
       bankDescriptor,
-      reviewStates: parsed.reviewStates ?? {},
       learnerProfile: { ...EMPTY_PROFILE, ...(parsed.learnerProfile ?? {}) },
       attempts: Array.isArray(parsed.attempts) ? parsed.attempts.map((attempt) => normalizeAttempt(attempt, bankDescriptor)) : [],
       inProgressQuiz: parsed.inProgressQuiz && typeof parsed.inProgressQuiz.unitKey === "string" ? parsed.inProgressQuiz : null,
@@ -138,8 +130,7 @@ export function StudyLibraryProvider({ children }: PropsWithChildren) {
 
   const activateQuestionBank = useCallback(async (validated: ValidatedQuestionBank) => {
     const descriptor = await stageAndActivateBank(libraryStore(), validated, "imported_draft");
-    const validIds = new Set(validated.bank.questions.map((question) => question.id));
-    setState((previous) => ({ ...previous, activeBank: validated, bankDescriptor: descriptor, reviewStates: Object.fromEntries(Object.entries(previous.reviewStates).filter(([id]) => validIds.has(id))) }));
+    setState((previous) => ({ ...previous, activeBank: validated, bankDescriptor: descriptor }));
   }, []);
 
   const importQuestionBank = useCallback(async (value: unknown) => {
@@ -152,25 +143,8 @@ export function StudyLibraryProvider({ children }: PropsWithChildren) {
   const resetToBundledContent = useCallback(async () => {
     if (!BUNDLED_BANK) throw new Error("The packaged validated bank is unavailable.");
     const descriptor = await stageAndActivateBank(libraryStore(), BUNDLED_BANK, "packaged_validated");
-    setState((previous) => ({ ...previous, activeBank: BUNDLED_BANK, bankDescriptor: descriptor, reviewStates: {} }));
+    setState((previous) => ({ ...previous, activeBank: BUNDLED_BANK, bankDescriptor: descriptor }));
   }, []);
-
-  const setReviewState = useCallback((questionId: string, reviewState: LocalReviewState) => {
-    setState((previous) => ({ ...previous, reviewStates: { ...previous.reviewStates, [questionId]: reviewState } }));
-  }, []);
-
-  const importReviewStates = useCallback((value: unknown) => {
-    const input = Array.isArray(value) ? { reviews: value } : value;
-    if (!input || typeof input !== "object" || !Array.isArray((input as ReviewImportPayload).reviews)) return { accepted: false, message: "Expected a JSON object with a reviews array." };
-    const validIds = new Set((state.activeBank?.bank.questions ?? []).map((question) => question.id));
-    const next: Record<string, LocalReviewState> = {};
-    for (const item of (input as ReviewImportPayload).reviews) {
-      if (!item || typeof item.questionId !== "string" || !["draft", "approved", "hidden"].includes(item.state) || !validIds.has(item.questionId)) return { accepted: false, message: "Every review item needs a known questionId and a state of draft, approved, or hidden. No changes were applied." };
-      next[item.questionId] = item.state;
-    }
-    setState((previous) => ({ ...previous, reviewStates: { ...previous.reviewStates, ...next } }));
-    return { accepted: true, message: `${Object.keys(next).length} review states imported locally.` };
-  }, [state.activeBank]);
 
   const updateLearnerProfile = useCallback((learnerProfile: LearnerProfile) => setState((previous) => ({ ...previous, learnerProfile })), []);
 
@@ -205,7 +179,6 @@ export function StudyLibraryProvider({ children }: PropsWithChildren) {
     bankDescriptor: state.bankDescriptor,
     bundledQuestionCount: BUNDLED_BANK?.bank.questions.length ?? 0,
     questions,
-    reviewStates: state.reviewStates,
     learnerProfile: state.learnerProfile,
     attempts: state.attempts,
     inProgressQuiz: state.inProgressQuiz,
@@ -213,14 +186,12 @@ export function StudyLibraryProvider({ children }: PropsWithChildren) {
     activateQuestionBank,
     importQuestionBank,
     resetToBundledContent,
-    setReviewState,
-    importReviewStates,
     updateLearnerProfile,
     saveAttempt,
     clearAttempts,
     saveInProgressQuiz,
     discardInProgressQuiz,
-  }), [ready, state, questions, previewQuestionBank, activateQuestionBank, importQuestionBank, resetToBundledContent, setReviewState, importReviewStates, updateLearnerProfile, saveAttempt, clearAttempts, saveInProgressQuiz, discardInProgressQuiz]);
+  }), [ready, state, questions, previewQuestionBank, activateQuestionBank, importQuestionBank, resetToBundledContent, updateLearnerProfile, saveAttempt, clearAttempts, saveInProgressQuiz, discardInProgressQuiz]);
 
   return <StudyLibraryContext.Provider value={value}>{children}</StudyLibraryContext.Provider>;
 }

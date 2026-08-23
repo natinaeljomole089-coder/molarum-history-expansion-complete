@@ -37,3 +37,8 @@
 - [x] Generate and strictly validate one next approved unit at a time, recording source coverage, skips, retries, and the continuation point.
 - [x] Merge only accepted units, remove user-facing teacher-review routes and entry points, and update local bank delivery records.
 - [x] Revalidate the complete bank, run application checks and managed exports, then save a continuation-safe checkpoint.
+- [x] Audit current mobile routes, reusable components, progress data, and all user-facing records, blueprint, and technical-management references.
+- [x] Establish the premium dark mobile design system and replace bottom navigation with Library, Tools, and Profile.
+- [x] Redesign Library, subject, unit, quiz, result, tools, and new Profile screens while preserving offline question, answer, and progress behavior.
+- [x] Remove student-facing Records, Project Blueprint, Teacher Review, and technical-content-management routes, buttons, labels, and dead links.
+- [x] Add regression checks and verify the redesigned app’s content integrity, responsive managed exports, and remaining student flows.

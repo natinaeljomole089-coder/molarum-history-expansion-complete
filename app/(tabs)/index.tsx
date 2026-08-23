@@ -1,91 +1,102 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useRouter } from "expo-router";
-import { useMemo, useState } from "react";
-import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { useMemo } from "react";
+import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
-import { ActionButton, ActiveBankStatus, NotebookHeader, Notice, SectionLabel, StatusPill } from "@/components/molarum/ui";
 import { useColors } from "@/hooks/use-colors";
 import { SUBJECT_CATALOG, unitsForSubject } from "@/lib/molarum/catalog";
 import { useStudyLibrary } from "@/lib/molarum/provider";
 
+const SUBJECT_ICONS: Record<string, React.ComponentProps<typeof MaterialIcons>["name"]> = {
+  chemistry: "science",
+  physics: "bolt",
+  biology: "eco",
+  mathematics: "calculate",
+  geography: "public",
+  history: "hourglass-empty",
+  citizenship: "groups",
+  economics: "show-chart",
+  health_pe: "favorite",
+};
+
 export default function LibraryScreen() {
   const colors = useColors();
   const router = useRouter();
-  const { ready, activeBank, activeBankOrigin, bankDescriptor, questions, attempts, inProgressQuiz, reviewStates } = useStudyLibrary();
-  const [search, setSearch] = useState("");
-  const data = useMemo(() => SUBJECT_CATALOG.filter((subject) => subject.title.toLowerCase().includes(search.trim().toLowerCase())), [search]);
+  const { ready, questions, attempts, inProgressQuiz, bankDescriptor } = useStudyLibrary();
+  const progress = useMemo(() => attempts.reduce<Record<string, number>>((result, attempt) => {
+    const key = attempt.unitKey.split("::")[0] ?? "";
+    result[key] = (result[key] ?? 0) + 1;
+    return result;
+  }, {}), [attempts]);
+  const resume = inProgressQuiz && inProgressQuiz.bankId === bankDescriptor?.bankId ? inProgressQuiz : null;
 
-  if (!ready) return <View style={[styles.loading, { backgroundColor: colors.background }]}><ActivityIndicator color={colors.primary} /><Text style={{ color: colors.muted }}>Opening your local study desk…</Text></View>;
+  if (!ready) return <View style={[styles.loading, { backgroundColor: colors.background }]}><ActivityIndicator color="#B66CFF" /><Text style={[styles.loadingText, { color: colors.muted }]}>Preparing your learning space…</Text></View>;
 
-  const recentAttempt = attempts[0];
-  const draftCandidate = inProgressQuiz;
-  const resumeQuiz = draftCandidate && draftCandidate.bankId === bankDescriptor?.bankId && questions.some((question) => question.id === draftCandidate.queueQuestionIds[0]) ? draftCandidate : null;
-  const hasStaleDraft = Boolean(inProgressQuiz && !resumeQuiz);
-  const primaryLabel = resumeQuiz ? "Continue studying" : "Browse subjects";
-  const primaryAction = () => resumeQuiz
-    ? router.push({ pathname: "/quiz/[unitKey]" as never, params: { unitKey: resumeQuiz.unitKey, difficulty: resumeQuiz.difficulty, timed: resumeQuiz.timed ? "1" : "0" } })
-    : setSearch("");
-
-  return (
-    <FlatList
-      style={{ backgroundColor: colors.background }}
-      contentContainerStyle={styles.content}
-      keyboardShouldPersistTaps="handled"
-      data={data}
-      keyExtractor={(item) => item.id}
-      ListHeaderComponent={
-        <View style={styles.headerStack}>
-          <NotebookHeader eyebrow="Offline study library" title="Molarum" subtitle="Grade 10 revision tools stored on this device." />
-          <ActiveBankStatus origin={activeBank ? activeBankOrigin : "none"} questionCount={questions.length} sourceCatalogVersion={bankDescriptor?.sourceCatalogVersion} />
-          <Notice>Revision tool only. Content is source-grounded and saved locally; it is not a formal assessment.</Notice>
-          {hasStaleDraft ? <Notice tone="warning">A saved quiz belongs to a different bank version. Open its unit to safely discard it or begin a fresh attempt.</Notice> : null}
-          <View style={styles.primaryAction}><ActionButton label={primaryLabel} icon={resumeQuiz ? "play-arrow" : "local-library"} onPress={primaryAction} /></View>
-          <View style={styles.secondaryActions}>
-            <ActionButton label="Records" secondary icon="assignment" onPress={() => router.push("/(tabs)/records" as never)} />
-            <ActionButton label="Tools" secondary icon="build" onPress={() => router.push("/(tabs)/tools" as never)} />
-          </View>
-          <View style={[styles.recentSummary, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-            <Text style={[styles.recentTitle, { color: colors.foreground }]}>Recent progress</Text>
-            <Text style={[styles.recentText, { color: colors.muted }]}>{recentAttempt ? `${recentAttempt.unitTitle}: ${recentAttempt.correct}/${recentAttempt.total} saved locally on ${new Date(recentAttempt.completedAt).toLocaleDateString()}.` : "No completed local revision quizzes yet. Choose a validated unit to begin."}</Text>
-          </View>
-          <View style={[styles.searchBox, { borderColor: colors.border, backgroundColor: colors.surface }]}>
-            <MaterialIcons name="search" size={20} color={colors.muted} />
-            <TextInput value={search} onChangeText={setSearch} placeholder="Search a subject" placeholderTextColor={colors.muted} style={[styles.searchInput, { color: colors.foreground }]} returnKeyType="done" accessibilityLabel="Search subjects" />
-          </View>
-          <View style={styles.statusLine}><SectionLabel>Browse subjects</SectionLabel><StatusPill tone={activeBank ? "success" : "warning"} label={activeBank ? `${questions.length} validated questions` : "No validated bank"} /></View>
-          {!activeBank ? <Text style={[styles.emptyNote, { color: colors.muted }]}>No valid local bank is active. Open Tools to restore the packaged bank or review an imported bank.</Text> : null}
-        </View>
-      }
-      renderItem={({ item }) => {
-        const units = unitsForSubject(questions, item.id);
-        const count = units.reduce((total, unit) => total + unit.questions.length, 0);
-        const hidden = units.flatMap((unit) => unit.questions).filter((question) => reviewStates[question.id] === "hidden").length;
-        const detail = units.length ? `${units.length} unit${units.length === 1 ? "" : "s"} · ${count} questions${hidden ? ` · ${hidden} hidden locally` : ""}` : "Content unavailable — approved source pages required";
-        return <Pressable accessibilityRole="button" accessibilityLabel={`Open ${item.title}`} onPress={() => router.push({ pathname: "/subject/[subjectId]" as never, params: { subjectId: item.id } })} style={({ pressed }) => [styles.subjectRow, { borderBottomColor: colors.border }, pressed && styles.pressed]}><View style={[styles.colorMark, { backgroundColor: item.accent }]} /><View style={styles.subjectBody}><Text style={[styles.subjectTitle, { color: colors.foreground }]}>{item.title}</Text><Text style={[styles.subjectDetail, { color: colors.muted }]}>{detail}</Text></View><View style={styles.subjectRight}>{units.length ? <StatusPill tone="success" label="Available" /> : <StatusPill tone="warning" label="Pending" />}<MaterialIcons name="chevron-right" size={22} color={colors.muted} /></View></Pressable>;
-      }}
-      ListEmptyComponent={<Text style={[styles.emptyNote, { color: colors.muted }]}>No subjects match your search. Clear or change the search to continue.</Text>}
-    />
-  );
+  return <FlatList
+    style={{ backgroundColor: colors.background }}
+    contentContainerStyle={styles.content}
+    data={SUBJECT_CATALOG}
+    numColumns={2}
+    columnWrapperStyle={styles.columns}
+    keyExtractor={(subject) => subject.id}
+    ListHeaderComponent={<View style={styles.headerStack}>
+      <View style={styles.brandRow}><View style={styles.brandMark}><Text style={styles.brandMarkText}>M</Text></View><View><Text style={[styles.brand, { color: colors.foreground }]}>Molarum</Text><Text style={[styles.tagline, { color: colors.muted }]}>Study smarter. Anywhere.</Text></View></View>
+      <View style={styles.heroCard}>
+        <View style={styles.heroGlow} /><View style={styles.heroBody}><Text style={styles.heroKicker}>GRADE 10 LEARNING</Text><Text style={styles.heroNumber}>{questions.length.toLocaleString()}</Text><Text style={styles.heroTitle}>Questions ready for practice</Text><Text style={styles.heroSupport}>Build confidence across your subjects, even offline.</Text></View><View style={styles.heroIcon}><MaterialIcons name="auto-stories" size={34} color="#FFFFFF" /></View>
+      </View>
+      {resume ? <Pressable accessibilityRole="button" accessibilityLabel="Continue saved practice" onPress={() => router.push({ pathname: "/quiz/[unitKey]" as never, params: { unitKey: resume.unitKey, difficulty: resume.difficulty, timed: resume.timed ? "1" : "0" } })} style={({ pressed }) => [styles.continueCard, { backgroundColor: colors.surface, borderColor: colors.border }, pressed && styles.pressed]}><View style={styles.continueIcon}><MaterialIcons name="play-arrow" size={21} color="#FFFFFF" /></View><View style={styles.continueCopy}><Text style={[styles.continueTitle, { color: colors.foreground }]}>Continue learning</Text><Text numberOfLines={1} style={[styles.continueDetail, { color: colors.muted }]}>{resume.unitTitle}</Text></View><MaterialIcons name="arrow-forward" size={21} color="#FFAE51" /></Pressable> : <View style={[styles.momentumCard, { backgroundColor: colors.surface, borderColor: colors.border }]}><MaterialIcons name="local-fire-department" size={22} color="#FF8A1F" /><Text style={[styles.momentumText, { color: colors.foreground }]}>{attempts.length ? "Keep your momentum going" : "Your next lesson starts here"}</Text></View>}
+      <View style={styles.sectionHead}><View><Text style={[styles.sectionTitle, { color: colors.foreground }]}>Browse subjects</Text><Text style={[styles.sectionSupport, { color: colors.muted }]}>Choose a subject to start learning</Text></View><View style={styles.questionPill}><Text style={styles.questionPillText}>{questions.length.toLocaleString()} Qs</Text></View></View>
+    </View>}
+    renderItem={({ item }) => {
+      const units = unitsForSubject(questions, item.id);
+      const questionCount = units.reduce((sum, unit) => sum + unit.questions.length, 0);
+      const available = units.length > 0;
+      const completed = progress[item.id] ?? 0;
+      return <Pressable disabled={!available} accessibilityRole="button" accessibilityLabel={available ? `Open ${item.title}` : `${item.title} is coming soon`} onPress={() => router.push({ pathname: "/subject/[subjectId]" as never, params: { subjectId: item.id } })} style={({ pressed }) => [styles.subjectCard, { backgroundColor: colors.surface, borderColor: colors.border, opacity: available ? 1 : 0.66 }, pressed && available && styles.pressed]}><View style={styles.subjectTop}><View style={[styles.subjectIcon, { backgroundColor: `${item.accent}26` }]}><MaterialIcons name={SUBJECT_ICONS[item.id]} size={22} color={item.accent} /></View><MaterialIcons name="chevron-right" size={19} color={available ? colors.muted : "#6F7892"} /></View><Text numberOfLines={1} style={[styles.subjectTitle, { color: colors.foreground }]}>{item.title}</Text><Text numberOfLines={1} style={[styles.subjectDetail, { color: colors.muted }]}>{available ? `${units.length} units · ${questionCount} Qs` : "Coming soon"}</Text>{available ? <View style={styles.subjectFooter}><View style={[styles.miniTrack, { backgroundColor: "#1E2741" }]}><View style={[styles.miniFill, { backgroundColor: item.accent, width: `${Math.min(100, completed * 18)}%` }]} /></View><Text style={[styles.progressText, { color: completed ? item.accent : colors.muted }]}>{completed ? `${completed} done` : "Start"}</Text></View> : <View style={styles.subjectFooter}><Text style={[styles.pending, { color: "#FBBF24" }]}>Not available yet</Text></View>}</Pressable>;
+    }}
+  />;
 }
 
 const styles = StyleSheet.create({
   loading: { alignItems: "center", flex: 1, gap: 12, justifyContent: "center" },
-  content: { paddingBottom: 24, paddingHorizontal: 20, paddingTop: 14 },
-  headerStack: { gap: 14, paddingBottom: 6 },
-  primaryAction: { marginTop: 2 },
-  secondaryActions: { flexDirection: "row", gap: 9 },
-  recentSummary: { borderRadius: 14, borderWidth: 1, gap: 4, padding: 12 },
-  recentTitle: { fontSize: 14, fontWeight: "900" },
-  recentText: { fontSize: 12, lineHeight: 18 },
-  searchBox: { alignItems: "center", borderRadius: 14, borderWidth: 1, flexDirection: "row", gap: 9, minHeight: 48, paddingHorizontal: 13 },
-  searchInput: { flex: 1, fontSize: 15, paddingVertical: 10 },
-  statusLine: { alignItems: "center", flexDirection: "row", justifyContent: "space-between" },
-  emptyNote: { fontSize: 13, lineHeight: 20, marginBottom: 10 },
-  subjectRow: { alignItems: "center", borderBottomWidth: StyleSheet.hairlineWidth, flexDirection: "row", gap: 12, minHeight: 79, paddingVertical: 12 },
-  colorMark: { borderRadius: 3, height: 42, width: 5 },
-  subjectBody: { flex: 1, gap: 4 },
-  subjectTitle: { fontFamily: "Georgia", fontSize: 19, fontWeight: "700" },
-  subjectDetail: { fontSize: 12, lineHeight: 18 },
-  subjectRight: { alignItems: "flex-end", gap: 5 },
-  pressed: { opacity: 0.75, transform: [{ scale: 0.99 }] },
+  loadingText: { fontSize: 14, fontWeight: "700" },
+  content: { gap: 11, paddingHorizontal: 18, paddingTop: 20, paddingBottom: 34 },
+  columns: { gap: 11 },
+  headerStack: { gap: 15, paddingBottom: 7 },
+  brandRow: { alignItems: "center", flexDirection: "row", gap: 10 },
+  brandMark: { alignItems: "center", backgroundColor: "#7441E8", borderRadius: 12, height: 38, justifyContent: "center", transform: [{ rotate: "-7deg" }], width: 38 },
+  brandMarkText: { color: "#FFFFFF", fontSize: 22, fontStyle: "italic", fontWeight: "900" },
+  brand: { fontSize: 24, fontWeight: "900", letterSpacing: -0.6 },
+  tagline: { fontSize: 13, marginTop: 1 },
+  heroCard: { backgroundColor: "#332276", borderColor: "#7048E8", borderRadius: 24, borderWidth: 1, minHeight: 154, overflow: "hidden", padding: 19, position: "relative" },
+  heroGlow: { backgroundColor: "#7048E8", borderRadius: 110, height: 220, opacity: 0.48, position: "absolute", right: -88, top: -58, width: 220 },
+  heroBody: { gap: 3, maxWidth: "68%" },
+  heroKicker: { color: "#D9C4FF", fontSize: 10, fontWeight: "900", letterSpacing: 1 },
+  heroNumber: { color: "#FFFFFF", fontSize: 34, fontWeight: "900", letterSpacing: -1, marginTop: 4 },
+  heroTitle: { color: "#FFFFFF", fontSize: 15, fontWeight: "800" },
+  heroSupport: { color: "#D8CEFA", fontSize: 12, lineHeight: 17, marginTop: 3 },
+  heroIcon: { alignItems: "center", backgroundColor: "#9A67FF", borderColor: "#DCCBFF", borderRadius: 18, borderWidth: 1, height: 62, justifyContent: "center", position: "absolute", right: 20, top: 47, width: 62 },
+  continueCard: { alignItems: "center", borderRadius: 18, borderWidth: 1, flexDirection: "row", gap: 11, minHeight: 66, paddingHorizontal: 13 },
+  continueIcon: { alignItems: "center", backgroundColor: "#FF8A1F", borderRadius: 13, height: 39, justifyContent: "center", width: 39 },
+  continueCopy: { flex: 1, gap: 2 },
+  continueTitle: { fontSize: 15, fontWeight: "900" },
+  continueDetail: { fontSize: 12 },
+  momentumCard: { alignItems: "center", borderRadius: 16, borderWidth: 1, flexDirection: "row", gap: 9, minHeight: 51, paddingHorizontal: 14 },
+  momentumText: { fontSize: 13, fontWeight: "800" },
+  sectionHead: { alignItems: "flex-end", flexDirection: "row", justifyContent: "space-between", marginTop: 3 },
+  sectionTitle: { fontSize: 20, fontWeight: "900", letterSpacing: -0.35 },
+  sectionSupport: { fontSize: 12, marginTop: 3 },
+  questionPill: { backgroundColor: "#1B1936", borderColor: "#41316E", borderRadius: 20, borderWidth: 1, paddingHorizontal: 10, paddingVertical: 6 },
+  questionPillText: { color: "#C4A8FF", fontSize: 11, fontWeight: "900" },
+  subjectCard: { borderRadius: 19, borderWidth: 1, flex: 1, gap: 8, minHeight: 158, padding: 13 },
+  subjectTop: { alignItems: "center", flexDirection: "row", justifyContent: "space-between" },
+  subjectIcon: { alignItems: "center", borderRadius: 13, height: 43, justifyContent: "center", width: 43 },
+  subjectTitle: { fontSize: 15, fontWeight: "900", marginTop: 1 },
+  subjectDetail: { fontSize: 11, lineHeight: 16 },
+  subjectFooter: { gap: 6, marginTop: "auto" },
+  miniTrack: { borderRadius: 3, height: 4, overflow: "hidden" },
+  miniFill: { borderRadius: 3, height: "100%" },
+  progressText: { fontSize: 10, fontWeight: "900" },
+  pending: { fontSize: 10, fontWeight: "900" },
+  pressed: { opacity: 0.78, transform: [{ scale: 0.98 }] },
 });

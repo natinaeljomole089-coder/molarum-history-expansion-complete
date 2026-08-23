@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 
 import { isAnswerCorrect } from "../lib/molarum/quiz";
 import { filterQuizQuestions } from "../lib/molarum/filters";
-import { buildScoreHistoryHtml } from "../lib/molarum/report-html";
 import { validateQuestionBank } from "../lib/molarum/validator";
 import type { QuestionType, StudyQuestion } from "../lib/molarum/types";
 import bundledQuestionBank from "../assets/question-banks/grade10-source-grounded-bank.json";
@@ -68,17 +67,11 @@ describe("Molarum question-bank validator", () => {
     expect(isAnswerCorrect(question, "A different key")).toBe(false);
   });
 
-  it("omits locally hidden questions from a mixed or selected-difficulty quiz", () => {
+  it("filters a practice queue by the selected difficulty", () => {
     const questions = makeFixtureBank().questions;
-    const hiddenId = questions[0].id;
-    expect(filterQuizQuestions(questions, { [hiddenId]: "hidden" }, "mixed")).toHaveLength(39);
-    expect(filterQuizQuestions(questions, { [hiddenId]: "hidden" }, "easy").every((question) => question.difficulty === "easy" && question.id !== hiddenId)).toBe(true);
+    expect(filterQuizQuestions(questions, "mixed")).toHaveLength(40);
+    expect(filterQuizQuestions(questions, "easy")).toHaveLength(14);
+    expect(filterQuizQuestions(questions, "easy").every((question) => question.difficulty === "easy")).toBe(true);
   });
 
-  it("creates escaped local score-history PDF markup with the revision disclaimer", () => {
-    const html = buildScoreHistoryHtml({ name: "A < B", className: "10-A", school: "Study & Learn" }, [{ id: "attempt-1", bankId: "molarum-packaged_validated-test", bankOrigin: "packaged_validated", bankSourceCatalogVersion: "test-fixture", unitKey: "chemistry::Unit 1", unitTitle: "Unit < One", completedAt: "2026-08-18T00:00:00.000Z", correct: 8, total: 10, timed: true, elapsedSeconds: 125 }]);
-    expect(html).toContain("A &lt; B");
-    expect(html).toContain("Unit &lt; One");
-    expect(html).toContain("source-grounded revision record");
-  });
 });
