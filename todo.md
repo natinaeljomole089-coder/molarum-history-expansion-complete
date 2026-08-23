@@ -42,6 +42,3 @@
 - [x] Redesign Library, subject, unit, quiz, result, tools, and new Profile screens while preserving offline question, answer, and progress behavior.
 - [x] Remove student-facing Records, Project Blueprint, Teacher Review, and technical-content-management routes, buttons, labels, and dead links.
 - [x] Add regression checks and verify the redesigned app’s content integrity, responsive managed exports, and remaining student flows.
-- [x] Audit Molarum v1.0.3 against the supplied navigation, student-copy, safe-area, quiz-flow, and offline-persistence acceptance brief.
-- [x] Repair only verified regressions while preserving the 1,720-question / 43-unit bundled bank and local learner data.
-- [x] Run and document evidence-based validation for routes, counts, quiz flows, persistence, compact Android UI, and managed exports.
