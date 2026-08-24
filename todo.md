@@ -53,6 +53,6 @@
 - [x] Add and publish a clear GitHub-facing explanation of Molarum’s APK status, managed build workflow, installation path, and release process.
 - [x] Organize the Molarum repository handoff documentation, including a clear project map and maintenance entry points.
 - [x] Create and publish a reusable Molarum source-grounded question-bank generation workflow skill with validation, merge, provenance, and release instructions.
-- [ ] Capture a read-only release-readiness baseline covering architecture, routes, content, persistence, configuration, tests, documentation, and release claims.
-- [ ] Prepare safe repository, identity, release-pipeline, quality-gate, and documentation improvements without pushing or publishing them.
-- [ ] Validate the prepared changes, distinguish static from device-only evidence, and request approval before any GitHub push or release action.
+- [x] Capture a read-only release-readiness baseline covering architecture, routes, content, persistence, configuration, tests, documentation, and release claims.
+- [x] Prepare safe repository, identity, release-pipeline, quality-gate, and documentation improvements without pushing or publishing them.
+- [x] Validate the prepared changes, distinguish static from device-only evidence, and request approval before any GitHub push or release action.
