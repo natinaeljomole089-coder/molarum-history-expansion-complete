@@ -3,12 +3,13 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 import { useColors } from "@/hooks/use-colors";
-import { SUBJECT_CATALOG, type SubjectId, unitsForSubject } from "@/lib/molarum/catalog";
+import { SUBJECT_CATALOG, SUBJECT_ICONS, type SubjectId, unitsForSubject } from "@/lib/molarum/catalog";
 import { useStudyLibrary } from "@/lib/molarum/provider";
 
 export default function SubjectScreen() {
   const { subjectId: rawSubjectId } = useLocalSearchParams<{ subjectId: string }>();
-  const subject = SUBJECT_CATALOG.find((item) => item.id === rawSubjectId) ?? null;
+  const subjectId = Array.isArray(rawSubjectId) ? rawSubjectId[0] : rawSubjectId;
+  const subject = SUBJECT_CATALOG.find((item) => item.id === subjectId) ?? null;
   const colors = useColors();
   const router = useRouter();
   const { questions, attempts } = useStudyLibrary();
@@ -30,7 +31,7 @@ export default function SubjectScreen() {
     keyExtractor={(item) => item.unitKey}
     ListHeaderComponent={<View style={styles.headerStack}>
       <Pressable accessibilityRole="button" accessibilityLabel="Back to Library" onPress={() => router.back()} style={styles.backButton}><MaterialIcons name="arrow-back" size={22} color={colors.foreground} /></Pressable>
-      <View style={styles.subjectHero}><View style={[styles.subjectIcon, { backgroundColor: `${subject.accent}28`, borderColor: `${subject.accent}72` }]}><MaterialIcons name="science" size={31} color={subject.accent} /></View><View style={styles.heroCopy}><Text style={[styles.subjectName, { color: colors.foreground }]}>{subject.title}</Text><Text style={[styles.subjectMeta, { color: colors.muted }]}>{units.length ? `${units.length} units · ${units.reduce((sum, unit) => sum + unit.questions.length, 0)} questions` : "Content coming soon"}</Text></View></View>
+      <View style={styles.subjectHero}><View style={[styles.subjectIcon, { backgroundColor: `${subject.accent}28`, borderColor: `${subject.accent}72` }]}><MaterialIcons name={SUBJECT_ICONS[subject.id]} size={31} color={subject.accent} /></View><View style={styles.heroCopy}><Text style={[styles.subjectName, { color: colors.foreground }]}>{subject.title}</Text><Text style={[styles.subjectMeta, { color: colors.muted }]}>{units.length ? `${units.length} units · ${units.reduce((sum, unit) => sum + unit.questions.length, 0)} questions` : "Content coming soon"}</Text></View></View>
       {units.length ? <View style={[styles.progressCard, { backgroundColor: colors.surface, borderColor: colors.border }]}><View style={styles.progressTop}><View><Text style={[styles.progressTitle, { color: colors.foreground }]}>Your subject progress</Text><Text style={[styles.progressDetail, { color: colors.muted }]}>{completedCount ? `${completedCount} unit${completedCount === 1 ? "" : "s"} practiced` : "Begin your first practice session"}</Text></View><Text style={[styles.progressValue, { color: subject.accent }]}>{progress}%</Text></View><View style={[styles.track, { backgroundColor: "#1B233E" }]}><View style={[styles.fill, { backgroundColor: subject.accent, width: `${Math.max(2, progress)}%` }]} /></View></View> : null}
       {units.length ? <Pressable accessibilityRole="button" accessibilityLabel={`Start ${subject.title} practice`} onPress={startNextUnit} style={({ pressed }) => [styles.primaryButton, pressed && styles.pressed]}><MaterialIcons name="play-arrow" size={22} color="#FFFFFF" /><Text style={styles.primaryButtonText}>{completedCount ? "Practice next unit" : "Start practice"}</Text><MaterialIcons name="arrow-forward" size={20} color="#FFFFFF" /></Pressable> : null}
       <Text style={[styles.sectionTitle, { color: colors.foreground }]}>{units.length ? "Units" : "Coming soon"}</Text>

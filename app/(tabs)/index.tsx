@@ -4,30 +4,23 @@ import { useMemo } from "react";
 import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 import { useColors } from "@/hooks/use-colors";
-import { SUBJECT_CATALOG, unitsForSubject } from "@/lib/molarum/catalog";
+import { SUBJECT_CATALOG, SUBJECT_ICONS, unitsForSubject } from "@/lib/molarum/catalog";
 import { useStudyLibrary } from "@/lib/molarum/provider";
-
-const SUBJECT_ICONS: Record<string, React.ComponentProps<typeof MaterialIcons>["name"]> = {
-  chemistry: "science",
-  physics: "bolt",
-  biology: "eco",
-  mathematics: "calculate",
-  geography: "public",
-  history: "hourglass-empty",
-  citizenship: "groups",
-  economics: "show-chart",
-  health_pe: "favorite",
-};
 
 export default function LibraryScreen() {
   const colors = useColors();
   const router = useRouter();
   const { ready, questions, attempts, inProgressQuiz, bankDescriptor } = useStudyLibrary();
-  const progress = useMemo(() => attempts.reduce<Record<string, number>>((result, attempt) => {
-    const key = attempt.unitKey.split("::")[0] ?? "";
-    result[key] = (result[key] ?? 0) + 1;
-    return result;
-  }, {}), [attempts]);
+  const progress = useMemo(() => {
+    const completedBySubject = new Map<string, Set<string>>();
+    for (const attempt of attempts) {
+      const subjectId = attempt.unitKey.split("::")[0] ?? "";
+      const completedUnits = completedBySubject.get(subjectId) ?? new Set<string>();
+      completedUnits.add(attempt.unitKey);
+      completedBySubject.set(subjectId, completedUnits);
+    }
+    return Object.fromEntries([...completedBySubject.entries()].map(([subjectId, units]) => [subjectId, units.size])) as Record<string, number>;
+  }, [attempts]);
   const resume = inProgressQuiz && inProgressQuiz.bankId === bankDescriptor?.bankId ? inProgressQuiz : null;
 
   if (!ready) return <View style={[styles.loading, { backgroundColor: colors.background }]}><ActivityIndicator color="#B66CFF" /><Text style={[styles.loadingText, { color: colors.muted }]}>Preparing your learning space…</Text></View>;

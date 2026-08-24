@@ -14,6 +14,18 @@ export const SUBJECT_CATALOG = [
 
 export type SubjectId = (typeof SUBJECT_CATALOG)[number]["id"];
 
+export const SUBJECT_ICONS = {
+  chemistry: "science",
+  physics: "bolt",
+  biology: "eco",
+  mathematics: "calculate",
+  geography: "public",
+  history: "hourglass-empty",
+  citizenship: "groups",
+  economics: "show-chart",
+  health_pe: "favorite",
+} as const;
+
 export const SUBJECT_IDS = SUBJECT_CATALOG.map((subject) => subject.id) as SubjectId[];
 
 export function subjectIdForQuestion(question: Pick<StudyQuestion, "id">): SubjectId | null {
@@ -49,7 +61,12 @@ export function unitsForSubject(questions: StudyQuestion[], subjectId: SubjectId
       unitTitle: unitQuestions[0].unitTitle,
       questions: [...unitQuestions].sort((a, b) => a.id.localeCompare(b.id)),
     }))
-    .sort((a, b) => a.unitTitle.localeCompare(b.unitTitle));
+    .sort((left, right) => {
+      const leftNumber = Number.parseInt(left.unitId.match(/\d+/)?.[0] ?? "", 10);
+      const rightNumber = Number.parseInt(right.unitId.match(/\d+/)?.[0] ?? "", 10);
+      if (Number.isFinite(leftNumber) && Number.isFinite(rightNumber) && leftNumber !== rightNumber) return leftNumber - rightNumber;
+      return left.unitTitle.localeCompare(right.unitTitle);
+    });
 }
 
 export function unitByKey(questions: StudyQuestion[], unitKey: string): UnitGroup | null {

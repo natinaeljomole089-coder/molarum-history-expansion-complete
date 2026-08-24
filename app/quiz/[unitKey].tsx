@@ -1,7 +1,7 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { AccessibilityInfo, Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { AccessibilityInfo, ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 import { useColors } from "@/hooks/use-colors";
 import { unitByKey } from "@/lib/molarum/catalog";
@@ -18,7 +18,7 @@ export default function QuizScreen() {
   const timed = params.timed === "1";
   const router = useRouter();
   const colors = useColors();
-  const { bankDescriptor, questions, inProgressQuiz, saveAttempt, saveInProgressQuiz, discardInProgressQuiz } = useStudyLibrary();
+  const { ready, bankDescriptor, questions, inProgressQuiz, saveAttempt, saveInProgressQuiz, discardInProgressQuiz } = useStudyLibrary();
   const unit = unitByKey(questions, unitKey);
   const eligibleQueue = useMemo(() => filterQuizQuestions(unit?.questions ?? [], selectedDifficulty), [unit, selectedDifficulty]);
   const savedQuiz = isResumableQuiz(inProgressQuiz, unitKey, questions, bankDescriptor?.bankId ?? null) ? inProgressQuiz : null;
@@ -42,6 +42,34 @@ export default function QuizScreen() {
   const question = queue[index];
   const correct = question ? isAnswerCorrect(question, response) : false;
   const effectiveTimed = savedQuiz?.timed ?? timed;
+  const initializedSessionKey = useRef<string | null>(null);
+
+  useEffect(() => {
+    const sessionKey = `${unitKey}:${bankDescriptor?.bankId ?? ""}`;
+    if (!ready || !bankDescriptor?.bankId || initializedSessionKey.current === sessionKey) return;
+    initializedSessionKey.current = sessionKey;
+    if (!savedQuiz) {
+      setIndex(0);
+      setResponse("");
+      setSubmitted(false);
+      setCorrectCount(0);
+      setElapsedSeconds(0);
+      startedAt.current = new Date().toISOString();
+      elapsedRef.current = 0;
+      submittingRef.current = false;
+      announcedAnswer.current = "";
+      return;
+    }
+    setIndex(savedQuiz.index);
+    setResponse(savedQuiz.response);
+    setSubmitted(savedQuiz.submitted);
+    setCorrectCount(savedQuiz.correctCount);
+    setElapsedSeconds(savedQuiz.elapsedSeconds);
+    startedAt.current = savedQuiz.startedAt;
+    elapsedRef.current = savedQuiz.elapsedSeconds;
+    submittingRef.current = false;
+    announcedAnswer.current = "";
+  }, [bankDescriptor?.bankId, ready, savedQuiz, unitKey]);
 
   const persistProgress = useCallback((elapsed: number) => {
     if (completingRef.current || !unit || !queue.length || !question) return;
@@ -100,6 +128,7 @@ export default function QuizScreen() {
     { text: "Discard session", style: "destructive", onPress: () => { discardInProgressQuiz(); router.replace({ pathname: "/unit/[unitKey]" as never, params: { unitKey } }); } },
   ]);
 
+  if (!ready) return <View style={[styles.center, { backgroundColor: colors.background }]}><ActivityIndicator color="#B66CFF" /><Text style={[styles.centerText, { color: colors.muted }]}>Restoring your practice…</Text></View>;
   if (!unit || !question) return <View style={[styles.center, { backgroundColor: colors.background }]}><MaterialIcons name="quiz" size={43} color="#B66CFF" /><Text style={[styles.centerTitle, { color: colors.foreground }]}>Practice isn’t ready</Text><Text style={[styles.centerText, { color: colors.muted }]}>Choose another lesson to continue learning.</Text><Pressable onPress={() => router.replace("/")} style={styles.returnButton}><Text style={styles.returnText}>Back to Library</Text></Pressable></View>;
 
   const progress = `${((index + 1) / queue.length) * 100}%` as `${number}%`;

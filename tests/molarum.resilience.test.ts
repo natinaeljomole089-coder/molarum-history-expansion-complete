@@ -4,6 +4,7 @@ import { filterQuizQuestions } from "../lib/molarum/filters";
 import { isResumableQuiz } from "../lib/molarum/quiz-session";
 import { createBankDescriptor, shouldUpgradeStagedPackagedBank } from "../lib/molarum/bank-storage";
 import { validateQuestionBank } from "../lib/molarum/validator";
+import { unitsForSubject } from "../lib/molarum/catalog";
 import type { InProgressQuiz, QuestionType, StudyQuestion } from "../lib/molarum/types";
 
 const types: QuestionType[] = [
@@ -39,6 +40,17 @@ describe("Molarum resilience helpers", () => {
     expect(isResumableQuiz({ ...session, queueQuestionIds: ["missing-question"] }, "chemistry::Unit 1", questions, session.bankId)).toBe(false);
     expect(isResumableQuiz({ ...session, index: 9 }, "chemistry::Unit 1", questions, session.bankId)).toBe(false);
     expect(isResumableQuiz(session, "chemistry::Unit 1", questions, "molarum-imported_draft-replaced")).toBe(false);
+  });
+
+  it("sorts multi-digit unit numbers numerically for learner navigation", () => {
+    const fixture = makeBank().questions[0];
+    const questions = ["Unit 10", "Unit 2", "Unit 1"].map((unitId, index) => ({
+      ...fixture,
+      id: `chemistry-u${String(index + 1).padStart(2, "0")}-001`,
+      unitId,
+      unitTitle: `${unitId}: Ordered fixture`,
+    }));
+    expect(unitsForSubject(questions, "chemistry").map((unit) => unit.unitId)).toEqual(["Unit 1", "Unit 2", "Unit 10"]);
   });
 
   it("upgrades only a staged packaged bank from a prior bundled catalog", () => {
