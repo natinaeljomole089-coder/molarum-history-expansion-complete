@@ -48,3 +48,5 @@
 - [x] Locate and verify an authoritative Grade 10 History source before adding any History questions.
 - [ ] Create up to six source-bounded History units totaling no more than 240 questions, with canonical validation and duplicate screening.
 - [ ] Safely merge accepted History units, verify packaged-bank migration and application integration, and document the History continuation result.
+- [ ] Create a new private GitHub repository and upload the complete current Molarum project source snapshot.
+- [ ] Verify the uploaded repository and document the managed Publish workflow required before an APK can be attached as a GitHub release asset.
