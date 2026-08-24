@@ -2,6 +2,8 @@
 
 Molarum is an Android-capable Grade 10 revision library with an **offline-first** default. Students can select validated source-grounded units, complete one-question-at-a-time practice quizzes, read immediate explanations, keep optional learner records on their device, and export score history as PDF. An optional Supabase account layer adds explicit cross-device sync and validated shared content without replacing local use.
 
+> **Android APK status:** The complete source is available in this private repository, but no APK release asset has been uploaded yet. Use the project workspace’s managed **Publish** action to produce the Android package, then add that downloaded file to the repository’s **Releases** page. See [APK_RELEASE_GUIDE.md](./APK_RELEASE_GUIDE.md) for the exact release and installation path.
+
 ## Features
 
 | Area | Current behavior |
@@ -11,7 +13,7 @@ Molarum is an Android-capable Grade 10 revision library with an **offline-first*
 | Content status | Bundled items remain structurally validated and source-grounded; the legacy `ai_draft` field is retained only for schema compatibility. |
 | Learner privacy | Records stay on-device by default. Signed-in users choose when to sync their own records or upload a private report. |
 | Exports | User-triggered PDF score-history export and JSON/Markdown content-document exports. |
-| Offline behavior | A 1,720-question source-grounded bank is bundled for Chemistry, Physics, Biology, Mathematics, Geography, Citizenship, Economics, and Health & PE; local imports can still replace it on a device. |
+| Offline behavior | A 1,840-question source-grounded bank is bundled for Chemistry, Physics, Biology, Mathematics, Geography, Citizenship, Economics, Health & PE, and History; local imports can still replace it on a device. |
 | Optional Supabase layer | Email accounts, private learner-record sync, validated question-bank publishing, and private source/report storage protected by Row Level Security. |
 
 ## Development
@@ -28,7 +30,7 @@ The configured Supabase project uses an Expo-safe Project URL and **publishable*
 
 ## Content Status
 
-Molarum now bundles 1,720 structurally validated, source-grounded questions across six Chemistry, six Physics, six Biology, all seven Mathematics units, all eight Geography units, all eight Citizenship units, and Unit 1 for Economics and Health & PE. Geography Unit 3 and Citizenship Unit 6 were accepted in continuation batch 1 after source-boundary checks, visual-source exclusions, numerical checks, duplicate screening, and canonical validation. Economics Unit 2 is the next documented source-bounded batch; Health & PE Units 2–8 and History remain unresolved rather than being filled with unsupported content. The external delivery package at `/home/ubuntu/grade10_question_bank_delivery/` contains source copies, checksums, reports, accepted units, the preserved 1,640-question baseline, and the merged delivery bank. See [`content/manifest.json`](./content/manifest.json), [`content/pending_subject_source_catalog.json`](./content/pending_subject_source_catalog.json), and [`content/review_issues.md`](./content/review_issues.md).
+Molarum now bundles **1,840 structurally validated, source-grounded questions across 46 units**: six Chemistry, six Physics, six Biology, all seven Mathematics units, all eight Geography units, all eight Citizenship units, Economics Units 1–3, Health & PE Unit 1, and History Unit 1. Existing packaged installs upgrade safely to the bundled catalog while imported banks remain intact. The external delivery package contains source copies, checksums, reports, accepted continuation units, preserved baseline archives, and merged delivery banks. See [`content/manifest.json`](./content/manifest.json), [`content/pending_subject_source_catalog.json`](./content/pending_subject_source_catalog.json), and [`content/review_issues.md`](./content/review_issues.md).
 
 ## Android Delivery
 

@@ -50,3 +50,4 @@
 - [ ] Safely merge accepted History units, verify packaged-bank migration and application integration, and document the History continuation result.
 - [x] Create a new private GitHub repository and upload the complete current Molarum project source snapshot.
 - [x] Verify the uploaded repository and document the managed Publish workflow required before an APK can be attached as a GitHub release asset.
+- [ ] Add and publish a clear GitHub-facing explanation of Molarum’s APK status, managed build workflow, installation path, and release process.
