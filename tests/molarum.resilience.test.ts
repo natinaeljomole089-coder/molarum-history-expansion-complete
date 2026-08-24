@@ -41,7 +41,7 @@ describe("Molarum resilience helpers", () => {
     expect(isResumableQuiz(session, "chemistry::Unit 1", questions, "molarum-imported_draft-replaced")).toBe(false);
   });
 
-  it("upgrades only a staged packaged bank from a prior bundled catalog", () => {
+  it("upgrades every older staged packaged bank but leaves imports and the current bundle unchanged", () => {
     const validated = validateQuestionBank(makeBank());
     expect(validated.ok).toBe(true);
     if (!validated.ok) return;
@@ -59,6 +59,9 @@ describe("Molarum resilience helpers", () => {
     expect(shouldUpgradeStagedPackagedBank({ ...priorPackaged, descriptor: createBankDescriptor(validated.value, "packaged_validated") })).toBe(true);
     validated.value.bank.sourceCatalogVersion = "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-3";
     expect(shouldUpgradeStagedPackagedBank({ ...priorPackaged, descriptor: createBankDescriptor(validated.value, "packaged_validated") })).toBe(true);
+    validated.value.bank.sourceCatalogVersion = "legacy-packaged-build-not-in-version-list";
+    expect(shouldUpgradeStagedPackagedBank({ ...priorPackaged, descriptor: createBankDescriptor(validated.value, "packaged_validated") })).toBe(true);
+    expect(shouldUpgradeStagedPackagedBank({ ...priorPackaged, descriptor: createBankDescriptor(validated.value, "imported_draft") })).toBe(false);
     validated.value.bank.sourceCatalogVersion = "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-4";
     expect(shouldUpgradeStagedPackagedBank({ ...priorPackaged, descriptor: createBankDescriptor(validated.value, "packaged_validated") })).toBe(false);
   });

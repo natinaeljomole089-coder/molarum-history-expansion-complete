@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import bundledQuestionBank from "@/assets/question-banks/grade10-source-grounded-bank.json";
-import { createBankDescriptor, PRIOR_BUNDLED_SOURCE_CATALOGS, readActiveBankRecord, shouldUpgradeStagedPackagedBank, stageAndActivateBank, type KeyValueStore } from "./bank-storage";
+import { createBankDescriptor, CURRENT_BUNDLED_SOURCE_CATALOG, PRIOR_BUNDLED_SOURCE_CATALOGS, readActiveBankRecord, shouldUpgradeStagedPackagedBank, stageAndActivateBank, type KeyValueStore } from "./bank-storage";
 import { subjectIdForQuestion } from "./catalog";
 import { validateQuestionBank } from "./validator";
 import type {
@@ -21,7 +21,7 @@ const EMPTY_PROFILE: LearnerProfile = { name: "", className: "", school: "" };
 const bundledBankValidation = validateQuestionBank(bundledQuestionBank);
 const BUNDLED_BANK: ValidatedQuestionBank | null = bundledBankValidation.ok ? bundledBankValidation.value : null;
 const BUNDLED_DESCRIPTOR = BUNDLED_BANK ? createBankDescriptor(BUNDLED_BANK, "packaged_validated") : null;
-const KNOWN_BUNDLED_SOURCE_CATALOGS = new Set([...PRIOR_BUNDLED_SOURCE_CATALOGS, "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-4"]);
+const KNOWN_BUNDLED_SOURCE_CATALOGS = new Set([...PRIOR_BUNDLED_SOURCE_CATALOGS, CURRENT_BUNDLED_SOURCE_CATALOG]);
 
 interface StoredState {
   activeBank: ValidatedQuestionBank | null;
@@ -81,7 +81,8 @@ function parseStoredState(value: string | null): StoredState {
   try {
     const parsed = JSON.parse(value) as Partial<StoredState> & { activeBankOrigin?: unknown };
     const savedBank = parsed.activeBank?.bank && parsed.activeBank?.report ? parsed.activeBank : null;
-    const shouldUpgradePriorBundle = Boolean(savedBank && PRIOR_BUNDLED_SOURCE_CATALOGS.has(savedBank.bank.sourceCatalogVersion));
+    const savedOrigin = parsed.bankDescriptor?.origin ?? parsed.activeBankOrigin;
+    const shouldUpgradePriorBundle = Boolean(savedBank && (PRIOR_BUNDLED_SOURCE_CATALOGS.has(savedBank.bank.sourceCatalogVersion) || savedOrigin === "packaged_validated"));
     const activeBank = shouldUpgradePriorBundle ? BUNDLED_BANK : savedBank ?? BUNDLED_BANK;
     const bankDescriptor = shouldUpgradePriorBundle ? BUNDLED_DESCRIPTOR : parsed.bankDescriptor ?? legacyDescriptor(activeBank, parsed.activeBankOrigin);
     return {
