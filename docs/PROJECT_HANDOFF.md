@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Molarum is an offline-first Grade 10 revision library for Android. It bundles validated questions, keeps learner progress on-device, supports resumable practice, and presents a premium dark student experience. The current catalog is **1,920 questions across 48 units**.
+Molarum is an offline-first Grade 10 revision library for Android. It bundles validated questions, keeps learner progress on-device, supports resumable practice, and presents a premium dark student experience. The current catalog is **1,960 questions across 49 units**.
 
 ## Where to start
 
@@ -25,7 +25,7 @@ The student app exposes **Library**, **Tools**, and **Profile** only. Retired Re
 
 Questions must come only from an approved Grade 10 textbook boundary. Build one complete 40-question unit at a time, validate it in isolation, screen it for duplicates, preserve the prior active bank, then update migration and provenance. The reusable workflow skill is the canonical operating guide.
 
-> **History status:** The owner-approved History textbook is available. History Units 1–3 are bundled; Units 4–6 remain source-bounded continuation work rather than unsupported placeholder content.
+> **History status:** The owner-approved History textbook is available. History Units 1–4 are bundled; Units 5–6 remain source-bounded continuation work rather than unsupported placeholder content.
 
 ## Validation commands
 

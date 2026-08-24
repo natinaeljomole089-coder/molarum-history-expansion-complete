@@ -6,7 +6,7 @@ import { AccessibilityInfo, ActivityIndicator, Alert, Pressable, ScrollView, Sty
 import { useColors } from "@/hooks/use-colors";
 import { unitByKey } from "@/lib/molarum/catalog";
 import { filterQuizQuestions } from "@/lib/molarum/filters";
-import { isAnswerCorrect, secondsToClock } from "@/lib/molarum/quiz";
+import { correctCountAfterSubmission, isAnswerCorrect, secondsToClock } from "@/lib/molarum/quiz";
 import { isResumableQuiz } from "@/lib/molarum/quiz-session";
 import { useStudyLibrary } from "@/lib/molarum/provider";
 import type { Difficulty } from "@/lib/molarum/types";
@@ -31,6 +31,7 @@ export default function QuizScreen() {
   const [response, setResponse] = useState(savedQuiz?.response ?? "");
   const [submitted, setSubmitted] = useState(savedQuiz?.submitted ?? false);
   const [correctCount, setCorrectCount] = useState(savedQuiz?.correctCount ?? 0);
+  const correctCountRef = useRef(savedQuiz?.correctCount ?? 0);
   const [elapsedSeconds, setElapsedSeconds] = useState(savedQuiz?.elapsedSeconds ?? 0);
   const startedAt = useRef(savedQuiz?.startedAt ?? new Date().toISOString());
   const elapsedRef = useRef(savedQuiz?.elapsedSeconds ?? 0);
@@ -43,6 +44,7 @@ export default function QuizScreen() {
   const correct = question ? isAnswerCorrect(question, response) : false;
   const effectiveTimed = savedQuiz?.timed ?? timed;
   const initializedSessionKey = useRef<string | null>(null);
+  const [sessionHydrated, setSessionHydrated] = useState(false);
 
   useEffect(() => {
     const sessionKey = `${unitKey}:${bankDescriptor?.bankId ?? ""}`;
@@ -52,29 +54,33 @@ export default function QuizScreen() {
       setIndex(0);
       setResponse("");
       setSubmitted(false);
+      correctCountRef.current = 0;
       setCorrectCount(0);
       setElapsedSeconds(0);
       startedAt.current = new Date().toISOString();
       elapsedRef.current = 0;
       submittingRef.current = false;
       announcedAnswer.current = "";
+      setSessionHydrated(true);
       return;
     }
     setIndex(savedQuiz.index);
     setResponse(savedQuiz.response);
     setSubmitted(savedQuiz.submitted);
+    correctCountRef.current = savedQuiz.correctCount;
     setCorrectCount(savedQuiz.correctCount);
     setElapsedSeconds(savedQuiz.elapsedSeconds);
     startedAt.current = savedQuiz.startedAt;
     elapsedRef.current = savedQuiz.elapsedSeconds;
     submittingRef.current = false;
     announcedAnswer.current = "";
+    setSessionHydrated(true);
   }, [bankDescriptor?.bankId, ready, savedQuiz, unitKey]);
 
   const persistProgress = useCallback((elapsed: number) => {
-    if (completingRef.current || !unit || !queue.length || !question) return;
-    saveInProgressQuiz({ unitKey, unitTitle: unit.unitTitle, difficulty: savedQuiz?.difficulty ?? selectedDifficulty, timed: savedQuiz?.timed ?? timed, queueQuestionIds: queue.map((item) => item.id), index, response, submitted, correctCount, elapsedSeconds: elapsed, startedAt: startedAt.current, updatedAt: new Date().toISOString() });
-  }, [correctCount, index, question, queue, response, saveInProgressQuiz, savedQuiz?.difficulty, savedQuiz?.timed, selectedDifficulty, submitted, timed, unit, unitKey]);
+    if (!ready || !sessionHydrated || completingRef.current || !unit || !queue.length || !question) return;
+    saveInProgressQuiz({ unitKey, unitTitle: unit.unitTitle, difficulty: savedQuiz?.difficulty ?? selectedDifficulty, timed: savedQuiz?.timed ?? timed, queueQuestionIds: queue.map((item) => item.id), index, response, submitted, correctCount: correctCountRef.current, elapsedSeconds: elapsed, startedAt: startedAt.current, updatedAt: new Date().toISOString() });
+  }, [index, question, queue, ready, response, saveInProgressQuiz, savedQuiz?.difficulty, savedQuiz?.timed, selectedDifficulty, sessionHydrated, submitted, timed, unit, unitKey]);
 
   useEffect(() => {
     if (!effectiveTimed || (submitted && index === queue.length - 1)) return;
@@ -102,7 +108,9 @@ export default function QuizScreen() {
     if (submittingRef.current || submitted || !question || !value.trim()) return;
     submittingRef.current = true;
     setResponse(value);
-    if (isAnswerCorrect(question, value)) setCorrectCount((count) => count + 1);
+    const nextCorrectCount = correctCountAfterSubmission(correctCountRef.current, question, value);
+    correctCountRef.current = nextCorrectCount;
+    setCorrectCount(nextCorrectCount);
     setSubmitted(true);
   };
   const next = () => {
@@ -111,7 +119,7 @@ export default function QuizScreen() {
       completingRef.current = true;
       setIsCompleting(true);
       try {
-        const attemptId = saveAttempt({ unitKey, unitTitle: unit?.unitTitle ?? "Unit", correct: correctCount, total: queue.length, timed: effectiveTimed, elapsedSeconds });
+        const attemptId = saveAttempt({ unitKey, unitTitle: unit?.unitTitle ?? "Unit", correct: correctCountRef.current, total: queue.length, timed: effectiveTimed, elapsedSeconds: elapsedRef.current });
         router.replace({ pathname: "/results/[attemptId]" as never, params: { attemptId } });
       } catch {
         completingRef.current = false;
@@ -128,7 +136,7 @@ export default function QuizScreen() {
     { text: "Discard session", style: "destructive", onPress: () => { discardInProgressQuiz(); router.replace({ pathname: "/unit/[unitKey]" as never, params: { unitKey } }); } },
   ]);
 
-  if (!ready) return <View style={[styles.center, { backgroundColor: colors.background }]}><ActivityIndicator color="#B66CFF" /><Text style={[styles.centerText, { color: colors.muted }]}>Restoring your practice…</Text></View>;
+  if (!ready || !sessionHydrated) return <View style={[styles.center, { backgroundColor: colors.background }]}><ActivityIndicator color="#B66CFF" /><Text style={[styles.centerText, { color: colors.muted }]}>Restoring your practice…</Text></View>;
   if (!unit || !question) return <View style={[styles.center, { backgroundColor: colors.background }]}><MaterialIcons name="quiz" size={43} color="#B66CFF" /><Text style={[styles.centerTitle, { color: colors.foreground }]}>Practice isn’t ready</Text><Text style={[styles.centerText, { color: colors.muted }]}>Choose another lesson to continue learning.</Text><Pressable onPress={() => router.replace("/")} style={styles.returnButton}><Text style={styles.returnText}>Back to Library</Text></Pressable></View>;
 
   const progress = `${((index + 1) / queue.length) * 100}%` as `${number}%`;

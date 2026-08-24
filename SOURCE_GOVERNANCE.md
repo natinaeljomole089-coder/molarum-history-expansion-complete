@@ -1,6 +1,6 @@
 # Source Governance
 
-Use `docs/CURRENT_STATE.md` and `content/manifest.json` for current catalog facts. Molarum’s protected bundled bank is `assets/question-banks/grade10-source-grounded-bank.json`. The current catalog is structurally validated, contains 1,920 questions across 48 complete units, and uses the `owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-3` catalog version. History Units 1–3 are bundled; History Units 4–6, Economics Units 4–8, and Health & PE Units 2–8 remain unresolved until individually source-bounded batches pass validation.
+Use `docs/CURRENT_STATE.md` and `content/manifest.json` for current catalog facts. Molarum’s protected bundled bank is `assets/question-banks/grade10-source-grounded-bank.json`. The current catalog is structurally validated, contains 1,960 questions across 49 complete units, and uses the `owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-4` catalog version. History Units 1–4 are bundled; History Units 5–6, Economics Units 4–8, and Health & PE Units 2–8 remain unresolved until individually source-bounded batches pass validation.
 
 Accepted-unit provenance and unresolved coverage are recorded in `content/pending_subject_source_catalog.json`. The private external delivery package preserves approved source copies, checksums, validation reports, accepted units, baseline archives, and merged delivery banks. Do not publish private source locations, credentials, or tokens in public repository metadata or release notes.
 
