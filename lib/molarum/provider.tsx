@@ -165,7 +165,22 @@ export function StudyLibraryProvider({ children }: PropsWithChildren) {
     setState((previous) => {
       const descriptor = previous.bankDescriptor;
       if (!descriptor) return previous;
-      return { ...previous, inProgressQuiz: { ...quiz, schemaVersion: 1, bankId: descriptor.bankId, bankOrigin: descriptor.origin, bankSourceCatalogVersion: descriptor.sourceCatalogVersion } };
+      const nextQuiz: InProgressQuiz = { ...quiz, schemaVersion: 1, bankId: descriptor.bankId, bankOrigin: descriptor.origin, bankSourceCatalogVersion: descriptor.sourceCatalogVersion };
+      const currentQuiz = previous.inProgressQuiz;
+      const unchanged = currentQuiz
+        && currentQuiz.unitKey === nextQuiz.unitKey
+        && currentQuiz.unitTitle === nextQuiz.unitTitle
+        && currentQuiz.difficulty === nextQuiz.difficulty
+        && currentQuiz.timed === nextQuiz.timed
+        && currentQuiz.index === nextQuiz.index
+        && currentQuiz.response === nextQuiz.response
+        && currentQuiz.submitted === nextQuiz.submitted
+        && currentQuiz.correctCount === nextQuiz.correctCount
+        && currentQuiz.elapsedSeconds === nextQuiz.elapsedSeconds
+        && currentQuiz.startedAt === nextQuiz.startedAt
+        && currentQuiz.bankId === nextQuiz.bankId
+        && currentQuiz.queueQuestionIds.join("|") === nextQuiz.queueQuestionIds.join("|");
+      return unchanged ? previous : { ...previous, inProgressQuiz: nextQuiz };
     });
   }, []);
 

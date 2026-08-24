@@ -62,3 +62,6 @@
 - [x] Author, validate, duplicate-screen, and safely merge 40-question source-grounded continuation batches for History Units 2 and 3.
 - [ ] Author and validate up to 40 source-grounded questions for each remaining History unit, preserving exact type and difficulty distributions.
 - [ ] Duplicate-screen, merge, migrate, verify, and document accepted History Units 2–6 without altering existing validated questions.
+- [x] Reproduce and diagnose quiz freezes, closures, slow loading, and unresponsive Next actions without modifying validated content or local learner records.
+- [x] Stabilize quiz interaction, transition, persistence, error recovery, and performance while preserving answer validation and resume behavior.
+- [x] Validate the repaired quiz flow across answer types, navigation, results, resume, and compact Android layouts.

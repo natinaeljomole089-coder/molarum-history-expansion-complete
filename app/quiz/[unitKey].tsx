@@ -23,7 +23,10 @@ export default function QuizScreen() {
   const eligibleQueue = useMemo(() => filterQuizQuestions(unit?.questions ?? [], selectedDifficulty), [unit, selectedDifficulty]);
   const savedQuiz = isResumableQuiz(inProgressQuiz, unitKey, questions, bankDescriptor?.bankId ?? null) ? inProgressQuiz : null;
   const staleDraft = inProgressQuiz?.unitKey === unitKey && Boolean(inProgressQuiz) && !savedQuiz;
-  const queue = useMemo(() => savedQuiz ? savedQuiz.queueQuestionIds.map((id) => questions.find((question) => question.id === id)).filter((question): question is NonNullable<typeof question> => Boolean(question)) : eligibleQueue, [eligibleQueue, questions, savedQuiz]);
+  const questionById = useMemo(() => new Map(questions.map((item) => [item.id, item])), [questions]);
+  const savedQueueKey = savedQuiz?.queueQuestionIds.join("|") ?? "";
+  const hasSavedQuiz = Boolean(savedQuiz);
+  const queue = useMemo(() => hasSavedQuiz ? savedQueueKey.split("|").map((id) => questionById.get(id)).filter((item): item is NonNullable<typeof item> => Boolean(item)) : eligibleQueue, [eligibleQueue, hasSavedQuiz, questionById, savedQueueKey]);
   const [index, setIndex] = useState(savedQuiz?.index ?? 0);
   const [response, setResponse] = useState(savedQuiz?.response ?? "");
   const [submitted, setSubmitted] = useState(savedQuiz?.submitted ?? false);
@@ -32,12 +35,16 @@ export default function QuizScreen() {
   const startedAt = useRef(savedQuiz?.startedAt ?? new Date().toISOString());
   const elapsedRef = useRef(savedQuiz?.elapsedSeconds ?? 0);
   const announcedAnswer = useRef("");
+  const submittingRef = useRef(false);
+  const completingRef = useRef(false);
+  const progressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isCompleting, setIsCompleting] = useState(false);
   const question = queue[index];
   const correct = question ? isAnswerCorrect(question, response) : false;
   const effectiveTimed = savedQuiz?.timed ?? timed;
 
   const persistProgress = useCallback((elapsed: number) => {
-    if (!unit || !queue.length || !question) return;
+    if (completingRef.current || !unit || !queue.length || !question) return;
     saveInProgressQuiz({ unitKey, unitTitle: unit.unitTitle, difficulty: savedQuiz?.difficulty ?? selectedDifficulty, timed: savedQuiz?.timed ?? timed, queueQuestionIds: queue.map((item) => item.id), index, response, submitted, correctCount, elapsedSeconds: elapsed, startedAt: startedAt.current, updatedAt: new Date().toISOString() });
   }, [correctCount, index, question, queue, response, saveInProgressQuiz, savedQuiz?.difficulty, savedQuiz?.timed, selectedDifficulty, submitted, timed, unit, unitKey]);
 
@@ -54,23 +61,38 @@ export default function QuizScreen() {
     announcedAnswer.current = key;
     void AccessibilityInfo.announceForAccessibility(correct ? "Correct answer." : `Not correct. The answer is ${question.answer}.`);
   }, [correct, question, response, submitted]);
-  useEffect(() => { persistProgress(elapsedRef.current); }, [correctCount, index, persistProgress, response, submitted]);
+  useEffect(() => {
+    if (progressTimerRef.current) clearTimeout(progressTimerRef.current);
+    progressTimerRef.current = setTimeout(() => persistProgress(elapsedRef.current), submitted ? 0 : 300);
+    return () => {
+      if (progressTimerRef.current) clearTimeout(progressTimerRef.current);
+    };
+  }, [correctCount, index, persistProgress, response, submitted]);
   useEffect(() => { if (effectiveTimed && elapsedSeconds > 0 && elapsedSeconds % 15 === 0) persistProgress(elapsedSeconds); }, [effectiveTimed, elapsedSeconds, persistProgress]);
 
   const submit = (value = response) => {
-    if (!question || !value.trim()) return;
+    if (submittingRef.current || submitted || !question || !value.trim()) return;
+    submittingRef.current = true;
     setResponse(value);
     if (isAnswerCorrect(question, value)) setCorrectCount((count) => count + 1);
     setSubmitted(true);
   };
   const next = () => {
-    if (!question) return;
+    if (completingRef.current || !question) return;
     if (index === queue.length - 1) {
-      const attemptId = saveAttempt({ unitKey, unitTitle: unit?.unitTitle ?? "Unit", correct: correctCount, total: queue.length, timed: effectiveTimed, elapsedSeconds });
-      router.replace({ pathname: "/results/[attemptId]" as never, params: { attemptId } });
+      completingRef.current = true;
+      setIsCompleting(true);
+      try {
+        const attemptId = saveAttempt({ unitKey, unitTitle: unit?.unitTitle ?? "Unit", correct: correctCount, total: queue.length, timed: effectiveTimed, elapsedSeconds });
+        router.replace({ pathname: "/results/[attemptId]" as never, params: { attemptId } });
+      } catch {
+        completingRef.current = false;
+        setIsCompleting(false);
+        Alert.alert("Could not save results", "Your quiz is still open. Please try the results button again.");
+      }
       return;
     }
-    setIndex((value) => value + 1); setResponse(""); setSubmitted(false); announcedAnswer.current = "";
+    setIndex((value) => value + 1); setResponse(""); setSubmitted(false); submittingRef.current = false; announcedAnswer.current = "";
   };
   const exit = () => Alert.alert("Leave practice?", "Your answers are saved on this device. You can continue this session later.", [
     { text: "Keep practicing", style: "cancel" },
@@ -94,7 +116,7 @@ export default function QuizScreen() {
       const background = revealCorrect ? "#153B35" : revealWrong ? "#3A1E2A" : selected ? "#28204D" : colors.surface;
       return <Pressable key={option} disabled={submitted} accessibilityRole="button" accessibilityState={{ selected, disabled: submitted }} accessibilityLabel={`Answer ${String.fromCharCode(65 + optionIndex)}: ${option}`} onPress={() => submit(option)} style={({ pressed }) => [styles.option, { borderColor: border, backgroundColor: background }, pressed && !submitted && styles.pressed]}><View style={[styles.optionLetter, { backgroundColor: selected ? border : "#182039" }]}><Text style={styles.optionLetterText}>{String.fromCharCode(65 + optionIndex)}</Text></View><Text style={[styles.optionText, { color: colors.foreground }]}>{option}</Text>{revealCorrect ? <MaterialIcons name="check-circle" size={20} color="#6EE7B7" /> : null}{revealWrong ? <MaterialIcons name="cancel" size={20} color="#FB7185" /> : null}</Pressable>;
     })}</View> : <View style={styles.responseArea}><TextInput value={response} editable={!submitted} onChangeText={setResponse} placeholder={question.type === "numerical" ? "Enter your answer" : "Write your answer"} placeholderTextColor={colors.muted} style={[styles.responseInput, { borderColor: colors.border, backgroundColor: colors.surface, color: colors.foreground }]} multiline={question.type === "short_answer"} returnKeyType="done" accessibilityLabel="Your answer" />{!submitted ? <Pressable disabled={!response.trim()} onPress={() => submit()} style={({ pressed }) => [styles.checkButton, { opacity: response.trim() ? 1 : 0.5 }, pressed && styles.pressed]}><Text style={styles.checkText}>Check answer</Text></Pressable> : null}</View>}
-    {submitted ? <View style={styles.feedbackArea}><View style={[styles.feedbackCard, { backgroundColor: correct ? "#143A34" : "#3A1D29", borderColor: correct ? "#2F9B78" : "#8D3B55" }]}><MaterialIcons name={correct ? "celebration" : "lightbulb"} size={23} color={correct ? "#6EE7B7" : "#FFB26B"} /><View style={styles.feedbackCopy}><Text style={[styles.feedbackTitle, { color: correct ? "#8AF0C2" : "#FFD4A8" }]}>{correct ? "Correct!" : "Not quite"}</Text>{!correct ? <Text style={[styles.answerText, { color: colors.foreground }]}>Answer: {question.answer}</Text> : null}</View></View><View style={[styles.explanationCard, { backgroundColor: colors.surface, borderColor: colors.border }]}><Text style={[styles.explanationLabel, { color: "#B66CFF" }]}>WHY THIS ANSWER</Text><Text style={[styles.explanationText, { color: colors.muted }]}>{question.explanation}</Text></View><Pressable onPress={next} accessibilityRole="button" style={({ pressed }) => [styles.nextButton, pressed && styles.pressed]}><Text style={styles.nextText}>{index === queue.length - 1 ? "See my results" : "Next question"}</Text><MaterialIcons name="arrow-forward" size={21} color="#FFFFFF" /></Pressable></View> : null}
+    {submitted ? <View style={styles.feedbackArea}><View style={[styles.feedbackCard, { backgroundColor: correct ? "#143A34" : "#3A1D29", borderColor: correct ? "#2F9B78" : "#8D3B55" }]}><MaterialIcons name={correct ? "celebration" : "lightbulb"} size={23} color={correct ? "#6EE7B7" : "#FFB26B"} /><View style={styles.feedbackCopy}><Text style={[styles.feedbackTitle, { color: correct ? "#8AF0C2" : "#FFD4A8" }]}>{correct ? "Correct!" : "Not quite"}</Text>{!correct ? <Text style={[styles.answerText, { color: colors.foreground }]}>Answer: {question.answer}</Text> : null}</View></View><View style={[styles.explanationCard, { backgroundColor: colors.surface, borderColor: colors.border }]}><Text style={[styles.explanationLabel, { color: "#B66CFF" }]}>WHY THIS ANSWER</Text><Text style={[styles.explanationText, { color: colors.muted }]}>{question.explanation}</Text></View><Pressable onPress={next} disabled={isCompleting} accessibilityRole="button" accessibilityState={{ disabled: isCompleting }} style={({ pressed }) => [styles.nextButton, isCompleting && styles.nextDisabled, pressed && !isCompleting && styles.pressed]}><Text style={styles.nextText}>{isCompleting ? "Saving results…" : index === queue.length - 1 ? "See my results" : "Next question"}</Text><MaterialIcons name={isCompleting ? "hourglass-top" : "arrow-forward"} size={21} color="#FFFFFF" /></Pressable></View> : null}
   </ScrollView></View>;
 }
 
@@ -110,5 +132,5 @@ const styles = StyleSheet.create({
   responseArea: { gap: 10 }, responseInput: { borderRadius: 17, borderWidth: 1, fontSize: 15, minHeight: 100, padding: 14, textAlignVertical: "top" }, checkButton: { alignItems: "center", backgroundColor: "#FF8A1F", borderRadius: 16, justifyContent: "center", minHeight: 52 }, checkText: { color: "#FFFFFF", fontSize: 15, fontWeight: "900" },
   feedbackArea: { gap: 11 }, feedbackCard: { alignItems: "center", borderRadius: 18, borderWidth: 1, flexDirection: "row", gap: 11, padding: 14 }, feedbackCopy: { flex: 1, gap: 2 }, feedbackTitle: { fontSize: 16, fontWeight: "900" }, answerText: { fontSize: 13, fontWeight: "700" },
   explanationCard: { borderRadius: 18, borderWidth: 1, gap: 7, padding: 14 }, explanationLabel: { fontSize: 10, fontWeight: "900", letterSpacing: 1.1 }, explanationText: { fontSize: 13, lineHeight: 20 }, nextButton: { alignItems: "center", backgroundColor: "#FF8A1F", borderRadius: 18, flexDirection: "row", justifyContent: "center", minHeight: 56, paddingHorizontal: 18 }, nextText: { color: "#FFFFFF", flex: 1, fontSize: 16, fontWeight: "900", textAlign: "center" },
-  center: { alignItems: "center", flex: 1, gap: 11, justifyContent: "center", padding: 24 }, centerTitle: { fontSize: 20, fontWeight: "900" }, centerText: { fontSize: 13, textAlign: "center" }, returnButton: { backgroundColor: "#FF8A1F", borderRadius: 15, marginTop: 4, paddingHorizontal: 18, paddingVertical: 13 }, returnText: { color: "#FFFFFF", fontWeight: "900" }, pressed: { opacity: 0.8, transform: [{ scale: 0.98 }] },
+  center: { alignItems: "center", flex: 1, gap: 11, justifyContent: "center", padding: 24 }, centerTitle: { fontSize: 20, fontWeight: "900" }, centerText: { fontSize: 13, textAlign: "center" }, returnButton: { backgroundColor: "#FF8A1F", borderRadius: 15, marginTop: 4, paddingHorizontal: 18, paddingVertical: 13 }, returnText: { color: "#FFFFFF", fontWeight: "900" }, nextDisabled: { opacity: 0.65 }, pressed: { opacity: 0.8, transform: [{ scale: 0.98 }] },
 });
