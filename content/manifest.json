@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "packageStatus": "bundled_source_grounded_bank",
-  "generatedAt": "2026-08-23T11:31:41.557Z",
+  "generatedAt": "2026-08-24T12:31:11.569Z",
   "sourceCatalog": {
     "origin": "owner-connected Google Drive",
     "questionBankFileId": "1j5vHbsGHnkkrns9OiVx1jBcPy4jPOW7D",
@@ -12,9 +12,9 @@
   },
   "bundledBank": {
     "status": "structurally_validated_source_grounded",
-    "questionCount": 1800,
-    "unitCount": 45,
-    "sourceCatalogVersion": "owner-drive-grade10-textbooks-2026-08-23-full-expanded-continuation-3",
+    "questionCount": 1840,
+    "unitCount": 46,
+    "sourceCatalogVersion": "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-1",
     "validationRule": "Each completed unit contains 40 questions: 20 multiple choice, 4 true/false, 8 short answer, and 8 numerical; difficulty split 14 easy, 18 medium, and 8 hard.",
     "reviewStatus": "ai_draft"
   },
@@ -24,7 +24,7 @@
     { "id": "biology", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"] },
     { "id": "mathematics", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6", "Unit 7"] },
     { "id": "geography", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6", "Unit 7", "Unit 8"] },
-    { "id": "history", "status": "unresolved_after_retries_or_capacity", "validatedUnits": [] },
+    { "id": "history", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"], "unresolvedUnits": [{ "unit": "Units 2–6", "reason": "The owner-approved History textbook is available; later units require their own source-bounded authoring and validation batches." }] },
     { "id": "citizenship", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6", "Unit 7", "Unit 8"] },
     { "id": "economics", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1", "Unit 2", "Unit 3"], "unresolvedUnits": [{ "unit": "Units 4–8", "reason": "Approved source exists, but no later unit has been prepared as a source-bounded continuation batch." }] },
     { "id": "health_pe", "status": "bundled_structurally_validated", "validatedUnits": ["Unit 1"], "unresolvedUnits": [{ "unit": "Units 2–8", "reason": "No structurally usable source-only generation response was available during the documented retry; no questions were bundled." }] }

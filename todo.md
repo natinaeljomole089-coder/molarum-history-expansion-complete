@@ -45,3 +45,6 @@
 - [x] Assess approved Grade 10 History source availability and identify the next eligible source-backed subject units for offline question-bank expansion.
 - [x] Generate only source-grounded continuation batches, validate and deduplicate them, and preserve the existing 1,720-question bank as the baseline.
 - [x] Verify the expanded bank and app integration, then document the accepted continuation package and results.
+- [x] Locate and verify an authoritative Grade 10 History source before adding any History questions.
+- [ ] Create up to six source-bounded History units totaling no more than 240 questions, with canonical validation and duplicate screening.
+- [ ] Safely merge accepted History units, verify packaged-bank migration and application integration, and document the History continuation result.

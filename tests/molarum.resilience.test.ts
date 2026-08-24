@@ -54,6 +54,8 @@ describe("Molarum resilience helpers", () => {
     validated.value.bank.sourceCatalogVersion = "owner-drive-grade10-textbooks-2026-08-23-full-expanded-continuation-2";
     expect(shouldUpgradeStagedPackagedBank({ ...priorPackaged, descriptor: createBankDescriptor(validated.value, "packaged_validated") })).toBe(true);
     validated.value.bank.sourceCatalogVersion = "owner-drive-grade10-textbooks-2026-08-23-full-expanded-continuation-3";
+    expect(shouldUpgradeStagedPackagedBank({ ...priorPackaged, descriptor: createBankDescriptor(validated.value, "packaged_validated") })).toBe(true);
+    validated.value.bank.sourceCatalogVersion = "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-1";
     expect(shouldUpgradeStagedPackagedBank({ ...priorPackaged, descriptor: createBankDescriptor(validated.value, "packaged_validated") })).toBe(false);
   });
 

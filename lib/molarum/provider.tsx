@@ -21,7 +21,7 @@ const EMPTY_PROFILE: LearnerProfile = { name: "", className: "", school: "" };
 const bundledBankValidation = validateQuestionBank(bundledQuestionBank);
 const BUNDLED_BANK: ValidatedQuestionBank | null = bundledBankValidation.ok ? bundledBankValidation.value : null;
 const BUNDLED_DESCRIPTOR = BUNDLED_BANK ? createBankDescriptor(BUNDLED_BANK, "packaged_validated") : null;
-const KNOWN_BUNDLED_SOURCE_CATALOGS = new Set([...PRIOR_BUNDLED_SOURCE_CATALOGS, "owner-drive-grade10-textbooks-2026-08-23-full-expanded-continuation-3"]);
+const KNOWN_BUNDLED_SOURCE_CATALOGS = new Set([...PRIOR_BUNDLED_SOURCE_CATALOGS, "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-1"]);
 
 interface StoredState {
   activeBank: ValidatedQuestionBank | null;

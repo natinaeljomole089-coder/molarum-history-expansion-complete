@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-23T11:31:41.557Z",
+  "generatedAt": "2026-08-24T12:31:11.569Z",
   "origin": "owner-connected Google Drive",
   "validatedUnits": [
     {
@@ -105,13 +105,23 @@
       "externalDeliveryUnit": "/home/ubuntu/grade10_question_bank_delivery/units/economics_unit_3_questions.json",
       "questionCount": 40,
       "sourceBoundary": "Printed Unit 3 text; local extraction lines 3187–4320; questions use only explicit narrative definitions, properties, schedules, equations, and worked values from the approved excerpt."
+    },
+    {
+      "subject": "History",
+      "unit": "Unit 1: Development of Capitalism and Nationalism 1815 to 1914",
+      "driveFileId": "1MZnlWcoxQGe8Hj9g3OLRtyuYlbVBKb90",
+      "driveFileName": "grade-10-history-new-curriculum--student-textbook-kehulumcom1759927358e997.pdf",
+      "questionFile": "assets/question-banks/grade10-source-grounded-bank.json",
+      "questionCount": 40,
+      "sourceBoundary": "Printed Unit 1 text; local extraction lines 269–1071; questions use only explicit definitions, events, named actors, stated relationships, and dates from the owner-approved excerpt."
     }
   ],
   "unresolved": [
     {
       "subject": "History",
+      "unit": "Units 2–6",
       "status": "unresolved_after_retries_or_capacity",
-      "reason": "No owner-approved Grade 10 History textbook was found in the connected Drive search; no questions were generated."
+      "reason": "An owner-approved Grade 10 History textbook is now available; Units 2–6 remain queued for individual source-bounded authoring and validation batches."
     },
     {
       "subject": "Economics",
