@@ -1,4 +1,6 @@
-# Molarum Baseline and Verification Record
+# Molarum Baseline and Verification Record — Historical Snapshot
+
+> **Historical record:** This document describes a pre-redesign, pre-expansion baseline. Use `docs/CURRENT_STATE.md` and `docs/RELEASE_READINESS_AUDIT_2026-08-24.md` for current facts.
 
 **Recorded:** 2026-08-22
 

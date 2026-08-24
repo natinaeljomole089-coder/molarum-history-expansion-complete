@@ -1,4 +1,6 @@
-# Canonical Bank and Recovery Release Verification
+# Canonical Bank and Recovery Release Verification — Historical Snapshot
+
+> **Historical record:** This document contains verification evidence for a retired route and earlier catalog state. Use `docs/CURRENT_STATE.md` and `docs/RELEASE_CHECKLIST.md` for current release guidance.
 
 **Baseline checkpoint:** `d70c29a8`  
 **Verification date:** 2026-08-22

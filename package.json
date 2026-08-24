@@ -1,5 +1,5 @@
 {
-  "name": "app-template",
+  "name": "molarum-grade10-study-library",
   "version": "1.0.0",
   "private": true,
   "main": "expo-router/entry",
@@ -17,7 +17,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "qr": "node scripts/generate_qr.mjs",
-    "validate:bank": "tsx scripts/validate-question-bank.ts"
+    "validate:bank": "tsx scripts/validate-question-bank.ts",
+    "content:summary": "node scripts/generate-content-summary.mjs"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",

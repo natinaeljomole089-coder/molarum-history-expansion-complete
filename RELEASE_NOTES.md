@@ -1,4 +1,6 @@
-# Release Notes — Android Preparation
+# Release Notes — Android Preparation — Historical Snapshot
+
+> **Historical record:** This document describes an earlier 1,720-question continuation checkpoint. Use `docs/CURRENT_STATE.md` for current product and catalog facts.
 
 ## Scope completed
 

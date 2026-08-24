@@ -1,0 +1,899 @@
+{
+  "generatedAt": "2026-08-24T13:28:52.157Z",
+  "sourceCatalogVersion": "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-1",
+  "questionCount": 1840,
+  "unitCount": 46,
+  "units": [
+    {
+      "subject": "biology",
+      "unitId": "Unit 1",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "biology",
+      "unitId": "Unit 2",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "biology",
+      "unitId": "Unit 3",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "medium": 18,
+        "easy": 14,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "biology",
+      "unitId": "Unit 4",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "biology",
+      "unitId": "Unit 5",
+      "questionCount": 40,
+      "types": {
+        "short_answer": 8,
+        "multiple_choice": 20,
+        "true_false": 4,
+        "numerical": 8
+      },
+      "difficulties": {
+        "medium": 18,
+        "easy": 14,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "biology",
+      "unitId": "Unit 6",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "numerical": 8,
+        "short_answer": 8,
+        "true_false": 4
+      },
+      "difficulties": {
+        "medium": 18,
+        "easy": 14,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "chemistry",
+      "unitId": "Unit 1",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "chemistry",
+      "unitId": "Unit 2",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "chemistry",
+      "unitId": "Unit 3",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "chemistry",
+      "unitId": "Unit 4",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "chemistry",
+      "unitId": "Unit 5",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "chemistry",
+      "unitId": "Unit 6",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "short_answer": 8,
+        "numerical": 8,
+        "true_false": 4
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "citizenship",
+      "unitId": "Unit 1",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "hard": 8,
+        "medium": 18
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "citizenship",
+      "unitId": "Unit 2",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "citizenship",
+      "unitId": "Unit 3",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "citizenship",
+      "unitId": "Unit 4",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "citizenship",
+      "unitId": "Unit 5",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "medium": 18,
+        "easy": 14,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "citizenship",
+      "unitId": "Unit 6",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "citizenship",
+      "unitId": "Unit 7",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "citizenship",
+      "unitId": "Unit 8",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "economics",
+      "unitId": "Unit 1",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "economics",
+      "unitId": "Unit 2",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "economics",
+      "unitId": "Unit 3",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "geography",
+      "unitId": "Unit 1",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "geography",
+      "unitId": "Unit 2",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "geography",
+      "unitId": "Unit 3",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "geography",
+      "unitId": "Unit 4",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "geography",
+      "unitId": "Unit 5",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "geography",
+      "unitId": "Unit 6",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "geography",
+      "unitId": "Unit 7",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "numerical": 8,
+        "short_answer": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "geography",
+      "unitId": "Unit 8",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "health_pe",
+      "unitId": "Unit 1",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "history",
+      "unitId": "Unit 1",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "mathematics",
+      "unitId": "Unit 1",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "mathematics",
+      "unitId": "Unit 2",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "mathematics",
+      "unitId": "Unit 3",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "mathematics",
+      "unitId": "Unit 4",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "mathematics",
+      "unitId": "Unit 5",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "mathematics",
+      "unitId": "Unit 6",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "mathematics",
+      "unitId": "Unit 7",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "physics",
+      "unitId": "Unit 1",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "medium": 18,
+        "easy": 14,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "physics",
+      "unitId": "Unit 2",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "physics",
+      "unitId": "Unit 3",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "medium": 18,
+        "easy": 14,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "physics",
+      "unitId": "Unit 4",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "medium": 18,
+        "easy": 14,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "physics",
+      "unitId": "Unit 5",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "numerical": 8,
+        "true_false": 4,
+        "short_answer": 8
+      },
+      "difficulties": {
+        "medium": 18,
+        "easy": 14,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "physics",
+      "unitId": "Unit 6",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "medium": 18,
+        "easy": 14,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    }
+  ],
+  "unresolvedCoverage": [
+    {
+      "subject": "history",
+      "unit": "Units 2–6",
+      "reason": "The owner-approved History textbook is available; later units require their own source-bounded authoring and validation batches."
+    },
+    {
+      "subject": "economics",
+      "unit": "Units 4–8",
+      "reason": "Approved source exists, but no later unit has been prepared as a source-bounded continuation batch."
+    },
+    {
+      "subject": "health_pe",
+      "unit": "Units 2–8",
+      "reason": "No structurally usable source-only generation response was available during the documented retry; no questions were bundled."
+    }
+  ]
+}

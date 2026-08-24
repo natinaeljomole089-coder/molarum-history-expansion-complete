@@ -5,6 +5,7 @@ import { filterQuizQuestions } from "../lib/molarum/filters";
 import { validateQuestionBank } from "../lib/molarum/validator";
 import type { QuestionType, StudyQuestion } from "../lib/molarum/types";
 import bundledQuestionBank from "../assets/question-banks/grade10-source-grounded-bank.json";
+import contentSummary from "../content/content-summary.json";
 
 const types: QuestionType[] = [
   ...Array<QuestionType>(20).fill("multiple_choice"),
@@ -51,6 +52,15 @@ describe("Molarum question-bank validator", () => {
       const unitKeys = result.value.report.unitSummary.map((unit) => unit.unitKey);
       expect(unitKeys).toEqual(expect.arrayContaining(["mathematics::Unit 7", "geography::Unit 3", "geography::Unit 8", "citizenship::Unit 6", "citizenship::Unit 8", "economics::Unit 2", "economics::Unit 3", "history::Unit 1"]));
     }
+  });
+
+  it("keeps the committed machine-readable content summary aligned with the bundled bank", () => {
+    const bankUnitKeys = [...new Set(bundledQuestionBank.questions.map((question) => `${question.id.split("-")[0]}::${question.unitId}`))].sort();
+    const summaryUnitKeys = contentSummary.units.map((unit) => `${unit.subject}::${unit.unitId}`).sort();
+    expect(contentSummary.questionCount).toBe(bundledQuestionBank.questions.length);
+    expect(contentSummary.unitCount).toBe(bankUnitKeys.length);
+    expect(contentSummary.sourceCatalogVersion).toBe(bundledQuestionBank.sourceCatalogVersion);
+    expect(summaryUnitKeys).toEqual(bankUnitKeys);
   });
 
   it("rejects a duplicate question and preserves strict distribution rules", () => {

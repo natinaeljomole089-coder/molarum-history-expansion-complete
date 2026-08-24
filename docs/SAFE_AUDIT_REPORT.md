@@ -1,4 +1,6 @@
-# Molarum Safe Technical Audit Report
+# Molarum Safe Technical Audit Report — Historical Snapshot
+
+> **Historical record:** This audit reflects an earlier 1,640-question, pre-redesign implementation. Use `docs/RELEASE_READINESS_AUDIT_2026-08-24.md` for the current audit.
 
 **Audit date:** 2026-08-22  
 **Baseline checkpoint:** `59cd9170`  
