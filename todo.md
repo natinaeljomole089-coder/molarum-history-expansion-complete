@@ -69,3 +69,4 @@
 - [ ] Author and validate as many source-bounded 40-question History continuation batches as the approved source supports.
 - [ ] Duplicate-screen, merge, migrate, verify, and document every accepted History continuation batch without altering existing validated questions.
 - [x] Complete the History Unit 4 source mapping, 40-question authoring, duplicate screen, protected merge, packaged-bank migration, full verification, and catalog documentation.
+- [ ] Commit and push the validated History Unit 4 expansion and supporting changes to the existing private GitHub repository, then verify the remote commit.
