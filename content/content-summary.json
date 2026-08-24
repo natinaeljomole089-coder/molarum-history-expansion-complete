@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-24T13:28:52.157Z",
-  "sourceCatalogVersion": "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-1",
-  "questionCount": 1840,
-  "unitCount": 46,
+  "generatedAt": "2026-08-24T15:36:51.334Z",
+  "sourceCatalogVersion": "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-3",
+  "questionCount": 1920,
+  "unitCount": 48,
   "units": [
     {
       "subject": "biology",
@@ -632,6 +632,44 @@
       }
     },
     {
+      "subject": "history",
+      "unitId": "Unit 2",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "history",
+      "unitId": "Unit 3",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
       "subject": "mathematics",
       "unitId": "Unit 1",
       "questionCount": 40,
@@ -882,7 +920,7 @@
   "unresolvedCoverage": [
     {
       "subject": "history",
-      "unit": "Units 2–6",
+      "unit": "Units 4–6",
       "reason": "The owner-approved History textbook is available; later units require their own source-bounded authoring and validation batches."
     },
     {

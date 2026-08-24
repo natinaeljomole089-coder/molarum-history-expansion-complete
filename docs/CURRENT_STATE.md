@@ -11,10 +11,10 @@ Molarum is an offline-first Grade 10 study library. The student app exposes Libr
 
 | Metric | Current value |
 |---|---:|
-| Bundled questions | 1,840 |
-| Complete units | 46 |
-| Catalog version | `owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-1` |
-| History | Unit 1 bundled; Units 2–6 unresolved pending source-bounded continuation work |
+| Bundled questions | 1,920 |
+| Complete units | 48 |
+| Catalog version | `owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-3` |
+| History | Units 1–3 bundled; Units 4–6 unresolved pending source-bounded continuation work |
 | Economics | Units 1–3 bundled; Units 4–8 unresolved |
 | Health & PE | Unit 1 bundled; Units 2–8 unresolved |
 | Structural review status | `ai_draft`; structural validation is not teacher approval |

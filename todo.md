@@ -56,3 +56,9 @@
 - [x] Capture a read-only release-readiness baseline covering architecture, routes, content, persistence, configuration, tests, documentation, and release claims.
 - [x] Prepare safe repository, identity, release-pipeline, quality-gate, and documentation improvements without pushing or publishing them.
 - [x] Validate the prepared changes, distinguish static from device-only evidence, and request approval before any GitHub push or release action.
+- [ ] Inspect for a managed Android APK and attached Android device before attempting physical QA or a private GitHub release.
+- [ ] Run and document only evidence-supported physical Android checks, artifact metadata verification, checksum generation, and private release creation.
+- [x] Map the owner-approved Grade 10 History textbook boundaries for Units 2–6.
+- [x] Author, validate, duplicate-screen, and safely merge 40-question source-grounded continuation batches for History Units 2 and 3.
+- [ ] Author and validate up to 40 source-grounded questions for each remaining History unit, preserving exact type and difficulty distributions.
+- [ ] Duplicate-screen, merge, migrate, verify, and document accepted History Units 2–6 without altering existing validated questions.

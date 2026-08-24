@@ -114,14 +114,32 @@
       "questionFile": "assets/question-banks/grade10-source-grounded-bank.json",
       "questionCount": 40,
       "sourceBoundary": "Printed Unit 1 text; local extraction lines 269–1071; questions use only explicit definitions, events, named actors, stated relationships, and dates from the owner-approved excerpt."
+    },
+    {
+      "subject": "History",
+      "unit": "Unit 2: Africa and the Colonial Experience (1880s–1960s)",
+      "driveFileId": "1MZnlWcoxQGe8Hj9g3OLRtyuYlbVBKb90",
+      "driveFileName": "grade-10-history-new-curriculum--student-textbook-kehulumcom1759927358e997.pdf",
+      "questionFile": "assets/question-banks/grade10-source-grounded-bank.json",
+      "questionCount": 40,
+      "sourceBoundary": "Printed Unit 2 text; local extraction lines 1129–1803; questions use only explicit definitions, motives, administrative systems, resistance events, impacts, and dates from the owner-approved excerpt."
+    },
+    {
+      "subject": "History",
+      "unit": "Unit 3: Social, Economic and Political Developments in Ethiopia from mid-19th Century to 1941",
+      "driveFileId": "1MZnlWcoxQGe8Hj9g3OLRtyuYlbVBKb90",
+      "driveFileName": "grade-10-history-new-curriculum--student-textbook-kehulumcom1759927358e997.pdf",
+      "questionFile": "assets/question-banks/grade10-source-grounded-bank.json",
+      "questionCount": 40,
+      "sourceBoundary": "Printed Unit 3 text; local extraction lines 1868–3014; questions use only explicit trade, reform, external-aggression, Adwa, governance, occupation, resistance, and liberation facts from the owner-approved excerpt."
     }
   ],
   "unresolved": [
     {
       "subject": "History",
-      "unit": "Units 2–6",
+      "unit": "Units 4–6",
       "status": "unresolved_after_retries_or_capacity",
-      "reason": "An owner-approved Grade 10 History textbook is now available; Units 2–6 remain queued for individual source-bounded authoring and validation batches."
+      "reason": "An owner-approved Grade 10 History textbook is available; Units 4–6 remain queued for individual source-bounded authoring and validation batches."
     },
     {
       "subject": "Economics",
