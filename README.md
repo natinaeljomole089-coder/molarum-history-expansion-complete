@@ -16,6 +16,10 @@ Molarum is an Android-capable Grade 10 revision library with an **offline-first*
 | Offline behavior | A 1,840-question source-grounded bank is bundled for Chemistry, Physics, Biology, Mathematics, Geography, Citizenship, Economics, Health & PE, and History; local imports can still replace it on a device. |
 | Optional Supabase layer | Email accounts, private learner-record sync, validated question-bank publishing, and private source/report storage protected by Row Level Security. |
 
+## Project Handoff
+
+Use [docs/PROJECT_HANDOFF.md](./docs/PROJECT_HANDOFF.md) as the project map for navigation, local persistence, student-product boundaries, validation, and release. The reusable [Molarum question-bank workflow skill](./skills/molarum-question-bank-workflow/SKILL.md) documents the required source, draft, validation, merge, provenance, and release gates for future content expansion.
+
 ## Development
 
 ```bash

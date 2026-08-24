@@ -51,3 +51,5 @@
 - [x] Create a new private GitHub repository and upload the complete current Molarum project source snapshot.
 - [x] Verify the uploaded repository and document the managed Publish workflow required before an APK can be attached as a GitHub release asset.
 - [x] Add and publish a clear GitHub-facing explanation of Molarum’s APK status, managed build workflow, installation path, and release process.
+- [x] Organize the Molarum repository handoff documentation, including a clear project map and maintenance entry points.
+- [x] Create and publish a reusable Molarum source-grounded question-bank generation workflow skill with validation, merge, provenance, and release instructions.
