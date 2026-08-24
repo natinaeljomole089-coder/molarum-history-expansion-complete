@@ -65,3 +65,7 @@
 - [x] Reproduce and diagnose quiz freezes, closures, slow loading, and unresponsive Next actions without modifying validated content or local learner records.
 - [x] Stabilize quiz interaction, transition, persistence, error recovery, and performance while preserving answer validation and resume behavior.
 - [x] Validate the repaired quiz flow across answer types, navigation, results, resume, and compact Android layouts.
+- [ ] Map the owner-approved Grade 10 History textbook boundaries and eligible facts for the remaining continuation units.
+- [ ] Author and validate as many source-bounded 40-question History continuation batches as the approved source supports.
+- [ ] Duplicate-screen, merge, migrate, verify, and document every accepted History continuation batch without altering existing validated questions.
+- [x] Complete the History Unit 4 source mapping, 40-question authoring, duplicate screen, protected merge, packaged-bank migration, full verification, and catalog documentation.
