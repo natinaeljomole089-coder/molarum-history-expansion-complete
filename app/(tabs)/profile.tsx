@@ -1,9 +1,10 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { type ComponentProps, useEffect, useMemo, useState } from "react";
-import { FlatList, StyleSheet, Text, TextInput, View } from "react-native";
+import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
 import { useColors } from "@/hooks/use-colors";
 import { SUBJECT_CATALOG } from "@/lib/molarum/catalog";
+import { useCloud } from "@/lib/molarum/cloud-provider";
 import { useStudyLibrary } from "@/lib/molarum/provider";
 
 function streakForAttempts(dates: string[]) {
@@ -63,6 +64,7 @@ export default function ProfileScreen() {
         <Text style={[styles.fieldLabel, { color: colors.muted }]}>Display name</Text>
         <TextInput value={name} onChangeText={setName} onEndEditing={() => updateLearnerProfile({ ...learnerProfile, name: name.trim() })} placeholder="Your name" placeholderTextColor={colors.muted} style={[styles.nameInput, { color: colors.foreground }]} accessibilityLabel="Your display name" returnKeyType="done" />
       </View>
+      <AccountBackupCard />
       <View style={[styles.progressCard, { backgroundColor: colors.surface, borderColor: colors.border }]}>
         <View style={styles.progressTop}><View><Text style={[styles.cardTitle, { color: colors.foreground }]}>Your progress</Text><Text style={[styles.cardSupport, { color: colors.muted }]}>A snapshot of your completed practice</Text></View><Text style={[styles.average, { color: "#B66CFF" }]}>{stats.average}%</Text></View>
         <View style={[styles.track, { backgroundColor: "#1A2140" }]}><View style={[styles.fill, { backgroundColor: "#FF8A1F", width: `${Math.max(3, stats.average)}%` }]} /></View>
@@ -78,6 +80,26 @@ export default function ProfileScreen() {
     renderItem={({ item }) => <View style={[styles.activityCard, { backgroundColor: colors.surface, borderColor: colors.border }]}><View style={[styles.activityIcon, { backgroundColor: "#1E1A38" }]}><MaterialIcons name="school" size={20} color="#B66CFF" /></View><View style={styles.activityBody}><Text numberOfLines={1} style={[styles.activityTitle, { color: colors.foreground }]}>{item.unitTitle}</Text><Text style={[styles.activityDetail, { color: colors.muted }]}>{new Date(item.completedAt).toLocaleDateString()} · {item.timed ? "Timed" : "Practice"}</Text></View><Text style={[styles.activityScore, { color: "#6EE7B7" }]}>{item.correct}/{item.total}</Text></View>}
     ListEmptyComponent={<View style={[styles.empty, { backgroundColor: colors.surface, borderColor: colors.border }]}><MaterialIcons name="rocket-launch" size={28} color="#B66CFF" /><Text style={[styles.emptyTitle, { color: colors.foreground }]}>Your learning story starts here</Text><Text style={[styles.emptyText, { color: colors.muted }]}>Complete a practice session and your activity will appear here.</Text></View>}
   />;
+}
+
+function AccountBackupCard() {
+  const colors = useColors();
+  const { configured, ready, session, lastSyncedAt, signIn, signOut, signUp, syncNow, uploadPrivateBackup } = useCloud();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isCreating, setIsCreating] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+  const run = async (operation: () => Promise<{ ok: boolean; message: string }>) => {
+    setBusy(true);
+    try { const result = await operation(); setMessage(result.message); if (result.ok) setPassword(""); }
+    finally { setBusy(false); }
+  };
+
+  if (!configured) return <View style={[styles.cloudCard, { backgroundColor: colors.surface, borderColor: colors.border }]}><Text style={[styles.cloudTitle, { color: colors.foreground }]}>Device-only learning</Text><Text style={[styles.cardSupport, { color: colors.muted }]}>Your progress is saved on this device. Cloud backup will be available in a later build.</Text></View>;
+  if (!ready) return <View style={[styles.cloudCard, { backgroundColor: colors.surface, borderColor: colors.border }]}><ActivityIndicator color="#B66CFF" /><Text style={[styles.cardSupport, { color: colors.muted }]}>Checking your optional backup account…</Text></View>;
+  if (session) return <View style={[styles.cloudCard, { backgroundColor: colors.surface, borderColor: colors.border }]}><View><Text style={[styles.cloudTitle, { color: colors.foreground }]}>Private backup connected</Text><Text numberOfLines={1} style={[styles.cardSupport, { color: colors.muted }]}>{session.user.email ?? "Signed-in learner"}</Text></View><Text style={[styles.syncDetail, { color: colors.muted }]}>{lastSyncedAt ? `Last backup: ${new Date(lastSyncedAt).toLocaleString()}` : "Your device remains the source of your learning until you back it up."}</Text><View style={styles.cloudActions}><Pressable disabled={busy} accessibilityRole="button" accessibilityLabel="Back up learning" onPress={() => run(syncNow)} style={({ pressed }) => [styles.backupButton, busy && styles.disabled, pressed && !busy && styles.pressed]}><MaterialIcons name="sync" size={18} color="#FFFFFF" /><Text style={styles.backupButtonText}>Back up</Text></Pressable><Pressable disabled={busy} accessibilityRole="button" accessibilityLabel="Save private backup file" onPress={() => run(uploadPrivateBackup)} style={({ pressed }) => [styles.outlineButton, { borderColor: "#6E56B1" }, busy && styles.disabled, pressed && !busy && styles.pressed]}><MaterialIcons name="file-upload" size={18} color="#CBB6FF" /><Text style={styles.outlineButtonText}>Save file</Text></Pressable></View><Pressable disabled={busy} accessibilityRole="button" accessibilityLabel="Sign out from backup account" onPress={() => run(signOut)} style={({ pressed }) => [styles.signOutButton, busy && styles.disabled, pressed && !busy && styles.pressed]}><Text style={styles.signOutText}>Sign out</Text></Pressable>{message ? <Text accessibilityLiveRegion="polite" style={[styles.cloudMessage, { color: message.includes("could not") || message.includes("Sign in") ? "#FBBF24" : "#6EE7B7" }]}>{message}</Text> : null}</View>;
+  return <View style={[styles.cloudCard, { backgroundColor: colors.surface, borderColor: colors.border }]}><View><Text style={[styles.cloudTitle, { color: colors.foreground }]}>Optional cloud backup</Text><Text style={[styles.cardSupport, { color: colors.muted }]}>Study offline anytime. Sign in only to back up your own progress.</Text></View><TextInput value={email} onChangeText={setEmail} autoCapitalize="none" autoComplete="email" keyboardType="email-address" placeholder="Email address" placeholderTextColor={colors.muted} style={[styles.cloudInput, { borderColor: colors.border, color: colors.foreground }]} accessibilityLabel="Backup account email" /><TextInput value={password} onChangeText={setPassword} autoCapitalize="none" autoComplete={isCreating ? "new-password" : "current-password"} secureTextEntry placeholder="Password (8 or more characters)" placeholderTextColor={colors.muted} style={[styles.cloudInput, { borderColor: colors.border, color: colors.foreground }]} accessibilityLabel="Backup account password" returnKeyType="done" /><Pressable disabled={busy} accessibilityRole="button" accessibilityLabel={isCreating ? "Create backup account" : "Sign in to backup account"} onPress={() => run(() => isCreating ? signUp(email, password, "") : signIn(email, password))} style={({ pressed }) => [styles.backupButton, busy && styles.disabled, pressed && !busy && styles.pressed]}>{busy ? <ActivityIndicator color="#FFFFFF" /> : <><MaterialIcons name={isCreating ? "person-add" : "login"} size={18} color="#FFFFFF" /><Text style={styles.backupButtonText}>{isCreating ? "Create account" : "Sign in"}</Text></>}</Pressable><Pressable disabled={busy} accessibilityRole="button" accessibilityLabel={isCreating ? "Switch to sign in" : "Switch to create account"} onPress={() => { setIsCreating((current) => !current); setMessage(null); }} style={({ pressed }) => [styles.signOutButton, busy && styles.disabled, pressed && !busy && styles.pressed]}><Text style={styles.signOutText}>{isCreating ? "I already have an account" : "Create an account"}</Text></Pressable>{message ? <Text accessibilityLiveRegion="polite" style={[styles.cloudMessage, { color: message.includes("could not") || message.includes("Enter") || message.includes("Use a") ? "#FBBF24" : "#6EE7B7" }]}>{message}</Text> : null}</View>;
 }
 
 function StatCard({ icon, value, label, color, wide = false }: { icon: ComponentProps<typeof MaterialIcons>["name"]; value: string; label: string; color: string; wide?: boolean }) {
@@ -99,6 +121,20 @@ const styles = StyleSheet.create({
   nameCard: { borderRadius: 18, borderWidth: 1, paddingHorizontal: 15, paddingVertical: 11 },
   fieldLabel: { fontSize: 11, fontWeight: "800", letterSpacing: 0.5, textTransform: "uppercase" },
   nameInput: { fontSize: 16, fontWeight: "700", minHeight: 38, paddingVertical: 4 },
+  cloudCard: { borderRadius: 20, borderWidth: 1, gap: 11, padding: 14 },
+  cloudTitle: { fontSize: 15, fontWeight: "900" },
+  cloudInput: { borderRadius: 13, borderWidth: 1, fontSize: 14, minHeight: 47, paddingHorizontal: 13 },
+  cloudActions: { flexDirection: "row", gap: 9 },
+  backupButton: { alignItems: "center", backgroundColor: "#7441E8", borderRadius: 14, flex: 1, flexDirection: "row", gap: 7, justifyContent: "center", minHeight: 47, paddingHorizontal: 12 },
+  backupButtonText: { color: "#FFFFFF", fontSize: 13, fontWeight: "900" },
+  outlineButton: { alignItems: "center", borderRadius: 14, borderWidth: 1, flex: 1, flexDirection: "row", gap: 6, justifyContent: "center", minHeight: 47, paddingHorizontal: 9 },
+  outlineButtonText: { color: "#CBB6FF", fontSize: 12, fontWeight: "900" },
+  signOutButton: { alignItems: "center", minHeight: 35, justifyContent: "center" },
+  signOutText: { color: "#CBB6FF", fontSize: 12, fontWeight: "900" },
+  syncDetail: { fontSize: 11, lineHeight: 16 },
+  cloudMessage: { fontSize: 12, fontWeight: "700", lineHeight: 17 },
+  disabled: { opacity: 0.55 },
+  pressed: { opacity: 0.8, transform: [{ scale: 0.98 }] },
   progressCard: { borderRadius: 20, borderWidth: 1, gap: 15, padding: 16 },
   progressTop: { alignItems: "center", flexDirection: "row", justifyContent: "space-between" },
   cardTitle: { fontSize: 17, fontWeight: "900" },

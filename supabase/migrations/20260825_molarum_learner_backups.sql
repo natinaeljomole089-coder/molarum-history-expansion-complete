@@ -1,0 +1,28 @@
+-- Private, user-scoped JSON learning backups. The app only uses a publishable key;
+-- access is constrained by Supabase Storage row-level security.
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('molarum-learner-backups', 'molarum-learner-backups', false, 1048576, array['application/json'])
+on conflict (id) do update
+set public = false, file_size_limit = 1048576, allowed_mime_types = array['application/json'];
+
+drop policy if exists "molarum_backups_owner_read" on storage.objects;
+drop policy if exists "molarum_backups_owner_insert" on storage.objects;
+drop policy if exists "molarum_backups_owner_delete" on storage.objects;
+
+create policy "molarum_backups_owner_read" on storage.objects
+for select to authenticated using (
+  bucket_id = 'molarum-learner-backups'
+  and (storage.foldername(name))[1] = (select auth.uid())::text
+);
+
+create policy "molarum_backups_owner_insert" on storage.objects
+for insert to authenticated with check (
+  bucket_id = 'molarum-learner-backups'
+  and (storage.foldername(name))[1] = (select auth.uid())::text
+);
+
+create policy "molarum_backups_owner_delete" on storage.objects
+for delete to authenticated using (
+  bucket_id = 'molarum-learner-backups'
+  and (storage.foldername(name))[1] = (select auth.uid())::text
+);

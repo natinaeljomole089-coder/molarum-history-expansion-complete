@@ -73,3 +73,7 @@
 - [x] Investigate and fix bundled subjects incorrectly showing no available questions, preserving validated content and local learner data.
 - [x] Verify all bundled subject cards, unit launchers, and packaged-bank migration states show available questions correctly.
 - [x] Prepare and verify a new versioned Android build configuration that embeds the complete 1,960-question / 49-unit Molarum library rather than the older three-subject preview.
+- [x] Create a reusable Molarum Supabase authentication and secure-storage implementation prompt.
+- [x] Assess the current Supabase connector, project configuration, and existing integration code before implementation.
+- [x] Implement optional Supabase authentication, protected storage, learner-data synchronization, and resilient offline fallback.
+- [x] Validate configured authentication, storage permissions, offline behavior, UI, static exports, and Android integration; repair verified server-rendering and Supabase RLS helper defects. Email confirmation and physical-device account testing remain device/user-account checks.
