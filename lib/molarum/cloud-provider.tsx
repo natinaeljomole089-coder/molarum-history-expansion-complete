@@ -1,10 +1,13 @@
 import type { Session } from "@supabase/supabase-js";
+import * as Linking from "expo-linking";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type PropsWithChildren } from "react";
+import { Platform } from "react-native";
 
+import { isAuthCallback, loginFailureMessage, validateLoginCredentials, type AuthFeedback } from "./auth-helpers";
 import { useStudyLibrary } from "./provider";
 import { isSupabaseConfigured, LEARNER_BACKUP_BUCKET, supabase } from "./supabase-client";
 
-type CloudResult = { ok: true; message: string } | { ok: false; message: string };
+type CloudResult = AuthFeedback;
 
 interface CloudContextValue {
   configured: boolean;
@@ -24,18 +27,9 @@ function unavailable(message = "Cloud backup is not available in this build. You
   return { ok: false, message };
 }
 
-function failure(error: unknown): CloudResult {
-  const detail = error instanceof Error ? error.message : "";
-  if (/network|fetch|timeout|offline|internet/i.test(detail)) {
-    return { ok: false, message: "Could not reach cloud backup. Your learning is still saved on this device." };
-  }
-  return { ok: false, message: detail || "Cloud backup could not be completed. Your learning is still saved on this device." };
-}
-
-function validateCredentials(email: string, password: string): string | null {
-  if (!/^\S+@\S+\.\S+$/.test(email.trim())) return "Enter a valid email address.";
-  if (password.length < 8) return "Use a password with at least 8 characters.";
-  return null;
+function failure(error: unknown, operation: "signIn" | "signUp" | "session" = "signIn"): CloudResult {
+  if (error instanceof Error) console.warn(`[Molarum cloud ${operation}]`, error.message);
+  return { ok: false, message: loginFailureMessage(error, operation) };
 }
 
 export function CloudProvider({ children }: PropsWithChildren) {
@@ -52,37 +46,64 @@ export function CloudProvider({ children }: PropsWithChildren) {
       if (!mounted) return;
       setSession(data.session);
       setReady(true);
-    }).catch(() => {
-      if (mounted) setReady(true);
+    }).catch((error) => {
+      if (mounted) {
+        console.warn("[Molarum cloud session]", loginFailureMessage(error, "session"));
+        setReady(true);
+      }
     });
     const { data: listener } = client.auth.onAuthStateChange((_event, nextSession) => setSession(nextSession));
     return () => { mounted = false; listener.subscription.unsubscribe(); };
   }, []);
 
+  useEffect(() => {
+    const client = supabase;
+    if (!client || Platform.OS === "web") return;
+    let mounted = true;
+    const handleAuthUrl = async (url: string) => {
+      if (!isAuthCallback(url)) return;
+      const { queryParams } = Linking.parse(url);
+      const code = typeof queryParams?.code === "string" ? queryParams.code : null;
+      if (!code) return;
+      const { data, error } = await client.auth.exchangeCodeForSession(url);
+      if (error) {
+        console.warn("[Molarum cloud confirmation]", loginFailureMessage(error, "session"));
+        return;
+      }
+      if (mounted) setSession(data.session);
+    };
+    Linking.getInitialURL().then((url) => { if (url) handleAuthUrl(url).catch(() => undefined); });
+    const subscription = Linking.addEventListener("url", ({ url }) => { handleAuthUrl(url).catch(() => undefined); });
+    return () => { mounted = false; subscription.remove(); };
+  }, []);
+
   const signIn = useCallback(async (email: string, password: string): Promise<CloudResult> => {
-    const validation = validateCredentials(email, password);
+    const validation = validateLoginCredentials(email, password);
     if (validation) return { ok: false, message: validation };
     if (!supabase) return unavailable();
     try {
       const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
       if (error) throw error;
       return { ok: true, message: "Signed in. Choose Back up learning to save your local progress." };
-    } catch (error) { return failure(error); }
+    } catch (error) { return failure(error, "signIn"); }
   }, []);
 
   const signUp = useCallback(async (email: string, password: string, displayName: string): Promise<CloudResult> => {
-    const validation = validateCredentials(email, password);
+    const validation = validateLoginCredentials(email, password);
     if (validation) return { ok: false, message: validation };
     if (!supabase) return unavailable();
     try {
       const { data, error } = await supabase.auth.signUp({
         email: email.trim(),
         password,
-        options: { data: { display_name: displayName.trim() } },
+        options: {
+          data: { display_name: displayName.trim() },
+          emailRedirectTo: Linking.createURL("auth/callback"),
+        },
       });
       if (error) throw error;
-      return { ok: true, message: data.session ? "Account created and signed in." : "Account created. Check your email, then sign in to use cloud backup." };
-    } catch (error) { return failure(error); }
+      return { ok: true, message: data.session ? "Account created and signed in." : "Account created. Open the confirmation email on this device to return to Molarum." };
+    } catch (error) { return failure(error, "signUp"); }
   }, []);
 
   const signOut = useCallback(async (): Promise<CloudResult> => {

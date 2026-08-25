@@ -77,3 +77,6 @@
 - [x] Assess the current Supabase connector, project configuration, and existing integration code before implementation.
 - [x] Implement optional Supabase authentication, protected storage, learner-data synchronization, and resilient offline fallback.
 - [x] Validate configured authentication, storage permissions, offline behavior, UI, static exports, and Android integration; repair verified server-rendering and Supabase RLS helper defects. Email confirmation and physical-device account testing remain device/user-account checks.
+- [x] Create a reusable Molarum Supabase login-bug diagnosis and repair prompt.
+- [x] Diagnose and fix verified sign-in, sign-up, session, validation, and login error-recovery defects without disrupting offline study.
+- [x] Validate credential checks, error recovery, confirmation callback UI, offline fallback, compact Profile presentation, and web/Android exports. Real email confirmation and physical Android sign-in remain device/account checks.
