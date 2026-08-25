@@ -84,3 +84,4 @@
 - [x] Extract all 49 Molarum units into a clean canonical JSON import dataset with subject, unit, type, text, choices, correct answer, and explanation.
 - [x] Import one quiz per unit and all related questions and choices into Supabase through a server-side privileged workflow without exposing credentials to the Android app.
 - [x] Verify 1,960 imported questions and report exact counts for each of the 49 units.
+- [ ] Commit and push the verified Supabase import dataset, scripts, audit report, and task-log update to the existing private GitHub repository.
