@@ -11,10 +11,10 @@ Molarum is an offline-first Grade 10 study library. The student app exposes Libr
 
 | Metric | Current value |
 |---|---:|
-| Bundled questions | 1,920 |
-| Complete units | 48 |
-| Catalog version | `owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-3` |
-| History | Units 1–3 bundled; Units 4–6 unresolved pending source-bounded continuation work |
+| Bundled questions | 1,960 |
+| Complete units | 49 |
+| Catalog version | `owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-4` |
+| History | Units 1–4 bundled; Units 5–6 unresolved pending source-bounded continuation work |
 | Economics | Units 1–3 bundled; Units 4–8 unresolved |
 | Health & PE | Unit 1 bundled; Units 2–8 unresolved |
 | Structural review status | `ai_draft`; structural validation is not teacher approval |
@@ -31,4 +31,4 @@ The repository contains source code, not an Android artifact. No APK or AAB has 
 
 ## Validation status
 
-At the 2026-08-24 baseline, `pnpm check`, `pnpm lint`, `pnpm test`, strict bank validation, public Expo configuration resolution, web export, and Android JavaScript export passed. Physical-device installation, cold offline launch, native process termination, system bars, large fonts, deep links, document picker, PDF share, and optional cloud recovery remain device-only checks.
+At the 2026-08-24 repair pass, `pnpm check`, `pnpm lint`, `pnpm test` (13 passed, 2 expected skips), `pnpm build`, strict bank validation, web export, and Android JavaScript export passed. The optional Supabase endpoint probe was skipped because no public cloud variables were configured. Physical-device installation, cold offline launch, native process termination, system bars, large fonts, deep links, document picker, PDF share, and optional cloud recovery remain device-only checks.

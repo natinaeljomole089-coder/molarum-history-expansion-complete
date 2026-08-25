@@ -70,6 +70,7 @@
 - [ ] Duplicate-screen, merge, migrate, verify, and document every accepted History continuation batch without altering existing validated questions.
 - [x] Complete the History Unit 4 source mapping, 40-question authoring, duplicate screen, protected merge, packaged-bank migration, full verification, and catalog documentation.
 - [x] Commit and push the validated History Unit 4 expansion and supporting changes to the existing private GitHub repository, then verify the remote commit.
+- [x] Reproduce and fix current Metro export, optional Supabase test, quiz-result persistence, malformed local-state, and cross-unit resume defects; record the remaining device-only APK checks.
 - [x] Investigate and fix bundled subjects incorrectly showing no available questions, preserving validated content and local learner data.
 - [x] Verify all bundled subject cards, unit launchers, and packaged-bank migration states show available questions correctly.
 - [x] Prepare and verify a new versioned Android build configuration that embeds the complete 1,960-question / 49-unit Molarum library rather than the older three-subject preview.

@@ -15,7 +15,7 @@ Molarum is an Android-capable Grade 10 revision library with an **offline-first*
 | Content status | Bundled items remain structurally validated and source-grounded; the legacy `ai_draft` field is retained only for schema compatibility. |
 | Learner privacy | Records stay on-device by default. Signed-in users choose when to sync their own records or upload a private report. |
 | Exports | User-triggered PDF score-history export and JSON/Markdown content-document exports. |
-| Offline behavior | A 1,920-question source-grounded bank is bundled for Chemistry, Physics, Biology, Mathematics, Geography, Citizenship, Economics, Health & PE, and History; local imports can still replace it on a device. |
+| Offline behavior | A 1,960-question source-grounded bank is bundled for Chemistry, Physics, Biology, Mathematics, Geography, Citizenship, Economics, Health & PE, and History; local imports can still replace it on a device. |
 | Optional Supabase layer | Email accounts, private learner-record sync, validated question-bank publishing, and private source/report storage protected by Row Level Security. |
 
 ## Project Handoff
@@ -39,7 +39,7 @@ The configured Supabase project uses an Expo-safe Project URL and **publishable*
 
 > This section is retained as a historical narrative. Use [docs/CURRENT_STATE.md](./docs/CURRENT_STATE.md) and `content/manifest.json` for current facts.
 
-Molarum now bundles **1,920 structurally validated, source-grounded questions across 48 units**: six Chemistry, six Physics, six Biology, all seven Mathematics units, all eight Geography units, all eight Citizenship units, Economics Units 1–3, Health & PE Unit 1, and History Units 1–3. Existing packaged installs upgrade safely to the bundled catalog while imported banks remain intact. The external delivery package contains source copies, checksums, reports, accepted continuation units, preserved baseline archives, and merged delivery banks. See [`content/manifest.json`](./content/manifest.json), [`content/pending_subject_source_catalog.json`](./content/pending_subject_source_catalog.json), and [`content/review_issues.md`](./content/review_issues.md).
+Molarum now bundles **1,960 structurally validated, source-grounded questions across 49 units**: six Chemistry, six Physics, six Biology, all seven Mathematics units, all eight Geography units, all eight Citizenship units, Economics Units 1–3, Health & PE Unit 1, and History Units 1–4. Existing packaged installs upgrade safely to the bundled catalog while imported banks remain intact. The external delivery package contains source copies, checksums, reports, accepted continuation units, preserved baseline archives, and merged delivery banks. See [`content/manifest.json`](./content/manifest.json), [`content/pending_subject_source_catalog.json`](./content/pending_subject_source_catalog.json), and [`content/review_issues.md`](./content/review_issues.md).
 
 ## Android Delivery
 

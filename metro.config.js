@@ -5,7 +5,7 @@ const config = getDefaultConfig(__dirname);
 
 module.exports = withNativeWind(config, {
   input: "./global.css",
-  // Force write CSS to file system instead of virtual modules
-  // This fixes iOS styling issues in development mode
-  forceWriteFileSystem: true,
+  // Virtual CSS modules avoid Metro hashing a missing web.css file during
+  // static exports from a clean clone while keeping NativeWind HMR support.
+  forceWriteFileSystem: false,
 });

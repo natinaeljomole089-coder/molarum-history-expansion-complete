@@ -76,21 +76,91 @@ function normalizeAttempt(attempt: QuizAttempt, descriptor: BankDescriptor | nul
   return { ...attempt, bankId: "legacy-unattributed", bankOrigin: "none", bankSourceCatalogVersion: descriptor?.sourceCatalogVersion ?? "legacy-unknown" };
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function parseSavedBank(value: unknown): ValidatedQuestionBank | null {
+  if (!isRecord(value) || !isRecord(value.bank)) return null;
+  const result = validateQuestionBank(value.bank);
+  return result.ok ? result.value : null;
+}
+
+function isBankDescriptor(value: unknown): value is BankDescriptor {
+  if (!isRecord(value)) return false;
+  const questionCount = value.questionCount;
+  return typeof value.bankId === "string"
+    && value.bankId.length > 0
+    && (value.origin === "packaged_validated" || value.origin === "imported_draft")
+    && typeof value.sourceCatalogVersion === "string"
+    && typeof questionCount === "number"
+    && Number.isInteger(questionCount)
+    && questionCount > 0;
+}
+
+function parseStoredAttempt(value: unknown, descriptor: BankDescriptor | null): QuizAttempt | null {
+  if (!isRecord(value)) return null;
+  const correct = value.correct;
+  const total = value.total;
+  const elapsedSeconds = value.elapsedSeconds;
+  if (typeof value.id !== "string" || !value.id || typeof value.unitKey !== "string" || !value.unitKey || typeof value.unitTitle !== "string" || typeof value.completedAt !== "string") return null;
+  if (typeof correct !== "number" || !Number.isInteger(correct) || typeof total !== "number" || !Number.isInteger(total) || total <= 0 || correct < 0 || correct > total) return null;
+  if (typeof value.timed !== "boolean" || typeof elapsedSeconds !== "number" || !Number.isFinite(elapsedSeconds) || elapsedSeconds < 0) return null;
+  if (value.bankId !== undefined && typeof value.bankId !== "string") return null;
+  if (value.bankOrigin !== undefined && value.bankOrigin !== "packaged_validated" && value.bankOrigin !== "imported_draft" && value.bankOrigin !== "none") return null;
+  if (value.bankSourceCatalogVersion !== undefined && typeof value.bankSourceCatalogVersion !== "string") return null;
+  return normalizeAttempt({
+    id: value.id,
+    unitKey: value.unitKey,
+    unitTitle: value.unitTitle,
+    completedAt: value.completedAt,
+    correct,
+    total,
+    timed: value.timed,
+    elapsedSeconds,
+    bankId: typeof value.bankId === "string" ? value.bankId : "",
+    bankOrigin: value.bankOrigin === "packaged_validated" || value.bankOrigin === "imported_draft" || value.bankOrigin === "none" ? value.bankOrigin : "none",
+    bankSourceCatalogVersion: typeof value.bankSourceCatalogVersion === "string" ? value.bankSourceCatalogVersion : "",
+  }, descriptor);
+}
+
+function parseStoredQuiz(value: unknown): InProgressQuiz | null {
+  if (!isRecord(value)) return null;
+  const difficulty = value.difficulty;
+  const bankOrigin = value.bankOrigin;
+  const index = value.index;
+  const correctCount = value.correctCount;
+  const elapsedSeconds = value.elapsedSeconds;
+  if (value.schemaVersion !== 1 || typeof value.bankId !== "string" || !value.bankId || (bankOrigin !== "packaged_validated" && bankOrigin !== "imported_draft" && bankOrigin !== "none") || typeof value.bankSourceCatalogVersion !== "string" || typeof value.unitKey !== "string" || !value.unitKey || typeof value.unitTitle !== "string" || (difficulty !== "easy" && difficulty !== "medium" && difficulty !== "hard" && difficulty !== "mixed") || typeof value.timed !== "boolean" || !Array.isArray(value.queueQuestionIds) || !value.queueQuestionIds.every((id) => typeof id === "string" && id.length > 0) || typeof index !== "number" || !Number.isInteger(index) || typeof correctCount !== "number" || !Number.isInteger(correctCount) || typeof elapsedSeconds !== "number" || !Number.isFinite(elapsedSeconds) || elapsedSeconds < 0 || typeof value.response !== "string" || typeof value.submitted !== "boolean" || typeof value.startedAt !== "string" || typeof value.updatedAt !== "string") return null;
+  return value as unknown as InProgressQuiz;
+}
+
 function parseStoredState(value: string | null): StoredState {
   if (!value) return EMPTY_STATE;
   try {
-    const parsed = JSON.parse(value) as Partial<StoredState> & { activeBankOrigin?: unknown };
-    const savedBank = parsed.activeBank?.bank && parsed.activeBank?.report ? parsed.activeBank : null;
-    const savedOrigin = parsed.bankDescriptor?.origin ?? parsed.activeBankOrigin;
+    const parsed = JSON.parse(value) as unknown;
+    if (!isRecord(parsed)) return EMPTY_STATE;
+    const savedBank = parseSavedBank(parsed.activeBank);
+    const savedOrigin = isBankDescriptor(parsed.bankDescriptor) ? parsed.bankDescriptor.origin : parsed.activeBankOrigin;
     const shouldUpgradePriorBundle = Boolean(savedBank && (PRIOR_BUNDLED_SOURCE_CATALOGS.has(savedBank.bank.sourceCatalogVersion) || savedOrigin === "packaged_validated"));
     const activeBank = shouldUpgradePriorBundle ? BUNDLED_BANK : savedBank ?? BUNDLED_BANK;
-    const bankDescriptor = shouldUpgradePriorBundle ? BUNDLED_DESCRIPTOR : parsed.bankDescriptor ?? legacyDescriptor(activeBank, parsed.activeBankOrigin);
+    const bankDescriptor = shouldUpgradePriorBundle ? BUNDLED_DESCRIPTOR : isBankDescriptor(parsed.bankDescriptor) ? parsed.bankDescriptor : legacyDescriptor(activeBank, parsed.activeBankOrigin);
+    const learnerProfile = isRecord(parsed.learnerProfile)
+      ? {
+          name: typeof parsed.learnerProfile.name === "string" ? parsed.learnerProfile.name : EMPTY_PROFILE.name,
+          className: typeof parsed.learnerProfile.className === "string" ? parsed.learnerProfile.className : EMPTY_PROFILE.className,
+          school: typeof parsed.learnerProfile.school === "string" ? parsed.learnerProfile.school : EMPTY_PROFILE.school,
+        }
+      : EMPTY_PROFILE;
+    const attempts = Array.isArray(parsed.attempts)
+      ? parsed.attempts.map((attempt) => parseStoredAttempt(attempt, bankDescriptor)).filter((attempt): attempt is QuizAttempt => Boolean(attempt))
+      : [];
     return {
       activeBank,
       bankDescriptor,
-      learnerProfile: { ...EMPTY_PROFILE, ...(parsed.learnerProfile ?? {}) },
-      attempts: Array.isArray(parsed.attempts) ? parsed.attempts.map((attempt) => normalizeAttempt(attempt, bankDescriptor)) : [],
-      inProgressQuiz: parsed.inProgressQuiz && typeof parsed.inProgressQuiz.unitKey === "string" ? parsed.inProgressQuiz : null,
+      learnerProfile,
+      attempts,
+      inProgressQuiz: parseStoredQuiz(parsed.inProgressQuiz),
     };
   } catch {
     return EMPTY_STATE;

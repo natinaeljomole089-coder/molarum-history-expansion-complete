@@ -1,9 +1,11 @@
 import { describe, expect, it } from "vitest";
 
 import { filterQuizQuestions } from "../lib/molarum/filters";
+import { correctCountAfterSubmission } from "../lib/molarum/quiz";
 import { isResumableQuiz } from "../lib/molarum/quiz-session";
 import { createBankDescriptor, shouldUpgradeStagedPackagedBank } from "../lib/molarum/bank-storage";
 import { validateQuestionBank } from "../lib/molarum/validator";
+import { unitsForSubject } from "../lib/molarum/catalog";
 import type { InProgressQuiz, QuestionType, StudyQuestion } from "../lib/molarum/types";
 
 const types: QuestionType[] = [
@@ -32,13 +34,33 @@ describe("Molarum resilience helpers", () => {
     expect(filterQuizQuestions(questions, "hard")).toHaveLength(8);
   });
 
+  it("counts a correct final answer before the result is saved", () => {
+    const questions = makeBank().questions;
+    expect(correctCountAfterSubmission(0, questions[0], "A")).toBe(1);
+    expect(correctCountAfterSubmission(1, questions[0], "not A")).toBe(1);
+  });
+
   it("resumes only a coherent local quiz session whose queued IDs remain available", () => {
     const questions = makeBank().questions;
     const session: InProgressQuiz = { schemaVersion: 1, bankId: "molarum-packaged_validated-test", bankOrigin: "packaged_validated", bankSourceCatalogVersion: "test-import", unitKey: "chemistry::Unit 1", unitTitle: "Unit 1: Resilience Fixture", difficulty: "mixed", timed: false, queueQuestionIds: questions.slice(0, 3).map((question) => question.id), index: 1, response: "A", submitted: true, correctCount: 1, elapsedSeconds: 0, startedAt: "2026-08-22T00:00:00.000Z", updatedAt: "2026-08-22T00:01:00.000Z" };
     expect(isResumableQuiz(session, "chemistry::Unit 1", questions, session.bankId)).toBe(true);
     expect(isResumableQuiz({ ...session, queueQuestionIds: ["missing-question"] }, "chemistry::Unit 1", questions, session.bankId)).toBe(false);
+    expect(isResumableQuiz({ ...session, queueQuestionIds: [questions[0].id, questions[0].id] }, "chemistry::Unit 1", questions, session.bankId)).toBe(false);
+    expect(isResumableQuiz({ ...session, queueQuestionIds: ["physics-u01-001"] }, "chemistry::Unit 1", questions, session.bankId)).toBe(false);
+    expect(isResumableQuiz({ ...session, queueQuestionIds: undefined as unknown as string[] }, "chemistry::Unit 1", questions, session.bankId)).toBe(false);
     expect(isResumableQuiz({ ...session, index: 9 }, "chemistry::Unit 1", questions, session.bankId)).toBe(false);
     expect(isResumableQuiz(session, "chemistry::Unit 1", questions, "molarum-imported_draft-replaced")).toBe(false);
+  });
+
+  it("sorts multi-digit unit numbers numerically for learner navigation", () => {
+    const fixture = makeBank().questions[0];
+    const questions = ["Unit 10", "Unit 2", "Unit 1"].map((unitId, index) => ({
+      ...fixture,
+      id: `chemistry-u${String(index + 1).padStart(2, "0")}-001`,
+      unitId,
+      unitTitle: `${unitId}: Ordered fixture`,
+    }));
+    expect(unitsForSubject(questions, "chemistry").map((unit) => unit.unitId)).toEqual(["Unit 1", "Unit 2", "Unit 10"]);
   });
 
   it("upgrades every older staged packaged bank but leaves imports and the current bundle unchanged", () => {
