@@ -80,3 +80,7 @@
 - [x] Create a reusable Molarum Supabase login-bug diagnosis and repair prompt.
 - [x] Diagnose and fix verified sign-in, sign-up, session, validation, and login error-recovery defects without disrupting offline study.
 - [x] Validate credential checks, error recovery, confirmation callback UI, offline fallback, compact Profile presentation, and web/Android exports. Real email confirmation and physical Android sign-in remain device/account checks.
+- [x] Inspect the 1,960-question bundled source and the existing Supabase quizzes, questions, and choices schemas.
+- [x] Extract all 49 Molarum units into a clean canonical JSON import dataset with subject, unit, type, text, choices, correct answer, and explanation.
+- [x] Import one quiz per unit and all related questions and choices into Supabase through a server-side privileged workflow without exposing credentials to the Android app.
+- [x] Verify 1,960 imported questions and report exact counts for each of the 49 units.
