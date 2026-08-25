@@ -72,3 +72,4 @@
 - [x] Commit and push the validated History Unit 4 expansion and supporting changes to the existing private GitHub repository, then verify the remote commit.
 - [x] Investigate and fix bundled subjects incorrectly showing no available questions, preserving validated content and local learner data.
 - [x] Verify all bundled subject cards, unit launchers, and packaged-bank migration states show available questions correctly.
+- [x] Prepare and verify a new versioned Android build configuration that embeds the complete 1,960-question / 49-unit Molarum library rather than the older three-subject preview.
