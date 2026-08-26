@@ -89,4 +89,4 @@
 - [x] Review remaining approved Grade 10 source boundaries and select the next complete eligible quiz unit.
 - [ ] Author, validate, duplicate-screen, and safely integrate as many complete source-grounded quiz units as the approved sources support.
 - [x] Complete History Unit 5: author, validate, duplicate-screen, archive, merge, migrate, synchronize to Supabase, and fully verify its 40 source-grounded questions.
-- [ ] Commit and push the validated History Unit 5 expansion, Supabase synchronization, and supporting metadata/tests to the selected private GitHub repository.
+- [x] Commit and push the validated History Unit 5 expansion, Supabase synchronization, and supporting metadata/tests to the selected private GitHub repository.
