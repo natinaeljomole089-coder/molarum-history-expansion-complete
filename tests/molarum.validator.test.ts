@@ -42,15 +42,15 @@ describe("Molarum question-bank validator", () => {
     expect(result.ok).toBe(true);
   });
 
-  it("accepts the bundled owner-Drive bank with its declared 49-unit continuation coverage", () => {
+  it("accepts the bundled owner-Drive bank with its declared 50-unit continuation coverage", () => {
     const result = validateQuestionBank(bundledQuestionBank);
     expect(result.ok).toBe(true);
     if (result.ok) {
-      expect(result.value.bank.questions).toHaveLength(1960);
-      expect(result.value.report.unitSummary).toHaveLength(49);
-      expect(result.value.bank.sourceCatalogVersion).toBe("owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-4");
+      expect(result.value.bank.questions).toHaveLength(2000);
+      expect(result.value.report.unitSummary).toHaveLength(50);
+      expect(result.value.bank.sourceCatalogVersion).toBe("owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-5");
       const unitKeys = result.value.report.unitSummary.map((unit) => unit.unitKey);
-      expect(unitKeys).toEqual(expect.arrayContaining(["mathematics::Unit 7", "geography::Unit 3", "geography::Unit 8", "citizenship::Unit 6", "citizenship::Unit 8", "economics::Unit 2", "economics::Unit 3", "history::Unit 1", "history::Unit 2", "history::Unit 3", "history::Unit 4"]));
+      expect(unitKeys).toEqual(expect.arrayContaining(["mathematics::Unit 7", "geography::Unit 3", "geography::Unit 8", "citizenship::Unit 6", "citizenship::Unit 8", "economics::Unit 2", "economics::Unit 3", "history::Unit 1", "history::Unit 2", "history::Unit 3", "history::Unit 4", "history::Unit 5"]));
     }
   });
 

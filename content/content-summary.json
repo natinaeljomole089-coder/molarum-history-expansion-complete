@@ -1,8 +1,8 @@
 {
   "generatedAt": "2026-08-24T18:12:00.000Z",
-  "sourceCatalogVersion": "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-4",
-  "questionCount": 1960,
-  "unitCount": 49,
+  "sourceCatalogVersion": "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-5",
+  "questionCount": 2000,
+  "unitCount": 50,
   "units": [
     {
       "subject": "biology",
@@ -672,6 +672,25 @@
     {
       "subject": "history",
       "unitId": "Unit 4",
+      "questionCount": 40,
+      "types": {
+        "multiple_choice": 20,
+        "true_false": 4,
+        "short_answer": 8,
+        "numerical": 8
+      },
+      "difficulties": {
+        "easy": 14,
+        "medium": 18,
+        "hard": 8
+      },
+      "reviewStatuses": {
+        "ai_draft": 40
+      }
+    },
+    {
+      "subject": "history",
+      "unitId": "Unit 5",
       "questionCount": 40,
       "types": {
         "multiple_choice": 20,

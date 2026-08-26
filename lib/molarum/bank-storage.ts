@@ -2,8 +2,8 @@ import type { BankDescriptor, ValidatedQuestionBank } from "./types";
 
 export const BANK_POINTER_KEY = "molarum.local-study-library.active-bank-pointer.v1";
 const BANK_RECORD_PREFIX = "molarum.local-study-library.bank-record.v1.";
-export const CURRENT_BUNDLED_SOURCE_CATALOG = "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-4";
-export const PRIOR_BUNDLED_SOURCE_CATALOGS = new Set(["owner-drive-grade10-textbooks-2026-08-22", "owner-drive-grade10-textbooks-2026-08-22-expanded", "owner-drive-grade10-textbooks-2026-08-22-full-expanded", "owner-drive-grade10-textbooks-2026-08-22-full-expanded-continuation-1", "owner-drive-grade10-textbooks-2026-08-23-full-expanded-continuation-2", "owner-drive-grade10-textbooks-2026-08-23-full-expanded-continuation-3", "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-1", "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-2", "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-3"]);
+export const CURRENT_BUNDLED_SOURCE_CATALOG = "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-5";
+export const PRIOR_BUNDLED_SOURCE_CATALOGS = new Set(["owner-drive-grade10-textbooks-2026-08-22", "owner-drive-grade10-textbooks-2026-08-22-expanded", "owner-drive-grade10-textbooks-2026-08-22-full-expanded", "owner-drive-grade10-textbooks-2026-08-22-full-expanded-continuation-1", "owner-drive-grade10-textbooks-2026-08-23-full-expanded-continuation-2", "owner-drive-grade10-textbooks-2026-08-23-full-expanded-continuation-3", "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-1", "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-2", "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-3", "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-4"]);
 
 export interface KeyValueStore {
   getItem(key: string): Promise<string | null>;

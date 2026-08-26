@@ -32,7 +32,7 @@ for (const question of payload.questions) {
   byUnit.get(key).push(question);
 }
 
-if (payload.questions.length !== 1960 || byUnit.size !== 49) throw new Error("Unexpected source catalog size.");
+if (payload.questions.length !== 2000 || byUnit.size !== 50) throw new Error("Unexpected source catalog size.");
 fs.rmSync(outputDir, { recursive: true, force: true });
 fs.mkdirSync(outputDir, { recursive: true });
 

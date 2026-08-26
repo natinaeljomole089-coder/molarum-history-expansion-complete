@@ -141,14 +141,23 @@
       "questionFile": "assets/question-banks/grade10-source-grounded-bank.json",
       "questionCount": 40,
       "sourceBoundary": "Printed Unit 4 text; local extraction lines 3118–4045; questions use only explicit World War I, Russian Revolution, League, Great Depression, Fascism, Nazism, and World War II facts from the owner-approved excerpt."
+    },
+    {
+      "subject": "History",
+      "unit": "Unit 5: Global and Regional Developments Since 1945",
+      "driveFileId": "1MZnlWcoxQGe8Hj9g3OLRtyuYlbVBKb90",
+      "driveFileName": "grade-10-history-new-curriculum--student-textbook-kehulumcom1759927358e997.pdf",
+      "questionFile": "assets/question-banks/grade10-source-grounded-bank.json",
+      "questionCount": 40,
+      "sourceBoundary": "Printed Unit 5 text; local extraction lines 4125–5220; questions use only explicit UN, Cold War, Asian, NAM, Arab-Israeli, and USSR-collapse facts from the owner-approved excerpt."
     }
   ],
   "unresolved": [
     {
       "subject": "History",
-      "unit": "Units 5–6",
+      "unit": "Unit 6",
       "status": "unresolved_after_retries_or_capacity",
-      "reason": "An owner-approved Grade 10 History textbook is available; Units 5–6 remain queued for individual source-bounded authoring and validation batches."
+      "reason": "An owner-approved Grade 10 History textbook is available; Unit 6 remains queued for its source-bounded authoring and validation batch."
     },
     {
       "subject": "Economics",

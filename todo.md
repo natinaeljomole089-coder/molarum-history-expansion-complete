@@ -86,3 +86,6 @@
 - [x] Import one quiz per unit and all related questions and choices into Supabase through a server-side privileged workflow without exposing credentials to the Android app.
 - [x] Verify 1,960 imported questions and report exact counts for each of the 49 units.
 - [x] Commit and push the verified Supabase import dataset, scripts, audit report, and task-log update to the existing private GitHub repository.
+- [x] Review remaining approved Grade 10 source boundaries and select the next complete eligible quiz unit.
+- [ ] Author, validate, duplicate-screen, and safely integrate as many complete source-grounded quiz units as the approved sources support.
+- [x] Complete History Unit 5: author, validate, duplicate-screen, archive, merge, migrate, synchronize to Supabase, and fully verify its 40 source-grounded questions.

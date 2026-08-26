@@ -2,9 +2,9 @@
   "source": {
     "format": "canonical Molarum JSON question bank (not HTML)",
     "path": "assets/question-banks/grade10-source-grounded-bank.json",
-    "source_catalog_version": "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-4",
-    "total_questions": 1960,
-    "total_units": 49
+    "source_catalog_version": "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-5",
+    "total_questions": 2000,
+    "total_units": 50
   },
   "units": [
     {
@@ -294,6 +294,14 @@
       "question_count": 40,
       "choice_count": 88,
       "request_file": "history-unit-4.json"
+    },
+    {
+      "subject": "History",
+      "unit": "Unit 5",
+      "quiz_id": "23b2ca1c-01e7-434b-871a-01866e1c904b",
+      "question_count": 40,
+      "choice_count": 88,
+      "request_file": "history-unit-5.json"
     },
     {
       "subject": "Mathematics",

@@ -63,7 +63,7 @@ const payload = {
   questions: records,
 };
 
-if (records.length !== 1960 || units.length !== 49) {
+if (records.length !== 2000 || units.length !== 50) {
   throw new Error(`Unexpected catalog size: ${records.length} questions across ${units.length} units.`);
 }
 

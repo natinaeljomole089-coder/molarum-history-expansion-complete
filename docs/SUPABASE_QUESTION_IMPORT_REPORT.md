@@ -2,19 +2,19 @@
 
 ## Result
 
-The Molarum Grade 10 catalog was successfully imported into Supabase project `jxdfukggxxlemsoumtal`. The import created **49 quizzes**, **1,960 questions**, and **4,312 choices**. Every unit contains 40 questions.
+The Molarum Grade 10 catalog was successfully imported into Supabase project `jxdfukggxxlemsoumtal`. The import created **50 quizzes**, **2000 questions**, and **4400 choices**. Every unit contains 40 questions.
 
 ## Actual source
 
-> The question catalog was **not stored as HTML**. Its canonical source is the bundled JSON file `assets/question-banks/grade10-source-grounded-bank.json`, catalog version `owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-4`.
+> The question catalog was **not stored as HTML**. Its canonical source is the bundled JSON file `assets/question-banks/grade10-source-grounded-bank.json`, catalog version `owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-5`.
 
 | Source property | Value |
 |---|---|
 | Source format | Canonical Molarum JSON |
-| SHA-256 | `3032e1770f9f96432e1ee61bed4529682e11ac80e4e10635dcc96285c8412881` |
+| SHA-256 | `a79d1c2bbfde5eb29c05e7618b7de8175d830c3d027833e2c7dc2b35851c662f` |
 | Extracted import dataset | `content/imports/molarum-supabase-question-import.json` |
-| Questions | 1960 |
-| Units | 49 |
+| Questions | 2000 |
+| Units | 50 |
 
 ## Field mapping
 
@@ -74,6 +74,7 @@ The import used the server-side Supabase management connection. No service-role 
 | History | Unit 2 | 40 | 88 |
 | History | Unit 3 | 40 | 88 |
 | History | Unit 4 | 40 | 88 |
+| History | Unit 5 | 40 | 88 |
 | Mathematics | Unit 1 | 40 | 88 |
 | Mathematics | Unit 2 | 40 | 88 |
 | Mathematics | Unit 3 | 40 | 88 |
@@ -92,9 +93,9 @@ The import used the server-side Supabase management connection. No service-role 
 
 | Check | Result |
 |---|---:|
-| Imported quizzes | 49 |
-| Imported questions | 1,960 |
-| Imported choices | 4,312 |
+| Imported quizzes | 50 |
+| Imported questions | 2,000 |
+| Imported choices | 4,400 |
 | Orphan imported questions | 0 |
 | Orphan choices | 0 |
 | Choice questions lacking exactly one correct choice | 0 |

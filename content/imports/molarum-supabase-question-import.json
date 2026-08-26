@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-25T20:19:00.972Z",
+  "generated_at": "2026-08-26T00:15:56.396Z",
   "source": {
     "format": "canonical Molarum JSON question bank (not HTML)",
     "path": "assets/question-banks/grade10-source-grounded-bank.json",
-    "source_catalog_version": "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-4",
-    "total_questions": 1960,
-    "total_units": 49
+    "source_catalog_version": "owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-5",
+    "total_questions": 2000,
+    "total_units": 50
   },
   "units": [
     {
@@ -188,6 +188,11 @@
       "subject": "History",
       "unit": "Unit 4",
       "title": "Unit 4: Society and Politics in the Age of World Wars 1914–1945"
+    },
+    {
+      "subject": "History",
+      "unit": "Unit 5",
+      "title": "Unit 5: Global and Regional Developments Since 1945"
     },
     {
       "subject": "Mathematics",
@@ -29263,6 +29268,598 @@
       "correct_answer": "1945",
       "explanation": "Japan unconditionally surrendered after the United States dropped atomic bombs in August 1945 and occupied Tokyo in September.",
       "order_index": 1959
+    },
+    {
+      "source_question_id": "history-u05-001",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "In what year was the United Nations established?",
+      "choices": [
+        "1919",
+        "1945",
+        "1949",
+        "1961"
+      ],
+      "correct_answer": "1945",
+      "explanation": "The textbook states that the United Nations was established in 1945.",
+      "order_index": 1960
+    },
+    {
+      "source_question_id": "history-u05-002",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "What organization was the predecessor of the United Nations?",
+      "choices": [
+        "League of Nations",
+        "NATO",
+        "Warsaw Pact",
+        "Non-Aligned Movement"
+      ],
+      "correct_answer": "League of Nations",
+      "explanation": "The source identifies the League of Nations as the predecessor of the United Nations.",
+      "order_index": 1961
+    },
+    {
+      "source_question_id": "history-u05-003",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "Which language was added as an official UN language in 1973?",
+      "choices": [
+        "Arabic",
+        "German",
+        "Portuguese",
+        "Japanese"
+      ],
+      "correct_answer": "Arabic",
+      "explanation": "The textbook says Arabic was added to the UN's official languages in 1973.",
+      "order_index": 1962
+    },
+    {
+      "source_question_id": "history-u05-004",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "Which UN organ has one vote for each member nation?",
+      "choices": [
+        "General Assembly",
+        "Security Council",
+        "Secretariat",
+        "International Court of Justice"
+      ],
+      "correct_answer": "General Assembly",
+      "explanation": "The General Assembly consists of representatives of all member nations and gives each nation one vote.",
+      "order_index": 1963
+    },
+    {
+      "source_question_id": "history-u05-005",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "Which UN organ is charged with maintaining peace and security among countries?",
+      "choices": [
+        "Security Council",
+        "Trusteeship Council",
+        "ECOSOC",
+        "General Assembly"
+      ],
+      "correct_answer": "Security Council",
+      "explanation": "The source states that the Security Council is charged with maintaining peace and security.",
+      "order_index": 1964
+    },
+    {
+      "source_question_id": "history-u05-006",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "Where is the International Court of Justice seated?",
+      "choices": [
+        "The Hague, Netherlands",
+        "Geneva, Switzerland",
+        "New York, United States",
+        "Vienna, Austria"
+      ],
+      "correct_answer": "The Hague, Netherlands",
+      "explanation": "The textbook identifies The Hague in the Netherlands as the seat of the International Court of Justice.",
+      "order_index": 1965
+    },
+    {
+      "source_question_id": "history-u05-007",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "Which two states emerged as superpowers after World War II according to the textbook?",
+      "choices": [
+        "USA and USSR",
+        "Britain and France",
+        "China and Japan",
+        "Germany and Italy"
+      ],
+      "correct_answer": "USA and USSR",
+      "explanation": "The Second World War resulted in the emergence of the USA and the USSR as superpowers.",
+      "order_index": 1966
+    },
+    {
+      "source_question_id": "history-u05-008",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "What term described the political and ideological barrier separating the Soviet bloc from the West?",
+      "choices": [
+        "Iron Curtain",
+        "Marshall Plan",
+        "Containment",
+        "Berlin Airlift"
+      ],
+      "correct_answer": "Iron Curtain",
+      "explanation": "The source defines the Iron Curtain as the barrier erected by the Soviet Union to seal off itself and its satellite states.",
+      "order_index": 1967
+    },
+    {
+      "source_question_id": "history-u05-009",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "Which Cold War strategy involved collecting intelligence through spies and secret agents?",
+      "choices": [
+        "Espionage",
+        "Propaganda",
+        "Containment",
+        "Decolonization"
+      ],
+      "correct_answer": "Espionage",
+      "explanation": "The textbook defines espionage as collecting intelligence and information through spies and secret agents.",
+      "order_index": 1968
+    },
+    {
+      "source_question_id": "history-u05-010",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "What was the central purpose of the Truman Doctrine?",
+      "choices": [
+        "To stop the spread of communism",
+        "To divide Germany",
+        "To create the United Nations",
+        "To nationalize the Suez Canal"
+      ],
+      "correct_answer": "To stop the spread of communism",
+      "explanation": "The Truman Doctrine committed the United States to stopping communism's spread.",
+      "order_index": 1969
+    },
+    {
+      "source_question_id": "history-u05-011",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "What was the Marshall Plan also called in the textbook?",
+      "choices": [
+        "European recovery program",
+        "New Economic Policy",
+        "Molotov Plan",
+        "Brussels Defense Treaty"
+      ],
+      "correct_answer": "European recovery program",
+      "explanation": "George Marshall's 1947 policy is described as the European recovery program, often called the Marshall Plan.",
+      "order_index": 1970
+    },
+    {
+      "source_question_id": "history-u05-012",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "What action supplied West Berlin during the Berlin Blockade?",
+      "choices": [
+        "Berlin airlift",
+        "Warsaw Pact",
+        "Suez nationalization",
+        "Dumbarton Oaks conference"
+      ],
+      "correct_answer": "Berlin airlift",
+      "explanation": "The United States and other nations launched the Berlin airlift to supply West Berlin.",
+      "order_index": 1971
+    },
+    {
+      "source_question_id": "history-u05-013",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "Which military alliance was founded for the United States and Western Europe in April 1949?",
+      "choices": [
+        "NATO",
+        "Warsaw Pact",
+        "SEATO",
+        "League of Nations"
+      ],
+      "correct_answer": "NATO",
+      "explanation": "The source says the North Atlantic Treaty Organization was founded in April 1949.",
+      "order_index": 1972
+    },
+    {
+      "source_question_id": "history-u05-014",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "Who led the Chinese Communist Party during the Chinese civil war described in the textbook?",
+      "choices": [
+        "Mao Tse Tung",
+        "Chiang Kai-shek",
+        "Syngman Rhee",
+        "Kim Il Sung"
+      ],
+      "correct_answer": "Mao Tse Tung",
+      "explanation": "The textbook identifies Mao Tse Tung, also called Mao Zedong, as leader of the Chinese Communist Party.",
+      "order_index": 1973
+    },
+    {
+      "source_question_id": "history-u05-015",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "Which parallel divided Soviet-occupied northern Korea from US-occupied southern Korea after World War II?",
+      "choices": [
+        "38th parallel",
+        "17th parallel",
+        "49th parallel",
+        "24th parallel"
+      ],
+      "correct_answer": "38th parallel",
+      "explanation": "The source says the dividing line in Korea was the 38th parallel of latitude.",
+      "order_index": 1974
+    },
+    {
+      "source_question_id": "history-u05-016",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "What organization did Ho Chi Minh establish during the First Indochina War?",
+      "choices": [
+        "Viet Minh",
+        "Warsaw Pact",
+        "PLO",
+        "SEATO"
+      ],
+      "correct_answer": "Viet Minh",
+      "explanation": "Ho Chi Minh established the Viet Minh, a Vietnamese communist independence movement.",
+      "order_index": 1975
+    },
+    {
+      "source_question_id": "history-u05-017",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "What was the main position of Non-Aligned Movement states during the Cold War?",
+      "choices": [
+        "They did not formally align with either the USA or USSR",
+        "They joined NATO",
+        "They joined the Warsaw Pact",
+        "They supported colonial rule"
+      ],
+      "correct_answer": "They did not formally align with either the USA or USSR",
+      "explanation": "NAM was formed by states seeking to remain independent rather than formally align with either superpower.",
+      "order_index": 1976
+    },
+    {
+      "source_question_id": "history-u05-018",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "What British statement supported the establishment of a Jewish homeland in Palestine in 1917?",
+      "choices": [
+        "Balfour Declaration",
+        "Atlantic Charter",
+        "Havana Declaration",
+        "Geneva Accords"
+      ],
+      "correct_answer": "Balfour Declaration",
+      "explanation": "The source identifies the 1917 British support for a Jewish homeland as the Balfour Declaration.",
+      "order_index": 1977
+    },
+    {
+      "source_question_id": "history-u05-019",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "Who announced the nationalization of the Suez Canal Company in 1956?",
+      "choices": [
+        "Gamal Abdel Nasser",
+        "Yasir Arafat",
+        "Mikhail Gorbachev",
+        "Joseph Stalin"
+      ],
+      "correct_answer": "Gamal Abdel Nasser",
+      "explanation": "The textbook states that Gamal Abdel Nasser announced the nationalization of the Suez Canal Company.",
+      "order_index": 1978
+    },
+    {
+      "source_question_id": "history-u05-020",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "multiple_choice",
+      "question_text": "What Soviet reform meant openness or publicity?",
+      "choices": [
+        "Glasnost",
+        "Perestroika",
+        "Containment",
+        "Vietnamization"
+      ],
+      "correct_answer": "Glasnost",
+      "explanation": "Glasnost is defined in the source as openness or publicity.",
+      "order_index": 1979
+    },
+    {
+      "source_question_id": "history-u05-021",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "true_false",
+      "question_text": "Permanent members of the UN Security Council can veto Council decisions.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correct_answer": "True",
+      "explanation": "The source states that the five permanent Security Council members have veto power.",
+      "order_index": 1980
+    },
+    {
+      "source_question_id": "history-u05-022",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "true_false",
+      "question_text": "The Cold War involved a large-scale direct war between the USA and the USSR.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correct_answer": "False",
+      "explanation": "It was called the Cold War because the two nations did not fight a large-scale direct war against each other.",
+      "order_index": 1981
+    },
+    {
+      "source_question_id": "history-u05-023",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "true_false",
+      "question_text": "Vietnamization aimed to reduce American involvement by transferring military responsibilities to South Vietnam.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correct_answer": "True",
+      "explanation": "The source defines Vietnamization as transferring military responsibilities to South Vietnam to reduce American involvement.",
+      "order_index": 1982
+    },
+    {
+      "source_question_id": "history-u05-024",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "true_false",
+      "question_text": "Perestroika aimed to allow private ownership of some businesses in the USSR.",
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correct_answer": "True",
+      "explanation": "The textbook describes perestroika as restructuring that allowed private ownership of some businesses.",
+      "order_index": 1983
+    },
+    {
+      "source_question_id": "history-u05-025",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "State one UN principle concerning disputes between member states.",
+      "choices": [],
+      "correct_answer": "Disputes are to be settled through peaceful means.",
+      "explanation": "The source lists peaceful settlement of disputes as an essential UN principle.",
+      "order_index": 1984
+    },
+    {
+      "source_question_id": "history-u05-026",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "Name one country that Truman sought to assist against communist attack in 1947.",
+      "choices": [],
+      "correct_answer": "Greece or Turkey.",
+      "explanation": "Truman requested assistance for Greece and Turkey against communist attack.",
+      "order_index": 1985
+    },
+    {
+      "source_question_id": "history-u05-027",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "Give one stated aim of the Marshall Plan.",
+      "choices": [],
+      "correct_answer": "Stop the spread of communism, help European economies recover, or provide a market for American goods.",
+      "explanation": "The textbook lists these political and economic aims of the Marshall Plan.",
+      "order_index": 1986
+    },
+    {
+      "source_question_id": "history-u05-028",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "State one consequence of the Berlin Blockade listed in the textbook.",
+      "choices": [],
+      "correct_answer": "It worsened the Cold War, created East and West Germany, led to NATO and the Warsaw Pact, or intensified the arms race.",
+      "explanation": "The source lists each of these as consequences of the Berlin Blockade.",
+      "order_index": 1987
+    },
+    {
+      "source_question_id": "history-u05-029",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "Give one result of the Korean War stated in the textbook.",
+      "choices": [],
+      "correct_answer": "South Korea was saved from communism, millions became refugees, China became a major power in Asia, or American protection for Taiwan increased.",
+      "explanation": "The source lists these political and humanitarian results of the Korean War.",
+      "order_index": 1988
+    },
+    {
+      "source_question_id": "history-u05-030",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "State one goal in the Havana Declaration for the Non-Aligned Movement.",
+      "choices": [],
+      "correct_answer": "To ensure the national independence, sovereignty, territorial integrity, or security of non-aligned countries against imperialism, colonialism, neocolonialism, racism, and foreign subjugation.",
+      "explanation": "The Havana Declaration listed these protections and struggles as NAM purposes.",
+      "order_index": 1989
+    },
+    {
+      "source_question_id": "history-u05-031",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "Why did the Arab world call the 1948 war Nakba according to the textbook?",
+      "choices": [],
+      "correct_answer": "Because it caused a large number of refugees and displaced persons.",
+      "explanation": "The source says the war was called Nakba, or Catastrophe, because of the many refugees and displaced people.",
+      "order_index": 1990
+    },
+    {
+      "source_question_id": "history-u05-032",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "State one feature of the 1989 changes in Eastern Europe described in the textbook.",
+      "choices": [],
+      "correct_answer": "Nationalist movements brought regime change, communist regimes were overthrown, or the changes were peaceful except in Romania where the revolution was violent.",
+      "explanation": "The textbook describes 1989 nationalist movements and the collapse of communist regimes across Eastern Europe.",
+      "order_index": 1991
+    },
+    {
+      "source_question_id": "history-u05-033",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "How many nations signed the UN Charter in San Francisco in June 1945?",
+      "choices": [],
+      "correct_answer": "50",
+      "explanation": "The textbook says 50 nations represented in San Francisco signed the Charter on 26 June 1945.",
+      "order_index": 1992
+    },
+    {
+      "source_question_id": "history-u05-034",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "How many permanent members are on the UN Security Council according to the textbook?",
+      "choices": [],
+      "correct_answer": "5",
+      "explanation": "The source lists five permanent members of the Security Council.",
+      "order_index": 1993
+    },
+    {
+      "source_question_id": "history-u05-035",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "In what year did the Berlin Blockade begin?",
+      "choices": [],
+      "correct_answer": "1948",
+      "explanation": "Stalin imposed the Berlin Blockade in June 1948.",
+      "order_index": 1994
+    },
+    {
+      "source_question_id": "history-u05-036",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "In what year was the Warsaw Pact formed?",
+      "choices": [],
+      "correct_answer": "1955",
+      "explanation": "The textbook dates the formation of the Warsaw Pact in Warsaw to May 1955.",
+      "order_index": 1995
+    },
+    {
+      "source_question_id": "history-u05-037",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "In what year was the People's Republic of China formed by the Chinese Communists?",
+      "choices": [],
+      "correct_answer": "1949",
+      "explanation": "The source says the People's Republic of China was formed in October 1949.",
+      "order_index": 1996
+    },
+    {
+      "source_question_id": "history-u05-038",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "On what date was the First Indochina War's Viet Minh victory at Dien Bien Phu given in the textbook?",
+      "choices": [],
+      "correct_answer": "7 May 1954",
+      "explanation": "The textbook dates the French defeat by the Viet Minh at Dien Bien Phu to 7 May 1954.",
+      "order_index": 1997
+    },
+    {
+      "source_question_id": "history-u05-039",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "In what year did the first NAM Conference take place in Belgrade?",
+      "choices": [],
+      "correct_answer": "1961",
+      "explanation": "The first Non-Aligned Movement Conference took place in Belgrade in September 1961.",
+      "order_index": 1998
+    },
+    {
+      "source_question_id": "history-u05-040",
+      "subject": "History",
+      "unit": "Unit 5",
+      "unit_title": "Unit 5: Global and Regional Developments Since 1945",
+      "question_type": "fill_blank",
+      "question_text": "In what year did fifteen sovereign states emerge from the collapse of the USSR?",
+      "choices": [],
+      "correct_answer": "1991",
+      "explanation": "The source states that fifteen sovereign states emerged from the USSR's collapse in 1991.",
+      "order_index": 1999
     }
   ]
 }
