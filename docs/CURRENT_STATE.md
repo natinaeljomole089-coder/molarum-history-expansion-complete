@@ -1,6 +1,7 @@
 # Molarum Current State
 
-**Status date:** 2026-08-24  
+**Status date:** 2026-08-27
+
 **Canonical product state:** Use this document for the current repository, content, release, and verification state. Older audits and release notes are historical snapshots only.
 
 ## Product
@@ -11,10 +12,10 @@ Molarum is an offline-first Grade 10 study library. The student app exposes Libr
 
 | Metric | Current value |
 |---|---:|
-| Bundled questions | 1,960 |
-| Complete units | 49 |
-| Catalog version | `owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-4` |
-| History | Units 1–4 bundled; Units 5–6 unresolved pending source-bounded continuation work |
+| Bundled questions | 2,000 |
+| Complete units | 50 |
+| Catalog version | `owner-drive-grade10-textbooks-2026-08-24-full-expanded-history-continuation-5` |
+| History | Units 1–5 bundled; Unit 6 remains unresolved pending source-bounded continuation work |
 | Economics | Units 1–3 bundled; Units 4–8 unresolved |
 | Health & PE | Unit 1 bundled; Units 2–8 unresolved |
 | Structural review status | `ai_draft`; structural validation is not teacher approval |
@@ -31,4 +32,4 @@ The repository contains source code, not an Android artifact. No APK or AAB has 
 
 ## Validation status
 
-At the 2026-08-24 repair pass, `pnpm check`, `pnpm lint`, `pnpm test` (13 passed, 2 expected skips), `pnpm build`, strict bank validation, web export, and Android JavaScript export passed. The optional Supabase endpoint probe was skipped because no public cloud variables were configured. Physical-device installation, cold offline launch, native process termination, system bars, large fonts, deep links, document picker, PDF share, and optional cloud recovery remain device-only checks.
+At the 2026-08-24 repair pass, `pnpm check`, `pnpm lint`, `pnpm test` (13 passed, 2 expected skips), `pnpm build`, strict bank validation, web export, and Android JavaScript export passed. The optional Supabase endpoint probe was skipped because no public cloud variables were configured. A 2026-08-27 read-only audit at revision `ba4de0179baf5fd3994367f4b31d2cef5e46b834` independently confirmed the canonical bank count, unit distributions, duplicate checks, source-note presence, answer presence, and protected-path presence; it did not execute target project code. Physical-device installation, cold offline launch, native process termination, system bars, large fonts, deep links, document picker, PDF share, and optional cloud recovery remain device-only checks.
