@@ -10,8 +10,13 @@ The migration has already been applied to Supabase project `jxdfukggxxlemsoumtal
 export SUPABASE_URL=https://jxdfukggxxlemsoumtal.supabase.co
 export SUPABASE_SERVICE_ROLE_KEY='…'
 export OPENAI_API_KEY='…'
-# Optional: export OPENAI_BASE_URL='https://your-openai-compatible-endpoint/v1'
-# Optional: export EMBEDDING_MODEL='text-embedding-3-small'
+# Optional OpenAI-compatible endpoint/model:
+# export OPENAI_BASE_URL='https://your-openai-compatible-endpoint/v1'
+# export EMBEDDING_MODEL='text-embedding-3-small'
+
+# Offline/local Hugging Face alternative:
+# export EMBEDDING_PROVIDER=local
+# export EMBEDDING_MODEL='sentence-transformers/all-MiniLM-L6-v2'
 ```
 
 ## Ingest a PDF
@@ -43,4 +48,4 @@ python3 scripts/textbook_embeddings.py retrieve \
   --query 'What were the main causes of migration?'
 ```
 
-The RPC accepts a precomputed vector rather than raw text because Postgres does not call the external embedding provider. This keeps credentials out of the database and makes model consistency explicit.
+The RPC accepts a precomputed vector rather than raw text because Postgres does not call the external embedding provider. This keeps credentials out of the database and makes model consistency explicit. The local Hugging Face provider normalizes its native vectors and zero-pads them to 1,536 dimensions so it remains compatible with the existing schema; use the same provider and model for ingestion and retrieval.
