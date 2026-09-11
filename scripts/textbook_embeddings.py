@@ -58,7 +58,8 @@ def pdf_to_text(pdf_path: Path) -> str:
         raise RuntimeError("pdftotext is required; install poppler-utils") from exc
     except subprocess.CalledProcessError as exc:
         raise RuntimeError(f"Could not extract text from {pdf_path}: {exc.stderr.strip()}") from exc
-    text = re.sub(r"\s+", " ", result.stdout).strip()
+    text = "\n".join(re.sub(r"[ \t]+", " ", line).strip() for line in result.stdout.splitlines())
+    text = re.sub(r"\n{2,}", "\n", text).strip()
     if len(text.split()) < 20:
         raise RuntimeError("The PDF yielded too little text; it may be scanned and need OCR first")
     return text
@@ -72,10 +73,17 @@ def chunk_text(text: str, subject: str, default_unit: str, words_per_chunk: int 
     # The PDF repeats a compact "Unit N|..." header on many pages. Map each
     # heading's word offset to the following windows so page headers do not
     # leave most chunks tagged as Unassigned.
-    unit_markers = [
-        (len(text[: match.start()].split()), f"Unit {match.group(1)}")
-        for match in re.finditer(r"\bUnit\s+([0-9]+)\b", text, re.I)
-    ]
+    spaced_unit_starts = list(re.finditer(r"(?m)^\s*U\s*N\s*I\s*T\b.*$", text))
+    if spaced_unit_starts:
+        unit_markers = [
+            (len(text[: match.start()].split()), f"Unit {index}")
+            for index, match in enumerate(spaced_unit_starts, 1)
+        ]
+    else:
+        unit_markers = [
+            (len(text[: match.start()].split()), f"Unit {match.group(1)}")
+            for match in re.finditer(r"(?im)^\s*Unit\s+([0-9]+)\s*(?:[:|].*)?$", text)
+        ]
     marker_index = 0
     for start in range(0, len(words), step):
         window = words[start : start + words_per_chunk]
